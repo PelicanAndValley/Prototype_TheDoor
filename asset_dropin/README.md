@@ -1,6 +1,6 @@
 # Asset Drop-in Folder
 
-This folder is for dumping in raw assets, to be made ready for implementation.
+This folder is for dumping in raw assets, to be made ready for implementation. This is a game jam so don't fuss about making it too neat, as long as it's not gigabytes.
 
 When dumping a new asset here, some admin is required to track tasks. Trello has an Assets board: https://trello.com/invite/b/66bd68d3d5f1696d38cf89ce/ATTIe1aae2f53393f751d8f03f8ad804f64d952D6989/bsgj24-assets
 
