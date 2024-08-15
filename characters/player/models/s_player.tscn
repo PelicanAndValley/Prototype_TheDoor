@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=3 uid="uid://b635kl4w14rj5"]
+
+[ext_resource type="PackedScene" uid="uid://bilx2r8hmhqrd" path="res://player/models/m_player.glb" id="1_58fkd"]
+
+[node name="PlayerModel" instance=ExtResource("1_58fkd")]
+
+[node name="PlayerArmature" parent="." index="0"]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="PlayerArmature" index="0"]
+bones/0/rotation = Quaternion(0.707107, -5.33851e-08, -5.33851e-08, 0.707107)
+bones/1/rotation = Quaternion(-0.660101, -1.88052e-07, 2.64924e-07, 0.751177)
+bones/2/rotation = Quaternion(-0.154478, -3.14047e-08, 1.0558e-07, 0.987996)
+bones/3/rotation = Quaternion(0.0851728, -1.17132e-12, -6.09202e-08, 0.996366)
+bones/4/rotation = Quaternion(0.105943, 1.14062e-12, -7.5776e-08, 0.994372)
+bones/5/rotation = Quaternion(-0.0778697, -4.74395e-13, 5.56967e-08, 0.996964)
+bones/6/rotation = Quaternion(-0.0714569, 0.0410692, -0.162167, 0.983315)
+bones/6/scale = Vector3(0.185441, 0.240732, 0.185441)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.0316037, 0.00336779, -0.0327392, 0.998958)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.129178, -0.0166449, -0.145483, 0.98075)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.0352996, 0.00329275, 0.038266, 0.998638)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.291068, 0.259108, 0.820672, 0.417899)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(-0.0221575, -0.0355539, 0.802553, 0.595109)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(0.0316037, -0.00336817, 0.0327392, 0.998958)
+bones/13/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.0352995, -0.00329334, -0.038266, 0.998638)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.291068, 0.259108, 0.820672, -0.417899)
+bones/18/rotation = Quaternion(0.797881, 2.72831e-06, 3.09754e-06, 0.602815)
+bones/19/rotation = Quaternion(0.99545, -0.0472082, 0.00236545, 0.0827363)
+bones/19/scale = Vector3(0.999998, 1, 0.999995)
+bones/20/rotation = Quaternion(0.0622157, -0.00182275, -0.0628398, 0.996081)
+bones/21/rotation = Quaternion(-0.617519, -0.0799938, 0.0632101, 0.779921)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(-0.16106, 9.55369e-06, 0.0333078, 0.986382)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(0.99545, 0.0472086, -0.00236161, 0.082736)
+bones/23/scale = Vector3(0.999998, 1, 0.999995)
+bones/24/rotation = Quaternion(0.0622152, 0.00182262, 0.0628404, 0.996081)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(-0.617518, 0.0799913, -0.0632137, 0.779921)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(-0.16106, -1.03591e-05, -0.0333081, 0.986382)
+bones/26/scale = Vector3(1, 1, 1)
+bones/27/rotation = Quaternion(-0.0681706, 0.141436, 0.868136, -0.470839)
+bones/28/rotation = Quaternion(0.0681706, 0.141436, 0.868136, 0.470839)
+bones/29/rotation = Quaternion(-0.029637, 0.074606, 0.870304, -0.485929)
+bones/29/scale = Vector3(1, 1, 1)
+bones/30/rotation = Quaternion(0.029637, 0.074606, 0.870304, 0.485929)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(0.704184, -0.0567594, -0.0642214, 0.704825)
+bones/32/rotation = Quaternion(0.704184, 0.0567594, 0.0642214, 0.704825)
+bones/33/rotation = Quaternion(0.704184, -0.0567594, -0.0642214, 0.704825)
+bones/34/rotation = Quaternion(0.704184, 0.0567594, 0.0642214, 0.704825)
+bones/36/rotation = Quaternion(0.707107, -5.33851e-08, -5.33851e-08, 0.707107)
+bones/37/rotation = Quaternion(0.707107, -5.33851e-08, -5.33851e-08, 0.707107)
+
+[node name="Hat" parent="PlayerArmature/Skeleton3D" index="0"]
+transform = Transform3D(0.175062, 0.075362, 0.0192753, -0.0596799, 0.227067, 0.0152211, -0.0134161, -0.0267065, 0.183807, -0.092325, 3.95166, -0.073366)
+
+[node name="RightHold" type="BoneAttachment3D" parent="PlayerArmature/Skeleton3D" index="2"]
+transform = Transform3D(0.865181, 4.53703e-05, -0.50146, -0.00036855, 0.999999, -0.000545084, 0.501459, 0.000656426, 0.865181, -1.63588, 2.52868, -0.0158289)
+bone_name = "Weapon_R"
+bone_idx = 16
