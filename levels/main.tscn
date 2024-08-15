@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://ctoupxt2dsnu5"]
+[gd_scene load_steps=2 format=3 uid="uid://ctoupxt2dsnu5"]
+
+[ext_resource type="PackedScene" uid="uid://bs0wa40ksvwl7" path="res://characters/player/player.tscn" id="1_62204"]
 
 [node name="MainScene" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_62204")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.367839, -0.305694, 0.878206, -0.774217, 0.422423, 0.471324, -0.515056, -0.853293, -0.0812901, 0, 2.63583, 0)
