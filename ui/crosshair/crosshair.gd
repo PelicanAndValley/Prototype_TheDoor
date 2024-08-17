@@ -1,5 +1,5 @@
 @tool
-extends TextureRect
+extends Control
 
 class_name Crosshair;
 
@@ -11,16 +11,21 @@ var interact: Texture2D;
 @export
 var grapple: Texture2D;
 
+var _tex : TextureRect;
+
 @export_category("State")
 enum State { Normal, Interact, Grapple };
 @export
 var state: State = State.Normal;
 
+func _ready () -> void:
+	_tex = $CrosshairTexture;
+
 func _process (delta: float) -> void:
 	match state:
 		State.Normal:
-			texture = normal;
+			_tex.texture = normal;
 		State.Interact:
-			texture = interact;
+			_tex.texture = interact;
 		State.Grapple:
-			texture = grapple; 
+			_tex.texture = grapple; 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://ctoupxt2dsnu5"]
 
-[ext_resource type="Script" path="res://levels/test/test.gd" id="1_07prj"]
-[ext_resource type="PackedScene" uid="uid://7xb1q1u0cfe2" path="res://prefabs/PROTOTYPE_Door_big_door/big_door.tscn" id="2_h78qj"]
-[ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_ht0e7"]
-[ext_resource type="Script" path="res://scripts/interactable.gd" id="4_ei6bk"]
-[ext_resource type="Script" path="res://scripts/grappleable.gd" id="5_wa5fc"]
+[ext_resource type="Script" path="res://levels/test/test.gd" id="1_uc52g"]
+[ext_resource type="PackedScene" uid="uid://7xb1q1u0cfe2" path="res://prefabs/PROTOTYPE_Door_big_door/big_door.tscn" id="2_g3r4l"]
+[ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_kq0e6"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="4_7osf3"]
+[ext_resource type="Script" path="res://scripts/grappleable.gd" id="5_uypyd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ftavj"]
 size = Vector3(5, 1, 5)
@@ -31,13 +31,13 @@ albedo_color = Color(0, 1, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_krsp7"]
 
 [node name="MainScene" type="Node3D"]
-script = ExtResource("1_07prj")
+script = ExtResource("1_uc52g")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.50776, -0.0538626, 0.859813, 0.70537, -0.59899, 0.379031, 0.494604, 0.798943, 0.342136, 103.066, 199.776, 144.009)
 shadow_enabled = true
 
-[node name="BigDoor" parent="." instance=ExtResource("2_h78qj")]
+[node name="BigDoor" parent="." instance=ExtResource("2_g3r4l")]
 
 [node name="TestBlock" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.1258, 4, 5)
@@ -49,8 +49,8 @@ shape = SubResource("BoxShape3D_ftavj")
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("BoxMesh_e7xrw")
 
-[node name="Player" parent="." instance=ExtResource("3_ht0e7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7736, 1.90735e-06, 36.952)
+[node name="Player" parent="." instance=ExtResource("3_kq0e6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.6414, 1.90735e-06, 18.4072)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
@@ -63,7 +63,7 @@ shape = SubResource("WorldBoundaryShape3D_8gnkt")
 
 [node name="InteractCube" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.083, 0.5, 93.557)
-script = ExtResource("4_ei6bk")
+script = ExtResource("4_7osf3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InteractCube"]
 mesh = SubResource("BoxMesh_tc72p")
@@ -74,7 +74,7 @@ shape = SubResource("BoxShape3D_8lxwx")
 
 [node name="GrappleableCube" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 94.362)
-script = ExtResource("5_wa5fc")
+script = ExtResource("5_uypyd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GrappleableCube"]
 mesh = SubResource("BoxMesh_knpo5")

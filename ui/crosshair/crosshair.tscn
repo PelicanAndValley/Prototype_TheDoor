@@ -1,18 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://pwppgtajejmn"]
+[gd_scene load_steps=3 format=3 uid="uid://pwppgtajejmn"]
 
 [ext_resource type="Script" path="res://ui/crosshair/crosshair.gd" id="1_nbi2u"]
 [ext_resource type="Texture2D" uid="uid://ddto3p4tns5hj" path="res://ui/crosshair/crosshair.png" id="2_flubn"]
-[ext_resource type="Texture2D" uid="uid://cx0xae2qyyjw0" path="res://ui/crosshair/crosshair-interact.png" id="3_mtr7h"]
-[ext_resource type="Texture2D" uid="uid://bkesjfl3m32v" path="res://ui/crosshair/crosshair-grapple.png" id="4_3wjgj"]
 
-[node name="Crosshair" type="TextureRect"]
+[node name="Crosshair" type="CenterContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_flubn")
 script = ExtResource("1_nbi2u")
-normal = ExtResource("2_flubn")
-interact = ExtResource("3_mtr7h")
-grapple = ExtResource("4_3wjgj")
+
+[node name="CrosshairTexture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_flubn")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2prbdiplyfkw"]
+[gd_scene load_steps=6 format=3 uid="uid://d2prbdiplyfkw"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_dtgyq"]
 [ext_resource type="PackedScene" uid="uid://pwppgtajejmn" path="res://ui/crosshair/crosshair.tscn" id="2_jyjei"]
 [ext_resource type="PackedScene" uid="uid://xesaaq3gl00m" path="res://prefabs/PROTOTYPE_Grapple_GrapplingHook/grappling_hook.tscn" id="2_scdmv"]
+[ext_resource type="Script" path="res://scripts/fps_counter.gd" id="4_bf4aw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aytt0"]
 
@@ -30,15 +31,25 @@ target_position = Vector3(0, 0, -1000)
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
-[node name="UI" type="CenterContainer" parent="."]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="Crosshair" parent="UI" instance=ExtResource("2_jyjei")]
-layout_mode = 2
+layout_mode = 1
+
+[node name="FPS Counter" type="RichTextLabel" parent="UI"]
+layout_mode = 1
+offset_right = 354.0
+offset_bottom = 40.0
+mouse_filter = 1
+text = "FPS: 89"
+script = ExtResource("4_bf4aw")
 
 [node name="GrappleThrowPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.506257)
