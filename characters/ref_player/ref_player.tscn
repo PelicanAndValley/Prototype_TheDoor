@@ -1,0 +1,283 @@
+[gd_scene load_steps=39 format=3 uid="uid://bs0wa40ksvwl7"]
+
+[ext_resource type="Script" path="res://characters/ref_player/scripts/player_movement.gd" id="1_evcmw"]
+[ext_resource type="PackedScene" uid="uid://b635kl4w14rj5" path="res://characters/ref_player/models/s_player.tscn" id="2_fret7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_40nhu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5sokv"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_qheli"]
+fadein_time = 0.1
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3vn16"]
+animation = &"DodgeRoll"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_uqova"]
+fadein_time = 0.2
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mf877"]
+animation = &"MeleeCombo1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w6j1l"]
+animation = &"MeleeCombo2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2080f"]
+animation = &"MeleeCombo3"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i34p4"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5tm72"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k2jaj"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hmiee"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cskxn"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xxej0"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hxpsn"]
+states/End/position = Vector2(814, 236)
+states/MeleeCombo1/node = SubResource("AnimationNodeAnimation_mf877")
+states/MeleeCombo1/position = Vector2(401, 100)
+states/MeleeCombo2/node = SubResource("AnimationNodeAnimation_w6j1l")
+states/MeleeCombo2/position = Vector2(607, 100)
+states/MeleeCombo3/node = SubResource("AnimationNodeAnimation_2080f")
+states/MeleeCombo3/position = Vector2(814, 100)
+transitions = ["Start", "MeleeCombo1", SubResource("AnimationNodeStateMachineTransition_i34p4"), "MeleeCombo3", "End", SubResource("AnimationNodeStateMachineTransition_5tm72"), "MeleeCombo1", "End", SubResource("AnimationNodeStateMachineTransition_k2jaj"), "MeleeCombo1", "MeleeCombo2", SubResource("AnimationNodeStateMachineTransition_hmiee"), "MeleeCombo2", "MeleeCombo3", SubResource("AnimationNodeStateMachineTransition_cskxn"), "MeleeCombo2", "End", SubResource("AnimationNodeStateMachineTransition_xxej0")]
+graph_offset = Vector2(-73, 23)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4jqu7"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q6voe"]
+animation = &"Running"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bor4l"]
+animation = &"Sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x66r6"]
+animation = &"Walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rgb05"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pyxnc"]
+xfade_time = 0.1
+switch_mode = 1
+advance_mode = 2
+advance_expression = "player_state == PlayerState.MOVING && move_state == MoveState.WALK"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_88rna"]
+xfade_time = 0.2
+switch_mode = 1
+advance_mode = 2
+advance_expression = "player_state == PlayerState.IDLE"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5etro"]
+xfade_time = 0.1
+switch_mode = 1
+advance_mode = 2
+advance_expression = "player_state == PlayerState.MOVING && move_state == MoveState.RUN"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ym1d"]
+xfade_time = 0.1
+switch_mode = 1
+advance_mode = 2
+advance_expression = "player_state == PlayerState.MOVING && move_state == MoveState.RUN"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d66jw"]
+xfade_time = 0.2
+switch_mode = 1
+advance_mode = 2
+advance_expression = "player_state == PlayerState.IDLE"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tjlmx"]
+xfade_time = 0.2
+switch_mode = 1
+advance_mode = 2
+advance_expression = "player_state == PlayerState.MOVING && move_state == MoveState.WALK"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kt8ls"]
+xfade_time = 0.1
+switch_mode = 1
+advance_mode = 2
+advance_expression = "player_state == PlayerState.MOVING && move_state == MoveState.SPRINT"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wif3e"]
+xfade_time = 0.1
+switch_mode = 1
+advance_mode = 2
+advance_expression = "player_state == PlayerState.MOVING && move_state == MoveState.RUN"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vf0w0"]
+xfade_time = 0.1
+switch_mode = 1
+advance_mode = 2
+advance_expression = "player_state == PlayerState.MOVING && move_state == MoveState.WALK"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q3y28"]
+xfade_time = 0.1
+switch_mode = 1
+advance_mode = 2
+advance_expression = "player_state == PlayerState.MOVING && move_state == MoveState.SPRINT"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s81l8"]
+xfade_time = 0.3
+advance_mode = 2
+advance_expression = "player_state == PlayerState.IDLE"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bfw52"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "player_state == PlayerState.MOVING && move_state == MoveState.SPRINT"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_62x84"]
+states/Idle/node = SubResource("AnimationNodeAnimation_4jqu7")
+states/Idle/position = Vector2(316, 72)
+states/Running/node = SubResource("AnimationNodeAnimation_q6voe")
+states/Running/position = Vector2(533, -20)
+states/Sprint/node = SubResource("AnimationNodeAnimation_bor4l")
+states/Sprint/position = Vector2(691, 72)
+states/Start/position = Vector2(164, 72)
+states/Walking/node = SubResource("AnimationNodeAnimation_x66r6")
+states/Walking/position = Vector2(533, 183)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rgb05"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_pyxnc"), "Running", "Idle", SubResource("AnimationNodeStateMachineTransition_88rna"), "Walking", "Running", SubResource("AnimationNodeStateMachineTransition_5etro"), "Idle", "Running", SubResource("AnimationNodeStateMachineTransition_8ym1d"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_d66jw"), "Running", "Walking", SubResource("AnimationNodeStateMachineTransition_tjlmx"), "Running", "Sprint", SubResource("AnimationNodeStateMachineTransition_kt8ls"), "Sprint", "Running", SubResource("AnimationNodeStateMachineTransition_wif3e"), "Sprint", "Walking", SubResource("AnimationNodeStateMachineTransition_vf0w0"), "Walking", "Sprint", SubResource("AnimationNodeStateMachineTransition_q3y28"), "Sprint", "Idle", SubResource("AnimationNodeStateMachineTransition_s81l8"), "Idle", "Sprint", SubResource("AnimationNodeStateMachineTransition_bfw52")]
+graph_offset = Vector2(-23, -83)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_acyim"]
+nodes/DoABarrelRoll/node = SubResource("AnimationNodeOneShot_qheli")
+nodes/DoABarrelRoll/position = Vector2(320, 200)
+nodes/DodgeRoll/node = SubResource("AnimationNodeAnimation_3vn16")
+nodes/DodgeRoll/position = Vector2(-460, 320)
+nodes/MeleeCombo/node = SubResource("AnimationNodeOneShot_uqova")
+nodes/MeleeCombo/position = Vector2(-80, 200)
+nodes/MeleeComboAnimation/node = SubResource("AnimationNodeStateMachine_hxpsn")
+nodes/MeleeComboAnimation/position = Vector2(-460, 520)
+nodes/MoveAnimation/node = SubResource("AnimationNodeStateMachine_62x84")
+nodes/MoveAnimation/position = Vector2(-460, 100)
+nodes/output/position = Vector2(600, 200)
+node_connections = [&"DoABarrelRoll", 0, &"MeleeCombo", &"DoABarrelRoll", 1, &"DodgeRoll", &"MeleeCombo", 0, &"MoveAnimation", &"MeleeCombo", 1, &"MeleeComboAnimation", &"output", 0, &"DoABarrelRoll"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ohi1f"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b1vyl"]
+radius = 0.25
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_evcmw")
+dodge_length = 10.0
+camera_dist = 4.0
+camera_dodge_follow_speed = 100.0
+
+[node name="PlayerModel" parent="." instance=ExtResource("2_fret7")]
+
+[node name="Skeleton3D" parent="PlayerModel/PlayerArmature" index="0"]
+bones/1/position = Vector3(0.0888021, -0.0427769, -1.85409)
+bones/1/rotation = Quaternion(-0.660101, -1.88052e-07, 2.64924e-07, 0.751177)
+bones/2/rotation = Quaternion(-0.155504, -3.15144e-08, 1.05548e-07, 0.987835)
+bones/3/rotation = Quaternion(0.0851728, -1.15783e-12, -6.09202e-08, 0.996366)
+bones/4/rotation = Quaternion(0.105943, 1.14051e-12, -7.57759e-08, 0.994372)
+bones/5/rotation = Quaternion(-0.0778697, -4.88258e-13, 5.56967e-08, 0.996964)
+bones/7/position = Vector3(0.224964, 0.188816, -0.0750484)
+bones/7/rotation = Quaternion(-0.022158, 0.0355543, -0.802553, 0.595109)
+bones/8/rotation = Quaternion(-0.252107, -0.325631, -0.458883, 0.787294)
+bones/9/rotation = Quaternion(0.217032, -0.0130747, -0.227394, 0.94922)
+bones/10/rotation = Quaternion(0.0835609, 0.00590716, 0.0182343, 0.996318)
+bones/12/position = Vector3(-0.224964, 0.188816, -0.0750481)
+bones/12/rotation = Quaternion(-0.0221575, -0.0355539, 0.802553, 0.595109)
+bones/13/rotation = Quaternion(-0.0643948, 0.37526, 0.453795, 0.805669)
+bones/14/rotation = Quaternion(0.0338344, 0.0191854, 0.0484578, 0.998068)
+bones/15/rotation = Quaternion(-0.00525855, -0.00135348, -0.038292, 0.999252)
+bones/16/rotation = Quaternion(-0.416821, 0.509831, 0.371138, -0.654668)
+bones/19/rotation = Quaternion(0.926783, -0.122214, -0.311202, 0.171143)
+bones/19/scale = Vector3(0.999994, 1, 0.999984)
+bones/20/rotation = Quaternion(0.198199, -0.00175558, -0.200188, 0.959499)
+bones/21/rotation = Quaternion(-0.700409, 0.0349005, 0.132809, 0.700408)
+bones/22/rotation = Quaternion(-0.16106, 9.54915e-06, 0.0333078, 0.986382)
+bones/23/rotation = Quaternion(0.917608, 0.0700108, 0.339177, 0.19507)
+bones/24/rotation = Quaternion(0.203735, 0.00175117, 0.205783, 0.957153)
+bones/25/rotation = Quaternion(-0.685596, -0.0376742, -0.132052, 0.714914)
+bones/26/rotation = Quaternion(-0.16106, -1.03551e-05, -0.0333081, 0.986382)
+bones/27/position = Vector3(0.86028, 1.80597, 0.152677)
+bones/27/rotation = Quaternion(-0.0374194, 0.150819, 0.888241, -0.432298)
+bones/28/position = Vector3(-0.86566, 1.78553, 0.208756)
+bones/28/rotation = Quaternion(0.030989, 0.200715, 0.887647, 0.413322)
+bones/29/position = Vector3(0.959863, 2.78859, -0.492299)
+bones/29/rotation = Quaternion(-0.029637, 0.074606, 0.870304, -0.485929)
+bones/30/position = Vector3(-0.959863, 2.78859, -0.492299)
+bones/31/position = Vector3(0.273923, 0.139687, -0.131378)
+bones/32/position = Vector3(-0.273923, 0.139687, -0.131378)
+bones/33/position = Vector3(1.03777, 1.11912, 0.843272)
+bones/34/position = Vector3(-1.03777, 1.11912, 0.843272)
+
+[node name="Hat" parent="PlayerModel/PlayerArmature/Skeleton3D" index="0"]
+transform = Transform3D(0.175062, 0.075362, 0.0192753, -0.0597077, 0.227011, 0.0156033, -0.013292, -0.0271785, 0.183775, -0.00352266, 3.91499, -0.0550522)
+
+[node name="RightHold" parent="PlayerModel/PlayerArmature/Skeleton3D" index="2"]
+transform = Transform3D(-0.034068, -0.774014, 0.632252, 0.988274, 0.068125, 0.136651, -0.148842, 0.629493, 0.762616, -0.819536, 1.90447, 0.176219)
+
+[node name="Moveability" type="BoneAttachment3D" parent="PlayerModel/PlayerArmature/Skeleton3D" index="3"]
+transform = Transform3D(1, 0, -1.50996e-07, -1.50996e-07, 0, -1, 0, 1, 0, 3.02426, -4.56651e-07, 0)
+bone_name = "Moveability"
+bone_idx = 36
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerModel/PlayerArmature/Skeleton3D/Moveability"]
+mesh = SubResource("BoxMesh_40nhu")
+
+[node name="Turnability" type="BoneAttachment3D" parent="PlayerModel/PlayerArmature/Skeleton3D" index="4"]
+transform = Transform3D(1, 0, -1.50996e-07, -1.50996e-07, 0, -1, 0, 1, 0, 5.02426, -4.56651e-07, 0)
+bone_name = "Turnability"
+bone_idx = 37
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerModel/PlayerArmature/Skeleton3D/Turnability"]
+mesh = SubResource("SphereMesh_5sokv")
+
+[node name="AnimationTree" type="AnimationTree" parent="PlayerModel"]
+tree_root = SubResource("AnimationNodeBlendTree_acyim")
+advance_expression_base_node = NodePath("../..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/DoABarrelRoll/active = false
+parameters/DoABarrelRoll/internal_active = false
+parameters/DoABarrelRoll/request = 0
+parameters/MeleeCombo/active = false
+parameters/MeleeCombo/internal_active = false
+parameters/MeleeCombo/request = 0
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ohi1f")
+
+[node name="SphereCast" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("SphereShape3D_b1vyl")
+target_position = Vector3(0, 2, 4)
+
+[node name="CameraForwardPivot" type="Node3D" parent="."]
+
+[node name="CameraHeightPivot" type="Node3D" parent="CameraForwardPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="CameraForwardPivot/CameraHeightPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.968583, 0.24869, 0, -0.24869, 0.968583, 0, 1, 5)
+current = true
+
+[connection signal="animation_finished" from="PlayerModel/AnimationTree" to="." method="animation_finished"]
+[connection signal="animation_started" from="PlayerModel/AnimationTree" to="." method="animation_started"]
+
+[editable path="PlayerModel"]

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tkng43hvsg03"
-path.s3tc="res://.godot/imported/m_player_m_player_player_Head Base Color.png-5e45296ec8a2d2c0fbcfd9979eecf264.s3tc.ctex"
+uid="uid://cpdv0dx11wfof"
+path.s3tc="res://.godot/imported/m_player_player_Shirt Base Color.png-87d7f7f262c8f41a569b4671f713c0fd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "0ffb74c10ecf93cc9da933e88911fdf8"
+"md5": "1ae2b63b4414284ec48d571f21a61ec1"
 }
 
 [deps]
 
-source_file="res://characters/player/models/m_player_m_player_player_Head Base Color.png"
-dest_files=["res://.godot/imported/m_player_m_player_player_Head Base Color.png-5e45296ec8a2d2c0fbcfd9979eecf264.s3tc.ctex"]
+source_file="res://characters/ref_player/models/m_player_player_Shirt Base Color.png"
+dest_files=["res://.godot/imported/m_player_player_Shirt Base Color.png-87d7f7f262c8f41a569b4671f713c0fd.s3tc.ctex"]
 
 [params]
 

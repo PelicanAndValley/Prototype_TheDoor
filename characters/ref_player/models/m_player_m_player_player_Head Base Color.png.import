@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyeictw37d1si"
-path.s3tc="res://.godot/imported/m_player_player_Head Base Color.png-4c0ac4dff80ac6056b874aa66f0e632d.s3tc.ctex"
+uid="uid://tkng43hvsg03"
+path.s3tc="res://.godot/imported/m_player_m_player_player_Head Base Color.png-4679c20bed0772863a1701637483efea.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://characters/player/models/m_player_player_Head Base Color.png"
-dest_files=["res://.godot/imported/m_player_player_Head Base Color.png-4c0ac4dff80ac6056b874aa66f0e632d.s3tc.ctex"]
+source_file="res://characters/ref_player/models/m_player_m_player_player_Head Base Color.png"
+dest_files=["res://.godot/imported/m_player_m_player_player_Head Base Color.png-4679c20bed0772863a1701637483efea.s3tc.ctex"]
 
 [params]
 

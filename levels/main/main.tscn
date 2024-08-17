@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctoupxt2dsnu5"]
+
+[ext_resource type="Script" path="res://levels/main/main.gd" id="1_07prj"]
+[ext_resource type="PackedScene" uid="uid://7xb1q1u0cfe2" path="res://prefabs/big_door/big_door.tscn" id="2_h78qj"]
+[ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_ht0e7"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="4_ei6bk"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4503n"]
+size = Vector2(1000, 1000)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_8gnkt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tc72p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7yvn"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8lxwx"]
+
+[node name="MainScene" type="Node3D"]
+script = ExtResource("1_07prj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.189926, -0.555303, 0.809671, -0.774217, 0.422424, 0.471324, -0.603752, -0.716378, -0.349695, 103.066, 199.776, 144.009)
+
+[node name="BigDoor" parent="." instance=ExtResource("2_h78qj")]
+
+[node name="Player" parent="." instance=ExtResource("3_ht0e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2705, 1.90735e-06, 107.513)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_4503n")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape3D_8gnkt")
+
+[node name="InteractCube" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.083, 0.5, 93.557)
+script = ExtResource("4_ei6bk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractCube"]
+mesh = SubResource("BoxMesh_tc72p")
+surface_material_override/0 = SubResource("StandardMaterial3D_t7yvn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractCube"]
+shape = SubResource("BoxShape3D_8lxwx")
+
+[connection signal="on_interact" from="InteractCube" to="BigDoor/Door2Origin/BigHandle" method="trigger"]
+
+[editable path="BigDoor"]
