@@ -1,6 +1,6 @@
 @tool
 extends CharacterBody3D
-class_name PlayerController
+class_name Ref_PlayerController
 
 @export_group("Movement")
 @export

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvetwn2ebaidd"]
+
+[ext_resource type="PackedScene" uid="uid://bhgstnbnsf8t1" path="res://prefabs/PROTOTYPE_Grapple_GrapplingHook/model/m_grappling_hook.glb" id="1_fi5wr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37alx"]
+metallic = 1.0
+roughness = 0.19
+
+[node name="GrapplingHookModel" instance=ExtResource("1_fi5wr")]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(4.37114e-09, 0.1, -8.74228e-09, 0.1, -4.37114e-09, 0, -3.82137e-16, -8.74228e-09, -0.1, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_37alx")

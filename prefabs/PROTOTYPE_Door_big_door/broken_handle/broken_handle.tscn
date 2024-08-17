@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://xt2rvyomnqpt"]
+
+[ext_resource type="Script" path="res://scripts/animation_trigger.gd" id="1_msaic"]
+[ext_resource type="Script" path="res://scripts/grappleable.gd" id="2_uxxq3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4aynk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8yof2"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ac4o2"]
+size = Vector3(10.1079, 10.2, 10.435)
+
+[node name="BigHandle" type="Node3D" node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("1_msaic")
+animation_tree = NodePath("")
+animation = &"big_handle_swing"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -5, 0, 0)
+mesh = SubResource("BoxMesh_4aynk")
+surface_material_override/0 = SubResource("StandardMaterial3D_8yof2")
+
+[node name="Grappleable" type="Area3D" parent="." node_paths=PackedStringArray("grapple_position")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+script = ExtResource("2_uxxq3")
+grapple_position = NodePath("GrapplePos")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grappleable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0513439, 0, 0)
+shape = SubResource("BoxShape3D_ac4o2")
+
+[node name="GrapplePos" type="Node3D" parent="Grappleable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.660278, 5, 5.01202)

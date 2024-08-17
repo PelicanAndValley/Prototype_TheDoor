@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bapgqs5sv3t54"]
+
+[ext_resource type="PackedScene" uid="uid://c3bcdwi00aa1w" path="res://prefabs/PROTOTYPE_Grapple_Rope_Climbable/model/m_rope.glb" id="1_gviv3"]
+
+[node name="RopeModel" instance=ExtResource("1_gviv3")]
+
+[node name="Rope" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)

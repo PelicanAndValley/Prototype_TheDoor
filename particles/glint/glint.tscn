@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://ci3871kkc4v6y"]
+
+[ext_resource type="Texture2D" uid="uid://22s0fqs4sn2e" path="res://particles/glint/glint.png" id="1_0vi3s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpf17"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_0vi3s")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+fixed_size = true
+
+[sub_resource type="Curve" id="Curve_shupt"]
+_data = [Vector2(0, 0), 0.0, 3.30058, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.7033, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bq3a6"]
+curve = SubResource("Curve_shupt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w1ito"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+angular_velocity_min = 41.38
+angular_velocity_max = 115.87
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.1
+alpha_curve = SubResource("CurveTexture_bq3a6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_x2gnu"]
+
+[node name="Glint" type="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_bpf17")
+emitting = false
+amount = 1
+one_shot = true
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_w1ito")
+draw_pass_1 = SubResource("QuadMesh_x2gnu")

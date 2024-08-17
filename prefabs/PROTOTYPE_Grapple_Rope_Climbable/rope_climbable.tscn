@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://kfgy3c0a2q1i"]
+
+[ext_resource type="Script" path="res://scripts/climbable.gd" id="1_50ugw"]
+[ext_resource type="PackedScene" uid="uid://bapgqs5sv3t54" path="res://prefabs/PROTOTYPE_Grapple_Rope_Climbable/model/s_rope.tscn" id="2_085b1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_do3id"]
+height = 1.0
+radius = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3dqbe"]
+height = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1vwsk"]
+size = Vector3(1, 0.51416, 1)
+
+[node name="Rope" type="AnimatableBody3D"]
+script = ExtResource("1_50ugw")
+
+[node name="RopeModel" parent="." instance=ExtResource("2_085b1")]
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1000, 0)
+debug_shape_custom_color = Color(1, 1, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("CylinderShape3D_do3id")
+
+[node name="ClimbArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClimbArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("CylinderShape3D_3dqbe")
+
+[node name="TopExitArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TopExitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24292, 0)
+shape = SubResource("BoxShape3D_1vwsk")
+
+[node name="BottomExitArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.02005, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BottomExitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24292, 0)
+shape = SubResource("BoxShape3D_1vwsk")
+
+[connection signal="body_entered" from="ClimbArea" to="." method="on_body_entered_rope"]
+[connection signal="body_exited" from="ClimbArea" to="." method="on_body_exited_rope"]

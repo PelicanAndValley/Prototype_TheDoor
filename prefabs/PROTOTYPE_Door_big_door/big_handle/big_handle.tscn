@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dukkhhaw8usla"]
+[gd_scene load_steps=12 format=3 uid="uid://dukkhhaw8usla"]
 
-[ext_resource type="Script" path="res://scripts/animation_trigger.gd" id="1_a0t2r"]
+[ext_resource type="Script" path="res://scripts/animation_trigger.gd" id="1_y3dfi"]
+[ext_resource type="Script" path="res://scripts/grappleable.gd" id="2_h2slu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4aynk"]
 
@@ -56,8 +57,11 @@ states/big_handle_swing/position = Vector2(545, 100)
 transitions = ["Start", "big_handle_swing", SubResource("AnimationNodeStateMachineTransition_oe13j")]
 graph_offset = Vector2(-245, -17)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ac4o2"]
+size = Vector3(7.045, 10.2, 10.435)
+
 [node name="BigHandle" type="Node3D" node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("1_a0t2r")
+script = ExtResource("1_y3dfi")
 animation_tree = NodePath("AnimationTree")
 animation = &"big_handle_swing"
 
@@ -74,5 +78,17 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_a4ey8")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="Grappleable" type="Area3D" parent="." node_paths=PackedStringArray("grapple_position")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.6921, 0, 0)
+script = ExtResource("2_h2slu")
+grapple_position = NodePath("GrapplePos")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grappleable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.162178, 0, 0)
+shape = SubResource("BoxShape3D_ac4o2")
+
+[node name="GrapplePos" type="Node3D" parent="Grappleable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.660278, 5, 5)
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="animation_finished"]
