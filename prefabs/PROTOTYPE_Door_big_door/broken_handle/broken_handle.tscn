@@ -11,9 +11,8 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ac4o2"]
 size = Vector3(10.1079, 10.2, 10.435)
 
-[node name="BigHandle" type="Node3D" node_paths=PackedStringArray("animation_tree")]
+[node name="BrokenHandle" type="Node3D"]
 script = ExtResource("1_msaic")
-animation_tree = NodePath("")
 animation = &"big_handle_swing"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

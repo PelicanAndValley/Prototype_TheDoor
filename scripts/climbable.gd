@@ -1,4 +1,4 @@
-extends Node3D
+extends AnimatableBody3D
 
 class_name Climbable;
 
@@ -18,6 +18,8 @@ var _hop_timer : float = 0;
 func _ready() -> void:
 	_top_exit_area = $TopExitArea;
 	_bottom_exit_area = $BottomExitArea;
+	_top_exit_area.body_entered.connect(self.on_body_entered_top_exit);
+	_bottom_exit_area.body_entered.connect(self.on_body_entered_bottom_exit);
 
 func grow_collision_cylinder(shape: CollisionShape3D, scale):
 	var cylinder = shape.shape as CylinderShape3D;
