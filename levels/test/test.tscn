@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://ctoupxt2dsnu5"]
 
-[ext_resource type="Script" path="res://levels/main/main.gd" id="1_07prj"]
+[ext_resource type="Script" path="res://levels/test/test.gd" id="1_07prj"]
 [ext_resource type="PackedScene" uid="uid://7xb1q1u0cfe2" path="res://prefabs/PROTOTYPE_Door_big_door/big_door.tscn" id="2_h78qj"]
 [ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_ht0e7"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="4_ei6bk"]
