@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxj6mqao7vyv1"]
+
+[ext_resource type="PackedScene" uid="uid://didyuyeffohn0" path="res://prefabs/BLOCKOUT_Cave/model_floor/Blockout_Cave_Floor.glb" id="1_ra5aj"]
+[ext_resource type="Material" uid="uid://dv0jvqligmpo7" path="res://prefabs/BLOCKOUT_Cave/Blockout_Cave_Floor.tres" id="2_xwias"]
+
+[node name="Blockout_Cave_Floor" instance=ExtResource("1_ra5aj")]
+
+[node name="Terrain" parent="." index="0"]
+material_override = ExtResource("2_xwias")
+surface_material_override/0 = ExtResource("2_xwias")

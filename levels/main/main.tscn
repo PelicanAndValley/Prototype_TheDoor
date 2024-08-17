@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://eq1vhbs1qqn3"]
+
+[ext_resource type="PackedScene" uid="uid://dxj6mqao7vyv1" path="res://prefabs/BLOCKOUT_Cave/model_floor/Blockout_Cave_Floor.tscn" id="1_dgxyr"]
+[ext_resource type="PackedScene" uid="uid://di1vnlbfa5803" path="res://prefabs/BLOCKOUT_Cave/model_walls/Blockout_Cave_Wall.tscn" id="3_2co4p"]
+[ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_ht0e7"]
+[ext_resource type="PackedScene" uid="uid://b68i7am8vn4lx" path="res://prefabs/BLOCKOUT_Door/Blockout_Door.glb" id="3_isb3q"]
+[ext_resource type="Environment" uid="uid://dcj8eaoy383tq" path="res://prefabs/BLOCKOUT_Cave/Blockout_EnvNight.tres" id="4_i8q6i"]
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ucbeu"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kknuy"]
+frequency = 0.29
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_i327d"]
+noise = SubResource("FastNoiseLite_kknuy")
+
+[sub_resource type="FogMaterial" id="FogMaterial_2mwma"]
+density = 0.007
+albedo = Color(0.703205, 0.750553, 0.817532, 1)
+height_falloff = 1.39625
+edge_fade = 16.8896
+density_texture = SubResource("NoiseTexture3D_i327d")
+
+[node name="MainScene" type="Node3D"]
+
+[node name="Blockout_Cave_Floor" parent="." instance=ExtResource("1_dgxyr")]
+
+[node name="Blockout_Door" parent="." instance=ExtResource("3_isb3q")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.637508, -0.768346, 0.0568126, -0.41275, -0.278338, 0.867275, -0.650554, -0.576344, -0.494577, 43.8251, 1458.61, -555.025)
+light_color = Color(0.650056, 0.78129, 0.962707, 1)
+light_energy = 0.277
+light_indirect_energy = 8.273
+light_volumetric_fog_energy = 6.818
+light_angular_distance = 0.5
+shadow_enabled = true
+shadow_normal_bias = 4.525
+shadow_transmittance_bias = 3.208
+shadow_blur = 0.495
+directional_shadow_split_1 = 0.101
+directional_shadow_split_2 = 0.261
+directional_shadow_split_3 = 0.256
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 3955.1
+directional_shadow_pancake_size = 5.5
+
+[node name="Blockout_Cave_Wall2" parent="." instance=ExtResource("3_2co4p")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_i8q6i")
+camera_attributes = SubResource("CameraAttributesPhysical_ucbeu")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.069, 243.6)
+size = Vector3(1000, 182.006, 1000)
+material = SubResource("FogMaterial_2mwma")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 225.403, 215.934)
+light_color = Color(0.835046, 0.74706, 0.647401, 1)
+light_energy = 37.095
+omni_range = 419.168
+
+[node name="Player" parent="." instance=ExtResource("3_ht0e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5466, 495.565)

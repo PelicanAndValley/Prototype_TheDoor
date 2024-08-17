@@ -75,3 +75,14 @@ Grapple={
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="GrappleHook"
 3d_physics/layer_3="Player"
+
+[rendering]
+
+lights_and_shadows/directional_shadow/size=8192
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
+global_illumination/voxel_gi/quality=1
+environment/volumetric_fog/volume_size=256
+environment/volumetric_fog/volume_depth=256
+anti_aliasing/quality/msaa_2d=3
+anti_aliasing/quality/msaa_3d=3
+anti_aliasing/quality/screen_space_aa=1

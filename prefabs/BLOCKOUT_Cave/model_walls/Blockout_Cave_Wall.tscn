@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://di1vnlbfa5803"]
+
+[ext_resource type="PackedScene" uid="uid://b067jqlsb3xxi" path="res://prefabs/BLOCKOUT_Cave/Blockout_Cave_Wall.glb" id="1_1yd78"]
+[ext_resource type="Material" uid="uid://csvjhqfryu2b4" path="res://prefabs/BLOCKOUT_Cave/model_walls/Blockout_Cave_Wall.tres" id="2_juvx8"]
+
+[node name="Blockout_Cave_Wall" instance=ExtResource("1_1yd78")]
+
+[node name="Cave" parent="." index="0"]
+cast_shadow = 2
+surface_material_override/0 = ExtResource("2_juvx8")
