@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bba6fjg537d6d"]
+
+[ext_resource type="Environment" uid="uid://dcj8eaoy383tq" path="res://prefabs/BLOCKOUT_Cave/Blockout_EnvNight.tres" id="1_hhg8y"]
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ucbeu"]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = ExtResource("1_hhg8y")
+camera_attributes = SubResource("CameraAttributesPhysical_ucbeu")

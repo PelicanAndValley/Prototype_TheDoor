@@ -1,0 +1,30 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b4ddjo8y0q0n5"]
+
+[ext_resource type="Texture2D" uid="uid://c3dpu3vgpa8l0" path="res://prefabs/MAIN_Trees/Tree_Material/Frond_2.png" id="1_knvem"]
+[ext_resource type="Texture2D" uid="uid://c6e6jvkq7euit" path="res://prefabs/MAIN_Trees/Tree_Material/Frond_2_SS.png" id="2_1bdc4"]
+[ext_resource type="Texture2D" uid="uid://cqr1i7ce4xxu1" path="res://prefabs/MAIN_Trees/Tree_Material/Frond_2_Normal.png" id="3_l02vd"]
+[ext_resource type="Texture2D" uid="uid://bgrvg3wt6lrse" path="res://prefabs/MAIN_Trees/Tree_Material/Frond_2_Gloss.png" id="4_chlp6"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.376
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.3
+cull_mode = 2
+albedo_texture = ExtResource("1_knvem")
+roughness = 0.83
+roughness_texture = ExtResource("4_chlp6")
+normal_enabled = true
+normal_texture = ExtResource("3_l02vd")
+clearcoat = 0.5
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.56
+subsurf_scatter_texture = ExtResource("2_1bdc4")
+subsurf_scatter_transmittance_enabled = true
+subsurf_scatter_transmittance_color = Color(0.547469, 0.597219, 0.386567, 1)
+subsurf_scatter_transmittance_texture = ExtResource("2_1bdc4")
+subsurf_scatter_transmittance_depth = 1.941
+subsurf_scatter_transmittance_boost = 0.25
+backlight_enabled = true
+backlight = Color(0.328666, 0.325421, 0.316604, 1)
+backlight_texture = ExtResource("2_1bdc4")

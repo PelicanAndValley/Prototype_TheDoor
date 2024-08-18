@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://n8srkrdd01nf"]
+
+[ext_resource type="PackedScene" uid="uid://cqaih25mhfnkk" path="res://prefabs/MAIN_Trees/Tree_Meshes/Tree03.glb" id="1_408f5"]
+[ext_resource type="Material" uid="uid://c4dfd7locjioh" path="res://prefabs/MAIN_Trees/Tree_Material/Tree_Material_Bark.tres" id="2_rka6h"]
+[ext_resource type="Material" uid="uid://rtkft6im20l8" path="res://prefabs/MAIN_Trees/Tree_Material/Tree_Frond01_Material.tres" id="3_agvxn"]
+[ext_resource type="Material" uid="uid://b4ddjo8y0q0n5" path="res://prefabs/MAIN_Trees/Tree_Material/Tree_Frond02_Material.tres" id="4_gu3w5"]
+[ext_resource type="Material" uid="uid://o4o0no0qg0le" path="res://prefabs/MAIN_Trees/Tree_Material/Tree_Frond03_Material.tres" id="5_mmjo8"]
+
+[node name="Tree03" instance=ExtResource("1_408f5")]
+
+[node name="Trunk" parent="." index="0"]
+material_override = ExtResource("2_rka6h")
+
+[node name="Frond01" parent="." index="1"]
+material_override = ExtResource("3_agvxn")
+
+[node name="Frond02" parent="." index="2"]
+material_override = ExtResource("4_gu3w5")
+
+[node name="Frond03" parent="." index="3"]
+material_override = ExtResource("5_mmjo8")

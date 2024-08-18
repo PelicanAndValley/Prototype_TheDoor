@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlde2bfe5hi3a"]
+
+[ext_resource type="PackedScene" uid="uid://b34r4s58dg1m4" path="res://prefabs/MAIN_Trees/Tree_Meshes/Tree01.glb" id="1_xjhos"]
+[ext_resource type="Material" uid="uid://rtkft6im20l8" path="res://prefabs/MAIN_Trees/Tree_Material/Tree_Frond01_Material.tres" id="2_csfvq"]
+[ext_resource type="Material" uid="uid://c4dfd7locjioh" path="res://prefabs/MAIN_Trees/Tree_Material/Tree_Material_Bark.tres" id="2_j5qms"]
+[ext_resource type="Material" uid="uid://b4ddjo8y0q0n5" path="res://prefabs/MAIN_Trees/Tree_Material/Tree_Frond02_Material.tres" id="4_woqut"]
+[ext_resource type="Material" uid="uid://o4o0no0qg0le" path="res://prefabs/MAIN_Trees/Tree_Material/Tree_Frond03_Material.tres" id="5_lomdy"]
+
+[node name="Tree01" instance=ExtResource("1_xjhos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.438915, 0)
+
+[node name="Trunk" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_j5qms")
+
+[node name="Frond01" parent="." index="1"]
+cast_shadow = 2
+surface_material_override/0 = ExtResource("2_csfvq")
+
+[node name="Frond02" parent="." index="2"]
+material_override = ExtResource("4_woqut")
+
+[node name="Frond03" parent="." index="3"]
+material_override = ExtResource("5_lomdy")
