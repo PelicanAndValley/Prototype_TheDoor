@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://eq1vhbs1qqn3"]
+[gd_scene load_steps=15 format=3 uid="uid://eq1vhbs1qqn3"]
 
 [ext_resource type="PackedScene" uid="uid://dxj6mqao7vyv1" path="res://prefabs/BLOCKOUT_Cave/model_floor/Blockout_Cave_Floor.tscn" id="1_dgxyr"]
 [ext_resource type="PackedScene" uid="uid://c2m5x78plefiv" path="res://prefabs/MAIN_Cave/Walls/Cave_Wall.tscn" id="1_eenla"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://n8srkrdd01nf" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_03.tscn" id="8_je3ou"]
 [ext_resource type="PackedScene" uid="uid://dcj3aseqgqbrh" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_04.tscn" id="9_5ji0q"]
 [ext_resource type="PackedScene" uid="uid://cv8xhdjr0ltw" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_05.tscn" id="10_eou5l"]
+[ext_resource type="PackedScene" uid="uid://b8trni3ajtxaw" path="res://prefabs/MAIN_Key/Key.tscn" id="11_1du3q"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kknuy"]
 frequency = 0.29
@@ -90,3 +91,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.2731, -2.69874, 245.487)
 
 [node name="Tree05" parent="." instance=ExtResource("10_eou5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.3479, -2.65558, 249.402)
+
+[node name="Key" parent="." instance=ExtResource("11_1du3q")]
+transform = Transform3D(-0.409822, -0.679055, 0.60904, 0.135867, 0.614794, 0.776897, -0.90199, 0.401138, -0.159695, -13.5236, 1.64179, 50.746)

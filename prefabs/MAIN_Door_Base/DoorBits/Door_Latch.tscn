@@ -5,5 +5,5 @@
 
 [node name="Door_Latch" instance=ExtResource("1_m34o6")]
 
-[node name="Plane_003" parent="." index="0"]
+[node name="Plane_001" parent="." index="0"]
 material_override = ExtResource("2_2ma7l")
