@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dxj6mqao7vyv1" path="res://prefabs/BLOCKOUT_Cave/model_floor/Blockout_Cave_Floor.tscn" id="1_dgxyr"]
 [ext_resource type="PackedScene" uid="uid://c2m5x78plefiv" path="res://prefabs/MAIN_Cave/Walls/Cave_Wall.tscn" id="1_eenla"]
+[ext_resource type="PackedScene" uid="uid://d3h7qsmoj5ro8" path="res://prefabs/MAIN_Door_Base/door_base.tscn" id="3_8gru8"]
 [ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_ht0e7"]
-[ext_resource type="PackedScene" uid="uid://b68i7am8vn4lx" path="res://prefabs/BLOCKOUT_Door/Blockout_Door.glb" id="3_isb3q"]
 [ext_resource type="PackedScene" uid="uid://bba6fjg537d6d" path="res://prefabs/MAIN_Cave/Main_Environment.tscn" id="4_bpwuy"]
 [ext_resource type="PackedScene" uid="uid://dlde2bfe5hi3a" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_01.tscn" id="6_swcy7"]
 [ext_resource type="PackedScene" uid="uid://c7e8p2pderja6" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_02.tscn" id="7_oebud"]
@@ -32,8 +32,8 @@ transform = Transform3D(0.794191, 0, 0, 0, 0.794191, 0, 0, 0, 0.794191, 0, 0, 0)
 [node name="Blockout_Cave_Floor" parent="." instance=ExtResource("1_dgxyr")]
 transform = Transform3D(0.794191, 0, 0, 0, 0.794191, 0, 0, 0, 0.794191, 0, 0, 0)
 
-[node name="Blockout_Door" parent="." instance=ExtResource("3_isb3q")]
-transform = Transform3D(0.794191, 0, 0, 0, 0.794191, 0, 0, 0, 0.794191, 0, 0, 0)
+[node name="Door_Base" parent="." instance=ExtResource("3_8gru8")]
+transform = Transform3D(0.8024, 0, 0, 0, 0.8024, 0, 0, 0, 0.8024, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.963052, -0.262816, -0.0588124, 0.0751703, -0.472012, 0.878381, -0.258613, 0.841506, 0.474328, 43.8251, -22.77, 159.783)
@@ -41,13 +41,13 @@ light_color = Color(0.650056, 0.78129, 0.962707, 1)
 light_energy = 0.277
 light_indirect_energy = 8.273
 light_volumetric_fog_energy = 6.818
-light_angular_distance = 0.5
+light_angular_distance = 4.14
 shadow_enabled = true
 shadow_bias = 0.005
 shadow_normal_bias = 4.727
 shadow_reverse_cull_face = true
 shadow_transmittance_bias = 2.562
-shadow_blur = 0.302
+shadow_blur = 0.2
 directional_shadow_split_1 = 0.015
 directional_shadow_split_2 = 0.08
 directional_shadow_split_3 = 0.286
@@ -59,16 +59,18 @@ directional_shadow_pancake_size = 1024.0
 [node name="WorldEnvironment" parent="." instance=ExtResource("4_bpwuy")]
 
 [node name="FogVolume" type="FogVolume" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.069, 243.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.4398, 7.74751, 223.018)
 size = Vector3(1000, 182.006, 1000)
 material = SubResource("FogMaterial_2mwma")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8972, 289.443, 215.934)
-light_color = Color(0.184143, 0.403413, 0.846474, 1)
-light_energy = 9.543
-light_indirect_energy = 8.619
+light_color = Color(0.504922, 0.668678, 0.975226, 1)
+light_energy = 14.571
+light_indirect_energy = 9.076
 light_volumetric_fog_energy = 7.095
+light_size = 20.0
+light_specular = 0.0
 omni_range = 419.168
 
 [node name="Player" parent="." instance=ExtResource("3_ht0e7")]
