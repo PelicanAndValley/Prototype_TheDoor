@@ -1,9 +1,8 @@
-extends PhysicsBody3D;
+extends CollisionObject3D;
 
 class_name Interactable;
 
-signal on_interact;
+signal on_interact (player);
 
-func interact () -> void:
-	if !on_interact.is_null():
-		on_interact.emit();
+func interact (player: Player) -> void:
+	on_interact.emit(player);

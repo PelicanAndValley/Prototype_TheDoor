@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://kfgy3c0a2q1i"]
 
-[ext_resource type="Script" path="res://scripts/climbable.gd" id="1_50ugw"]
+[ext_resource type="Script" path="res://templates/climbable.gd" id="1_50ugw"]
 [ext_resource type="PackedScene" uid="uid://bapgqs5sv3t54" path="res://prefabs/PROTOTYPE_Grapple_Rope_Climbable/model/s_rope.tscn" id="2_085b1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_do3id"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://xt2rvyomnqpt"]
+[gd_scene load_steps=7 format=3 uid="uid://xt2rvyomnqpt"]
 
 [ext_resource type="Script" path="res://scripts/animation_trigger.gd" id="1_msaic"]
 [ext_resource type="Script" path="res://scripts/grappleable.gd" id="2_uxxq3"]
@@ -10,6 +10,9 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ac4o2"]
 size = Vector3(10.1079, 10.2, 10.435)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y61y7"]
+size = Vector3(10, 10, 10)
 
 [node name="BrokenHandle" type="Node3D"]
 script = ExtResource("1_msaic")
@@ -31,3 +34,9 @@ shape = SubResource("BoxShape3D_ac4o2")
 
 [node name="GrapplePos" type="Node3D" parent="Grappleable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.660278, 5, 5.01202)
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+shape = SubResource("BoxShape3D_y61y7")

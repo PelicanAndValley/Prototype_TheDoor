@@ -1,9 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctoupxt2dsnu5"]
+[gd_scene load_steps=11 format=3 uid="uid://ctoupxt2dsnu5"]
 
-[ext_resource type="Script" path="res://levels/test/test.gd" id="1_uc52g"]
 [ext_resource type="PackedScene" uid="uid://7xb1q1u0cfe2" path="res://prefabs/PROTOTYPE_Door_big_door/big_door.tscn" id="2_g3r4l"]
 [ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_kq0e6"]
-[ext_resource type="Script" path="res://scripts/interactable.gd" id="4_7osf3"]
 [ext_resource type="Script" path="res://scripts/grappleable.gd" id="5_uypyd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ftavj"]
@@ -16,13 +14,6 @@ size = Vector2(1000, 1000)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_8gnkt"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_tc72p"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7yvn"]
-albedo_color = Color(1, 0, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8lxwx"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_knpo5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rdp7u"]
@@ -31,7 +22,6 @@ albedo_color = Color(0, 1, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_krsp7"]
 
 [node name="MainScene" type="Node3D"]
-script = ExtResource("1_uc52g")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.50776, -0.0538626, 0.859813, 0.70537, -0.59899, 0.379031, 0.494604, 0.798943, 0.342136, 103.066, 199.776, 144.009)
@@ -50,7 +40,7 @@ transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("BoxMesh_e7xrw")
 
 [node name="Player" parent="." instance=ExtResource("3_kq0e6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.6414, 1.90735e-06, 18.4072)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.641, 0, 21.6256)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
@@ -60,17 +50,6 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("WorldBoundaryShape3D_8gnkt")
-
-[node name="InteractCube" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.083, 0.5, 93.557)
-script = ExtResource("4_7osf3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractCube"]
-mesh = SubResource("BoxMesh_tc72p")
-surface_material_override/0 = SubResource("StandardMaterial3D_t7yvn")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractCube"]
-shape = SubResource("BoxShape3D_8lxwx")
 
 [node name="GrappleableCube" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 94.362)
@@ -82,5 +61,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rdp7u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrappleableCube"]
 shape = SubResource("BoxShape3D_krsp7")
-
-[connection signal="on_interact" from="InteractCube" to="BigDoor/Door2Origin/BigHandle" method="trigger"]

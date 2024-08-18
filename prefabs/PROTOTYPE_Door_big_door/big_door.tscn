@@ -1,34 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://7xb1q1u0cfe2"]
+[gd_scene load_steps=16 format=3 uid="uid://7xb1q1u0cfe2"]
 
-[ext_resource type="PackedScene" uid="uid://xt2rvyomnqpt" path="res://prefabs/PROTOTYPE_Door_big_door/broken_handle/broken_handle.tscn" id="2_o8yvv"]
+[ext_resource type="PackedScene" uid="uid://dpjmn5r5p5hff" path="res://templates/climbable.tscn" id="2_o4uqf"]
 [ext_resource type="PackedScene" uid="uid://dukkhhaw8usla" path="res://prefabs/PROTOTYPE_Door_big_door/big_handle/big_handle.tscn" id="2_v5x0f"]
 [ext_resource type="Script" path="res://scripts/animation_trigger.gd" id="3_ic8ev"]
-[ext_resource type="Script" path="res://scripts/climbable.gd" id="3_qv4ve"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_bla3m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkfgy"]
 albedo_color = Color(0.77245, 0.533504, 0.335647, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_yuauf"]
-bottom_radius = 0.1
-height = 1.0
+[sub_resource type="BoxMesh" id="BoxMesh_co3a3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nvplk"]
-albedo_color = Color(0.132901, 0.709549, 0.287783, 1)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_rfaqh"]
-height = 231.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_o5oc4"]
-size = Vector3(3, 1, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_akxgk"]
-size = Vector3(3, 1, 3)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_2ow0o"]
-height = 231.0
-radius = 1.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_lsfu3"]
+size = Vector3(90, 231, 5.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go68y"]
 albedo_color = Color(0.745881, 0.479889, 0.326446, 1)
@@ -122,49 +106,19 @@ mesh = SubResource("BoxMesh_bla3m")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_gkfgy")
 
-[node name="BrokenHandle" parent="Door1Origin" instance=ExtResource("2_o8yvv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.1105, 225.95, 0)
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Door1Origin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 200, 0)
 
-[node name="Vine" type="AnimatableBody3D" parent="Door1Origin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.236, 231, 5.184)
-script = ExtResource("3_qv4ve")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door1Origin/AnimatableBody3D"]
+transform = Transform3D(90, 0, 0, 0, 200, 0, 0, 0, 5.5, 0, -100, 2)
+mesh = SubResource("BoxMesh_co3a3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Door1Origin/Vine"]
-transform = Transform3D(1, 0, 0, 0, 231, 0, 0, 0, 1, 0, -115, 0)
-mesh = SubResource("CylinderMesh_yuauf")
-surface_material_override/0 = SubResource("StandardMaterial3D_nvplk")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door1Origin/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -115, 2)
+shape = SubResource("BoxShape3D_lsfu3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door1Origin/Vine"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -115, 0)
-shape = SubResource("CylinderShape3D_rfaqh")
-
-[node name="TopExitArea" type="Area3D" parent="Door1Origin/Vine"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499573, 0)
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door1Origin/Vine/TopExitArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00645, 0)
-shape = SubResource("BoxShape3D_o5oc4")
-
-[node name="BottomExitArea" type="Area3D" parent="Door1Origin/Vine"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -231, 0)
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door1Origin/Vine/BottomExitArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.472642, 0)
-shape = SubResource("BoxShape3D_akxgk")
-
-[node name="ClimbArea" type="Area3D" parent="Door1Origin/Vine"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door1Origin/Vine/ClimbArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -115, 0)
-shape = SubResource("CylinderShape3D_2ow0o")
-
-[node name="TopExitPos" type="Node3D" parent="Door1Origin/Vine"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.64922)
-
-[node name="BottomExitPos" type="Node3D" parent="Door1Origin/Vine"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -231, 2)
+[node name="Climbable" parent="Door1Origin/AnimatableBody3D" instance=ExtResource("2_o4uqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.210297, 5.12906)
 
 [node name="Door2Origin" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)

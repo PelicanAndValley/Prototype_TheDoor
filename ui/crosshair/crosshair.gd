@@ -21,7 +21,7 @@ var state: State = State.Normal;
 func _ready () -> void:
 	_tex = $CrosshairTexture;
 
-func _process (delta: float) -> void:
+func _process (_delta: float) -> void:
 	match state:
 		State.Normal:
 			_tex.texture = normal;
