@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bludm1x4lop13"]
+
+[ext_resource type="PackedScene" uid="uid://cvetwn2ebaidd" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/model/s_grappling_hook.tscn" id="1_2ipr4"]
+[ext_resource type="Script" path="res://scripts/pickable.gd" id="1_h7l2a"]
+[ext_resource type="PackedScene" uid="uid://dxx2o58usop0o" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/item_grappling_hook.tscn" id="2_85h83"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kpw51"]
+radius = 0.270879
+
+[node name="EnvGrapplingHook" type="Area3D"]
+script = ExtResource("1_h7l2a")
+item = ExtResource("2_85h83")
+
+[node name="GrapplingHookModel" parent="." instance=ExtResource("1_2ipr4")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.143024, 0, 0)
+shape = SubResource("SphereShape3D_kpw51")

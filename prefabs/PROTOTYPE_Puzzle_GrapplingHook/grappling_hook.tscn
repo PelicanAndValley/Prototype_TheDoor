@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://xesaaq3gl00m"]
+[gd_scene load_steps=5 format=3 uid="uid://xesaaq3gl00m"]
 
-[ext_resource type="PackedScene" uid="uid://cvetwn2ebaidd" path="res://prefabs/PROTOTYPE_Grapple_GrapplingHook/model/s_grappling_hook.tscn" id="1_7i320"]
-[ext_resource type="Script" path="res://prefabs/PROTOTYPE_Grapple_GrapplingHook/grappling_hook.gd" id="2_oksrg"]
+[ext_resource type="PackedScene" uid="uid://cvetwn2ebaidd" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/model/s_grappling_hook.tscn" id="1_7i320"]
+[ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/grappling_hook.gd" id="2_oksrg"]
 [ext_resource type="PackedScene" uid="uid://ci3871kkc4v6y" path="res://particles/glint/glint.tscn" id="2_w21am"]
-[ext_resource type="PackedScene" uid="uid://kfgy3c0a2q1i" path="res://prefabs/PROTOTYPE_Grapple_Rope_Climbable/rope_climbable.tscn" id="3_o11l1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hqd6b"]
 radius = 0.275
@@ -12,7 +11,6 @@ radius = 0.275
 script = ExtResource("2_oksrg")
 vertical_rise = 0.1
 land_particle = ExtResource("2_w21am")
-rope_climable = ExtResource("3_o11l1")
 
 [node name="GrapplingHookModel" parent="." instance=ExtResource("1_7i320")]
 

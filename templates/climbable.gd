@@ -93,7 +93,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			_just_entered = false;
 
-func on_top_mount_interact(player: Player) -> void:
+func on_top_mount_interact(player: Player, _point: Vector3) -> void:
 	_player = player;
 	mount_to_transform(_top_mount_pos);
 

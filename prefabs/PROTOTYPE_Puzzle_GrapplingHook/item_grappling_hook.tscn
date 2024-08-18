@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxx2o58usop0o"]
+
+[ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/item_grappling_hook.gd" id="1_jsew7"]
+[ext_resource type="PackedScene" uid="uid://cvetwn2ebaidd" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/model/s_grappling_hook.tscn" id="1_qoury"]
+
+[node name="ItemGrapplingHook" type="Node3D"]
+script = ExtResource("1_jsew7")
+
+[node name="GrapplingHookModel" parent="." instance=ExtResource("1_qoury")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, -0.367147)

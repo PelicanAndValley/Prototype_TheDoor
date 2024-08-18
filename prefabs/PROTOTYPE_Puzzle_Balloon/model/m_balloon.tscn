@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgxt25hhdt7hi"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_vimj0"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_737kq"]
+top_radius = 0.05
+bottom_radius = 0.05
+
+[node name="BalloonModel" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("SphereMesh_vimj0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("CylinderMesh_737kq")

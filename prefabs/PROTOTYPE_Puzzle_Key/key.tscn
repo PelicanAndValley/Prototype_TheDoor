@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqumry5aefw8u"]
+
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="1_y83jr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xadb"]
+size = Vector3(36.5, 16.26, 3.3)
+
+[node name="Key" type="AnimatableBody3D"]
+script = ExtResource("1_y83jr")
+link_to_item = true
+item_name = "Balloon"
+
+[node name="Mesh" type="CSGCylinder3D" parent="."]
+transform = Transform3D(3.82137e-14, 8.74228e-07, 20, 20, -8.74228e-07, 0, 8.74228e-07, 20, -8.74228e-07, 0, 8, 0)
+radius = 0.405
+height = 0.166
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Mesh"]
+transform = Transform3D(1.91069e-15, 0, -1, 4.37114e-08, 1, 0, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+operation = 2
+radius = 0.153
+height = 0.43
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.6682e-15, 3.8164e-08, 0.873091)
+radius = 0.064
+height = 1.072
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129204, 0.000439485, 0.91786)
+size = Vector3(0.2, 0.0811523, 0.1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129204, 0.000439493, 1.11394)
+size = Vector3(0.2, 0.0811523, 0.1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129204, 0.000439501, 1.28766)
+size = Vector3(0.2, 0.0811523, 0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.96, 7.77617, 0)
+shape = SubResource("BoxShape3D_6xadb")

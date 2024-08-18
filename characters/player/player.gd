@@ -33,6 +33,10 @@ var grapple_throw_strength : float = 20;
 enum MoveState { WALKING, CLIMBING, CONTROLLED };
 var move_state = MoveState.WALKING;
 
+var items = Array([], TYPE_OBJECT, "Node", Item);
+var item_idx : int = 0;
+var current_item : Item = null;
+
 var _h_speed : float = 0;
 var _cur_direction : Vector2 = Vector2.DOWN;
 var _v_speed : float = 0;
@@ -44,9 +48,11 @@ var _grapple_raycast : RayCast3D;
 var _collision : CollisionShape3D;
 var _crosshair : Crosshair;
 var _grapple_throw_position : Node3D;
+var _item_hold_pos : Node3D;
 var _thrown_grappling_hook : GrapplingHook;
 var _ui : Control;
 var _climbing : Climbable;
+var _item_hold_anim : AnimationNodeStateMachinePlayback;
 
 func _ready() -> void:
 	_camera = $Camera3D;
@@ -55,7 +61,10 @@ func _ready() -> void:
 	_collision = $CollisionShape3D;
 	_crosshair = $UI/Crosshair;
 	_grapple_throw_position = $GrappleThrowPosition;
+	_item_hold_pos = $UI/ItemHold/SubViewport/ItemHoldCam/ItemHoldPos;
 	_ui = $UI;
+	var item_hold_anim_tree : AnimationTree = $UI/ItemHold/SubViewport/ItemHoldCam/ItemHoldPos/AnimationTree;
+	_item_hold_anim = item_hold_anim_tree["parameters/playback"];
 	
 	_interact_raycast.add_exception(self);
 	_grapple_raycast.add_exception(self);
@@ -85,9 +94,10 @@ func _rotate_camera() -> void:
 
 func throw_grappling_hook(grappleable: Grappleable, hit_pos: Vector3) -> void:
 	_thrown_grappling_hook = grappling_hook.instantiate();
-	_thrown_grappling_hook.global_position = _grapple_throw_position.global_position;
 	add_sibling(_thrown_grappling_hook);
+	_thrown_grappling_hook.global_position = _grapple_throw_position.global_position;
 	_thrown_grappling_hook.throw(grappleable, hit_pos, grapple_throw_strength);
+	consume_current_item();
 
 func climb (climbable: Climbable) -> void:
 	_climbing = climbable;
@@ -95,6 +105,40 @@ func climb (climbable: Climbable) -> void:
 
 func exit_climb () -> void:
 	_climbing = null;
+
+
+func cycle_item () -> void:
+	if items.size() == 0:
+		current_item = null;
+		return;
+	_item_hold_anim.travel("item_swap_out");
+
+func on_animation_finished (anim_name: StringName) -> void:
+	if anim_name == "item_swap_out" and items.size() > 0:
+		var new_item : Item = items[item_idx];
+		if current_item:
+			current_item.visible = false;
+		new_item.visible = true;
+		current_item = new_item;
+
+
+func equip_item (item: PackedScene) -> void:
+	var new_item : Item = item.instantiate();
+	_item_hold_pos.add_child(new_item);
+	new_item.global_position = _item_hold_pos.global_position;
+	new_item.global_rotation = _item_hold_pos.global_rotation;
+	new_item.visible = false;
+	items.append(new_item);
+	item_idx = items.size() - 1;
+	cycle_item();
+
+func consume_current_item () -> void:
+	items.remove_at(item_idx);
+	current_item.queue_free();
+	if item_idx > items.size() - 1:
+		item_idx = 0;
+	cycle_item();
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -147,32 +191,49 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide();
 	
-	_crosshair.state = Crosshair.State.Normal;
+	if Input.is_action_just_pressed("ItemCycleUp"):
+		item_idx += 1;
+		if item_idx > items.size() - 1:
+			item_idx = 0;
+		cycle_item();
+	elif Input.is_action_just_pressed("ItemCycleDown"):
+		item_idx -= 1;
+		if item_idx < 0:
+			item_idx = items.size() - 1;
+		cycle_item();
 	
+	_crosshair.state = Crosshair.State.Normal;
 	if move_state != MoveState.CLIMBING:
 		# Interaction
 		var interactable : Interactable = null;
+		var interact_hit_pos : Vector3;
+		var interact_hit_normal : Vector3;
 		if _interact_raycast.is_colliding():
 			var hit = _interact_raycast.get_collider();
 			if hit is Interactable:
 				interactable = hit as Interactable;
-				_crosshair.state = Crosshair.State.Interact;
+				if interactable.can_interact(self):
+					interact_hit_pos = _interact_raycast.get_collision_point();
+					interact_hit_normal = _interact_raycast.get_collision_normal();
+					_crosshair.state = Crosshair.State.Interact;
+				else:
+					interactable = null;
 		
 		if Input.is_action_just_pressed("Interact"):
 			if interactable:
-				interactable.interact(self);
+				interactable.interact(self, interact_hit_pos, interact_hit_normal);
 		
 		# Grapple
 		var grappleable : Grappleable = null;
 		var grapple_hit_pos : Vector3;
-		if _grapple_raycast.is_colliding():
+		if _grapple_raycast.is_colliding() and current_item is ItemGrapplingHook:
 			var hit = _grapple_raycast.get_collider();
 			if hit is Grappleable:
 				grappleable = hit as Grappleable;
 				grapple_hit_pos = _grapple_raycast.get_collision_point();
 				_crosshair.state = Crosshair.State.Grapple;
 		
-		if Input.is_action_just_pressed("Grapple"):
+		if Input.is_action_just_pressed("Interact"):
 			if grappleable:
 				throw_grappling_hook(grappleable, grapple_hit_pos);
 	#print(move_state);

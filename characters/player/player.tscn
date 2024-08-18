@@ -1,11 +1,124 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2prbdiplyfkw"]
+[gd_scene load_steps=16 format=3 uid="uid://d2prbdiplyfkw"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_dtgyq"]
 [ext_resource type="PackedScene" uid="uid://pwppgtajejmn" path="res://ui/crosshair/crosshair.tscn" id="2_jyjei"]
-[ext_resource type="PackedScene" uid="uid://xesaaq3gl00m" path="res://prefabs/PROTOTYPE_Grapple_GrapplingHook/grappling_hook.tscn" id="2_scdmv"]
+[ext_resource type="PackedScene" uid="uid://xesaaq3gl00m" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/grappling_hook.tscn" id="2_scdmv"]
 [ext_resource type="Script" path="res://scripts/fps_counter.gd" id="4_bf4aw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aytt0"]
+
+[sub_resource type="Animation" id="Animation_ncqrv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.412791, -0.766827, -0.641769)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.480995, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h4ct2"]
+resource_name = "item_swap_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.412791, -1.40795, 0.586717), Vector3(0.412791, -0.773277, -0.589491), Vector3(0.412791, -0.766827, -0.641769)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.160431, 0, 0), Vector3(0.480995, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ln1ag"]
+resource_name = "item_swap"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.412791, -0.766827, -0.641769), Vector3(0.412791, -0.773277, -0.589491), Vector3(0.412791, -1.40795, 0.586717)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.480995, 0, 0), Vector3(-0.160431, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eyq60"]
+_data = {
+"RESET": SubResource("Animation_ncqrv"),
+"item_swap_in": SubResource("Animation_h4ct2"),
+"item_swap_out": SubResource("Animation_ln1ag")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nwqkl"]
+animation = &"item_swap_in"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7a0te"]
+animation = &"item_swap_out"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4qb8e"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cn1dn"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j5sq0"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rcxbx"]
+states/Start/position = Vector2(199, 113)
+states/item_swap_in/node = SubResource("AnimationNodeAnimation_nwqkl")
+states/item_swap_in/position = Vector2(648, 113)
+states/item_swap_out/node = SubResource("AnimationNodeAnimation_7a0te")
+states/item_swap_out/position = Vector2(428, 113)
+transitions = ["item_swap_out", "item_swap_in", SubResource("AnimationNodeStateMachineTransition_4qb8e"), "item_swap_in", "item_swap_out", SubResource("AnimationNodeStateMachineTransition_cn1dn"), "Start", "item_swap_out", SubResource("AnimationNodeStateMachineTransition_j5sq0")]
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_dtgyq")
@@ -20,6 +133,7 @@ shape = SubResource("CapsuleShape3D_aytt0")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+cull_mask = 1048063
 
 [node name="InteractRaycast" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -5)
@@ -31,6 +145,9 @@ target_position = Vector3(0, 0, -1000)
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
+[node name="CameraRemote" type="RemoteTransform3D" parent="Camera3D"]
+remote_path = NodePath("../../UI/ItemHold/SubViewport/ItemHoldCam")
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -40,16 +157,53 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Crosshair" parent="UI" instance=ExtResource("2_jyjei")]
+[node name="ItemHold" type="SubViewportContainer" parent="UI"]
+custom_minimum_size = Vector2(1024, 1024)
 layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -512.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="SubViewport" type="SubViewport" parent="UI/ItemHold"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+render_target_update_mode = 4
+
+[node name="ItemHoldCam" type="Camera3D" parent="UI/ItemHold/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+cull_mask = 1048064
+
+[node name="ItemHoldPos" type="Node3D" parent="UI/ItemHold/SubViewport/ItemHoldCam"]
+transform = Transform3D(1, 0, 0, 0, 0.886535, -0.462662, 0, 0.462662, 0.886535, 0.412791, -0.766827, -0.641769)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ItemHold/SubViewport/ItemHoldCam/ItemHoldPos"]
+libraries = {
+"": SubResource("AnimationLibrary_eyq60")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="UI/ItemHold/SubViewport/ItemHoldCam/ItemHoldPos"]
+tree_root = SubResource("AnimationNodeStateMachine_rcxbx")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="FPS Counter" type="RichTextLabel" parent="UI"]
 layout_mode = 1
 offset_right = 354.0
 offset_bottom = 40.0
 mouse_filter = 1
-text = "FPS: 125"
+text = "FPS: 145"
 script = ExtResource("4_bf4aw")
+
+[node name="Crosshair" parent="UI" instance=ExtResource("2_jyjei")]
+layout_mode = 1
 
 [node name="GrappleThrowPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.506257)
+
+[connection signal="animation_finished" from="UI/ItemHold/SubViewport/ItemHoldCam/ItemHoldPos/AnimationTree" to="." method="on_animation_finished"]

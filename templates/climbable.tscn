@@ -9,16 +9,20 @@
 albedo_color = Color(0.132901, 0.709549, 0.287783, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xee5n"]
+resource_local_to_scene = true
 size = Vector3(15, 200, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3piiq"]
+resource_local_to_scene = true
 size = Vector3(15, 200, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibm5l"]
+resource_local_to_scene = true
 size = Vector3(15, 1, 1.325)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wtjb7"]
-size = Vector3(1, 200, 1)
+resource_local_to_scene = true
+size = Vector3(1, 200, 1.815)
 
 [node name="Climbable" type="AnimatableBody3D"]
 script = ExtResource("1_o0mmn")

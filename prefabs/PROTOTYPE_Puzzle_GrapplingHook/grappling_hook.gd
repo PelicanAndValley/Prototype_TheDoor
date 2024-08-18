@@ -44,10 +44,10 @@ func _process(delta: float) -> void:
 		add_child(particles);
 		particles.emitting = true;
 		# rope
-		var rope : Climbable = rope_climable.instantiate();
-		add_child(rope);
-		rope.raycast.add_exception(self);
-		rope.raycast.add_exception(target);
+		#var rope : Climbable = rope_climable.instantiate();
+		#add_child(rope);
+		#rope.raycast.add_exception(self);
+		#rope.raycast.add_exception(target);
 		
 
 func on_hook_collided ():

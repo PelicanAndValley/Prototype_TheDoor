@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctoupxt2dsnu5"]
+[gd_scene load_steps=15 format=3 uid="uid://ctoupxt2dsnu5"]
 
 [ext_resource type="PackedScene" uid="uid://7xb1q1u0cfe2" path="res://prefabs/PROTOTYPE_Door_big_door/big_door.tscn" id="2_g3r4l"]
 [ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_kq0e6"]
+[ext_resource type="PackedScene" uid="uid://ctxvrp188j7of" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/env_balloon.tscn" id="4_5is4i"]
+[ext_resource type="PackedScene" uid="uid://dqumry5aefw8u" path="res://prefabs/PROTOTYPE_Puzzle_Key/key.tscn" id="5_towop"]
 [ext_resource type="Script" path="res://scripts/grappleable.gd" id="5_uypyd"]
+[ext_resource type="PackedScene" uid="uid://bludm1x4lop13" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/env_grappling_hook.tscn" id="6_neowm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ftavj"]
 size = Vector3(5, 1, 5)
@@ -20,11 +23,17 @@ size = Vector2(1000, 1000)
 albedo_color = Color(0, 1, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_krsp7"]
+size = Vector3(10, 10, 1)
+
+[sub_resource type="Environment" id="Environment_l55qw"]
+ambient_light_source = 2
+ambient_light_color = Color(0.390475, 0.758964, 0.894235, 1)
 
 [node name="MainScene" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.50776, -0.0538626, 0.859813, 0.70537, -0.59899, 0.379031, 0.494604, 0.798943, 0.342136, 103.066, 199.776, 144.009)
+light_energy = 2.778
 shadow_enabled = true
 
 [node name="BigDoor" parent="." instance=ExtResource("2_g3r4l")]
@@ -40,7 +49,7 @@ transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("BoxMesh_e7xrw")
 
 [node name="Player" parent="." instance=ExtResource("3_kq0e6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.641, 0, 21.6256)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.641, 0, 30.5485)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
@@ -52,12 +61,25 @@ skeleton = NodePath("../..")
 shape = SubResource("WorldBoundaryShape3D_8gnkt")
 
 [node name="GrappleableCube" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 94.362)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 144.929, 16.8055)
 script = ExtResource("5_uypyd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GrappleableCube"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_knpo5")
 surface_material_override/0 = SubResource("StandardMaterial3D_rdp7u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrappleableCube"]
 shape = SubResource("BoxShape3D_krsp7")
+
+[node name="EnvBalloon" parent="." instance=ExtResource("4_5is4i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 32.2769)
+
+[node name="EnvGrapplingHook" parent="." instance=ExtResource("6_neowm")]
+transform = Transform3D(1, 0, 0, 0, 0.514574, -0.857446, 0, 0.857446, 0.514574, -16.3781, 0.176285, 32.931)
+
+[node name="Key" parent="." instance=ExtResource("5_towop")]
+transform = Transform3D(0.499859, 0.164113, -0.850417, -0.311937, 0.950103, 0, 0.807983, 0.265276, 0.52611, -5.56341, -0.807901, 27.697)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l55qw")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvetwn2ebaidd"]
 
-[ext_resource type="PackedScene" uid="uid://bhgstnbnsf8t1" path="res://prefabs/PROTOTYPE_Grapple_GrapplingHook/model/m_grappling_hook.glb" id="1_fi5wr"]
+[ext_resource type="PackedScene" uid="uid://bhgstnbnsf8t1" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/model/m_grappling_hook.glb" id="1_fi5wr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37alx"]
 metallic = 1.0
