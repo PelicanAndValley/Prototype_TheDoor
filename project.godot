@@ -87,8 +87,7 @@ ItemCycleDown={
 [rendering]
 
 textures/vram_compression/import_s3tc_bptc=true
-lights_and_shadows/directional_shadow/size=16384
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
 global_illumination/voxel_gi/quality=1
 environment/volumetric_fog/volume_size=128
 environment/volumetric_fog/volume_depth=128
