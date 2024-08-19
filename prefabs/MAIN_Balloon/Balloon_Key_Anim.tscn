@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn70o146l2t40"]
+
+[ext_resource type="PackedScene" uid="uid://dgjapejt73seq" path="res://prefabs/MAIN_Balloon/Balloon_Key_Anim.glb" id="1_uu6tw"]
+[ext_resource type="Material" uid="uid://beg0v0r24fcp4" path="res://prefabs/MAIN_Key/Key_Material.tres" id="2_x3sn0"]
+[ext_resource type="Material" uid="uid://bhkhthns5l5cs" path="res://prefabs/_MAIN_SHARED/Rope_Material.tres" id="3_8ty8r"]
+[ext_resource type="Material" uid="uid://cmh45eojj4u0q" path="res://prefabs/MAIN_Balloon/Balloon_Material.tres" id="4_y4qbp"]
+
+[node name="Balloon_Key_Anim" instance=ExtResource("1_uu6tw")]
+
+[node name="Key_Geom" parent="Key" index="0"]
+material_override = ExtResource("2_x3sn0")
+
+[node name="Key_GeomRope" parent="Key" index="1"]
+material_override = ExtResource("3_8ty8r")
+
+[node name="Balloon" parent="." index="1"]
+material_override = ExtResource("4_y4qbp")
+
+[node name="BalloonRope" parent="." index="2"]
+material_override = ExtResource("3_8ty8r")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvxk5dg8ey7y7"]
+
+[ext_resource type="PackedScene" uid="uid://v3f3flpj2jfv" path="res://prefabs/MAIN_Vines/Main_VINES_Near/VineClimb.glb" id="1_fr7br"]
+[ext_resource type="Material" uid="uid://ybhcsf7wke2n" path="res://prefabs/MAIN_Vines/Vines_Leaf_Climb_Material.tres" id="2_xrfjr"]
+[ext_resource type="Material" uid="uid://c7v0onapabsh" path="res://prefabs/MAIN_Vines/Vines_Trunk_Material.tres" id="3_qlr32"]
+[ext_resource type="Material" uid="uid://0u3k257w3md0" path="res://prefabs/MAIN_Vines/Vines_Leaf_Material.tres" id="3_ru33q"]
+
+[node name="Vine01" instance=ExtResource("1_fr7br")]
+transform = Transform3D(3.628, 0, 0, 0, 3.628, 0, 0, 0, 3.628, 0, 0, 0)
+
+[node name="VineLeaf" parent="." index="0"]
+material_override = ExtResource("2_xrfjr")
+surface_material_override/0 = ExtResource("3_ru33q")
+
+[node name="VineTrunk" parent="." index="1"]
+material_override = ExtResource("3_qlr32")
+surface_material_override/0 = ExtResource("3_qlr32")

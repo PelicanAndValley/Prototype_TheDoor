@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://coep41obxo3y5"]
+
+[ext_resource type="PackedScene" uid="uid://2hhj3d8fmyga" path="res://prefabs/MAIN_Balloon/Balloon.glb" id="1_kqa80"]
+[ext_resource type="Material" uid="uid://bhkhthns5l5cs" path="res://prefabs/_MAIN_SHARED/Rope_Material.tres" id="2_bg818"]
+[ext_resource type="Material" uid="uid://cmh45eojj4u0q" path="res://prefabs/MAIN_Balloon/Balloon_Material.tres" id="3_olwco"]
+
+[node name="Balloon" instance=ExtResource("1_kqa80")]
+transform = Transform3D(1.61362, 0, 0, 0, 1.61362, 0, 0, 0, 1.61362, 0, 0, 0)
+
+[node name="Sphere_001" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_bg818")
+
+[node name="Sphere_002" parent="." index="1"]
+material_override = ExtResource("3_olwco")
+surface_material_override/0 = ExtResource("3_olwco")
+
+[node name="HotAirBalloonFlame" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(0.619724, 0, 0, 0, 0.619724, 0, 0, 0, 0.619724, 0, 4.89041, 0)
+light_color = Color(1, 0.585833, 0.29, 1)
+light_energy = 6.516
+light_indirect_energy = 0.695
+shadow_enabled = true
+shadow_opacity = 0.91
+shadow_blur = 10.0
