@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://1ft7x5rkfmv2"]
+
+[ext_resource type="PackedScene" uid="uid://gvntgg8tetv1" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.glb" id="1_jquot"]
+[ext_resource type="Material" uid="uid://cmh45eojj4u0q" path="res://prefabs/MAIN_Balloon/Balloon_Material.tres" id="2_2arpc"]
+[ext_resource type="Material" uid="uid://bhkhthns5l5cs" path="res://prefabs/_MAIN_SHARED/Rope_Material.tres" id="3_s27eb"]
+
+[node name="Balloon_Deflated" instance=ExtResource("1_jquot")]
+
+[node name="BalloonDef" parent="." index="0"]
+transform = Transform3D(0.914864, -0.403321, -0.018855, 0.343994, 0.803041, -0.486614, 0.211403, 0.4387, 0.873414, -0.0276489, 0.019249, 0.00569916)
+material_override = ExtResource("2_2arpc")
+
+[node name="BalloonDefRope" parent="." index="1"]
+transform = Transform3D(0.958525, -0.0392605, 0.28229, 0.245635, -0.388516, -0.888098, 0.144541, 0.920605, -0.362759, 0.00689983, -1.90735e-06, 0.0334625)
+material_override = ExtResource("3_s27eb")

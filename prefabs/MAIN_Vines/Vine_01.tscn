@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgmid73kxl52v"]
+
+[ext_resource type="PackedScene" uid="uid://dyxjkn0kqs7t8" path="res://prefabs/MAIN_Vines/Main_VINES_Near/Vine01.glb" id="1_fr7br"]
+[ext_resource type="Material" uid="uid://0u3k257w3md0" path="res://prefabs/MAIN_Vines/Vines_Leaf_Material.tres" id="2_xrfjr"]
+[ext_resource type="Texture2D" uid="uid://bv1ii7yn38h1i" path="res://prefabs/MAIN_Trees/Tree_Material/Bark_d.jpg" id="3_w3fqy"]
+[ext_resource type="Texture2D" uid="uid://dba0gcxxwl8fj" path="res://prefabs/MAIN_Trees/Tree_Material/Bark_n.jpg" id="4_em6w1"]
+[ext_resource type="Texture2D" uid="uid://qbgjc0strqgy" path="res://prefabs/MAIN_Trees/Tree_Material/Bark_r.jpg" id="5_shnbl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04x8m"]
+albedo_color = Color(0.380915, 0.406248, 0.191849, 1)
+albedo_texture = ExtResource("3_w3fqy")
+roughness_texture = ExtResource("5_shnbl")
+normal_enabled = true
+normal_texture = ExtResource("4_em6w1")
+subsurf_scatter_strength = 0.51
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="Vine01" instance=ExtResource("1_fr7br")]
+
+[node name="VineLeaf" parent="." index="0"]
+material_override = ExtResource("2_xrfjr")
+
+[node name="VineTrunk" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_04x8m")
