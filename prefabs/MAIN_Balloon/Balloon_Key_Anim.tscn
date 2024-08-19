@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://beg0v0r24fcp4" path="res://prefabs/MAIN_Key/Key_Material.tres" id="2_x3sn0"]
 [ext_resource type="Material" uid="uid://bhkhthns5l5cs" path="res://prefabs/_MAIN_SHARED/Rope_Material.tres" id="3_8ty8r"]
 [ext_resource type="AudioStream" uid="uid://bws7phc7ygf8a" path="res://prefabs/MAIN_Balloon/Key_Pull_Balloon_Animation.ogg" id="4_vsxie"]
-[ext_resource type="Material" path="res://prefabs/MAIN_Balloon/Balloon_Material.tres" id="4_y4qbp"]
+[ext_resource type="Material" uid="uid://cmh45eojj4u0q" path="res://prefabs/MAIN_Balloon/Balloon_Material.tres" id="4_y4qbp"]
 [ext_resource type="PackedScene" uid="uid://c0qvn1cn44uwe" path="res://prefabs/PROTOTYPE_Puzzle_HangingRope/hanging_rope.tscn" id="5_kmdux"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdkwx"]
@@ -446,7 +446,7 @@ graph_offset = Vector2(26, -6)
 [node name="Balloon_Key_Anim" type="Node3D"]
 
 [node name="Key" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("balloon", "balloon_rope", "_rope_pos", "anim_tree", "sound")]
-transform = Transform3D(0.820445, -0.553062, 0.144887, 0.5704, 0.774571, -0.273284, 0.0389174, 0.306858, 0.950959, 4.69988, 43.3827, -1.80955)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2877, 15.9915, -5.18135)
 sync_to_physics = false
 script = ExtResource("1_m2f6o")
 balloon = NodePath("../Balloon")
@@ -480,7 +480,7 @@ stream = ExtResource("4_vsxie")
 volume_db = 22.857
 
 [node name="Balloon" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.999945, 0.0104377, 0.000518742, -0.0104434, 0.999868, 0.0124401, -0.000388828, -0.0124448, 0.999923, 6.08912, 63.2495, -1.36433)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4821, 22.8078, -6.22546)
 material_override = ExtResource("4_y4qbp")
 mesh = SubResource("ArrayMesh_d26s1")
 skeleton = NodePath("")
@@ -510,7 +510,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0429955, 18.4834, 0)
 shape = SubResource("SphereShape3D_c0ybg")
 
 [node name="BalloonRope" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.999945, 0.0104377, 0.000518742, -0.0104434, 0.999868, 0.0124401, -0.000388828, -0.0124448, 0.999923, 6.08912, 63.2495, -1.36433)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4821, 22.8078, -6.22546)
 material_override = ExtResource("3_8ty8r")
 mesh = SubResource("ArrayMesh_85hi3")
 skeleton = NodePath("")
