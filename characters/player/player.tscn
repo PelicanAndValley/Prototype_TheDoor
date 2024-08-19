@@ -201,7 +201,7 @@ layout_mode = 1
 offset_right = 354.0
 offset_bottom = 40.0
 mouse_filter = 1
-text = "FPS: 145"
+text = "FPS: 142"
 script = ExtResource("4_bf4aw")
 
 [node name="Crosshair" parent="UI" instance=ExtResource("2_jyjei")]

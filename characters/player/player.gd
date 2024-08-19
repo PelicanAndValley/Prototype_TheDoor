@@ -160,7 +160,7 @@ func _physics_process(delta: float) -> void:
 		_v_speed = jump_strength;
 	
 	# Linear movement
-	var move_vector = Input.get_vector("Left", "Right", "Forward", "Back") if is_on_floor() or move_state == MoveState.CLIMBING else _cur_direction;
+	var move_vector = Input.get_vector("Left", "Right", "Forward", "Back");
 	var target_speed : float = 0;
 	# For climbing only
 	var target_v_speed : float = 0;

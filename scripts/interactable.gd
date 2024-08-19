@@ -20,6 +20,7 @@ func can_interact (player: Player) -> bool:
 	return false;
 
 func interact (player: Player, point: Vector3, normal: Vector3) -> void:
-	if link_to_item and can_interact(player):
-		player.current_item.use(player, point, normal, self);
-	on_interact.emit(player, point);
+	if can_interact(player):
+		if link_to_item:
+			player.current_item.use(player, point, normal, self);
+		on_interact.emit(player, point);

@@ -3,16 +3,16 @@
 [ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/platform.gd" id="1_bqbr5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_65ufb"]
-size = Vector3(1, 0.1, 1)
+size = Vector3(2, 0.1, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xgib"]
 albedo_color = Color(0.4, 0.3, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ake1"]
-size = Vector3(1, 0.1, 1)
+size = Vector3(2, 0.1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6m3l7"]
-size = Vector3(0.9, 0.1, 0.9)
+size = Vector3(1.9, 0.1, 1.9)
 
 [node name="Platform" type="AnimatableBody3D"]
 script = ExtResource("1_bqbr5")
@@ -29,6 +29,10 @@ shape = SubResource("BoxShape3D_5ake1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_6m3l7")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+target_position = Vector3(0, -0.1, 0)
 
 [connection signal="body_entered" from="Trigger" to="." method="on_trigger"]
 [connection signal="body_exited" from="Trigger" to="." method="on_trigger_exit"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctoupxt2dsnu5"]
+[gd_scene load_steps=20 format=3 uid="uid://ctoupxt2dsnu5"]
 
 [ext_resource type="PackedScene" uid="uid://7xb1q1u0cfe2" path="res://prefabs/PROTOTYPE_Door_big_door/big_door.tscn" id="2_g3r4l"]
 [ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_kq0e6"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dqumry5aefw8u" path="res://prefabs/PROTOTYPE_Puzzle_Key/key.tscn" id="5_towop"]
 [ext_resource type="Script" path="res://scripts/grappleable.gd" id="5_uypyd"]
 [ext_resource type="PackedScene" uid="uid://bludm1x4lop13" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/env_grappling_hook.tscn" id="6_neowm"]
+[ext_resource type="Script" path="res://levels/test/pulley_system.gd" id="7_013ym"]
 [ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="7_s6ys5"]
 [ext_resource type="PackedScene" uid="uid://dn3l7r3e5mkev" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/anchor.tscn" id="8_c17as"]
 [ext_resource type="PackedScene" uid="uid://gmsgwlhxnbi3" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/platform.tscn" id="9_rc5on"]
+[ext_resource type="PackedScene" uid="uid://c0qvn1cn44uwe" path="res://prefabs/PROTOTYPE_Puzzle_HangingRope/hanging_rope.tscn" id="10_h8fmk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ftavj"]
 size = Vector3(5, 1, 5)
@@ -87,13 +89,36 @@ environment = SubResource("Environment_l55qw")
 [node name="EnvPulley" parent="." instance=ExtResource("7_s6ys5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.25, 33)
 
-[node name="Anchor" parent="." instance=ExtResource("8_c17as")]
+[node name="PulleySystem" type="Node3D" parent="."]
+script = ExtResource("7_013ym")
+
+[node name="Anchor" parent="PulleySystem" instance=ExtResource("8_c17as")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56799, 200, 16.3182)
 
-[node name="KeyPos" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64.7131)
+[node name="Platform" parent="PulleySystem" instance=ExtResource("9_rc5on")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16953, 197.468, 17.7593)
+speed = 5.0
+acceleration = 10.0
 
-[node name="Key" parent="KeyPos" instance=ExtResource("5_towop")]
+[node name="HangingRope" parent="PulleySystem" node_paths=PackedStringArray("start", "end") instance=ExtResource("10_h8fmk")]
+transform = Transform3D(0.365265, 0.652489, 0.663954, 0, 0.713236, -0.70092, -0.930902, 0.256022, 0.26052, -1.16953, 197.468, 17.7593)
+start = NodePath("../Platform")
+end = NodePath("../Anchor/AnchorPos")
+segments = null
 
-[node name="Platform" parent="KeyPos" instance=ExtResource("9_rc5on")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87469, 199.357, -47.3963)
+[node name="KeyUpPosition" type="Node3D" parent="PulleySystem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7412, 194.948, 25.255)
+
+[node name="Key" parent="PulleySystem" instance=ExtResource("5_towop")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7412, 0, 25.255)
+
+[node name="Key" parent="PulleySystem/Key" index="0" node_paths=PackedStringArray("key_up_pos")]
+transform = Transform3D(0.953022, 0, 0.302901, 0.302901, 5.96046e-08, -0.953022, 0, 1, 5.96046e-08, 3.12086, 22.8621, 0)
+key_up_pos = NodePath("../../KeyUpPosition")
+speed = 5.0
+acceleration = 10.0
+
+[connection signal="on_interact" from="PulleySystem/Anchor" to="PulleySystem" method="_on_anchor_on_interact"]
+
+[editable path="PulleySystem/Anchor"]
+[editable path="PulleySystem/Key"]
