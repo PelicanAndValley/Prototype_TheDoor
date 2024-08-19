@@ -16,5 +16,14 @@ material_override = ExtResource("3_8ty8r")
 [node name="Balloon" parent="." index="1"]
 material_override = ExtResource("4_y4qbp")
 
-[node name="BalloonRope" parent="." index="2"]
+[node name="HotAirBalloonFlame" type="OmniLight3D" parent="Balloon" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5686, 0)
+light_color = Color(1, 0.585833, 0.29, 1)
+light_energy = 6.516
+light_indirect_energy = 0.695
+shadow_enabled = true
+shadow_opacity = 0.91
+shadow_blur = 10.0
+
+[node name="Balloon_001" parent="." index="2"]
 material_override = ExtResource("3_8ty8r")
