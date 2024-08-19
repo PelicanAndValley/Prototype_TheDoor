@@ -1,23 +1,24 @@
-[gd_scene load_steps=22 format=3 uid="uid://eq1vhbs1qqn3"]
+[gd_scene load_steps=23 format=3 uid="uid://eq1vhbs1qqn3"]
 
 [ext_resource type="PackedScene" uid="uid://dxj6mqao7vyv1" path="res://prefabs/BLOCKOUT_Cave/model_floor/Blockout_Cave_Floor.tscn" id="1_dgxyr"]
 [ext_resource type="PackedScene" uid="uid://c2m5x78plefiv" path="res://prefabs/MAIN_Cave/Walls/Cave_Wall.tscn" id="1_eenla"]
-[ext_resource type="PackedScene" uid="uid://d3h7qsmoj5ro8" path="res://prefabs/MAIN_Door_Base/door_base.tscn" id="3_8gru8"]
+[ext_resource type="PackedScene" path="res://prefabs/MAIN_Door_Base/door_base.tscn" id="3_8gru8"]
 [ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_ht0e7"]
 [ext_resource type="PackedScene" uid="uid://bba6fjg537d6d" path="res://prefabs/MAIN_Cave/Main_Environment.tscn" id="4_bpwuy"]
+[ext_resource type="PackedScene" uid="uid://cbofi3hbjfyp5" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/item_pulley.tscn" id="6_4002e"]
 [ext_resource type="PackedScene" uid="uid://dlde2bfe5hi3a" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_01.tscn" id="6_swcy7"]
 [ext_resource type="PackedScene" uid="uid://c7e8p2pderja6" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_02.tscn" id="7_oebud"]
 [ext_resource type="PackedScene" uid="uid://n8srkrdd01nf" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_03.tscn" id="8_je3ou"]
 [ext_resource type="PackedScene" uid="uid://dcj3aseqgqbrh" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_04.tscn" id="9_5ji0q"]
 [ext_resource type="PackedScene" uid="uid://cv8xhdjr0ltw" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_05.tscn" id="10_eou5l"]
-[ext_resource type="PackedScene" uid="uid://b8trni3ajtxaw" path="res://prefabs/MAIN_Key/Key.tscn" id="11_1du3q"]
-[ext_resource type="PackedScene" uid="uid://coep41obxo3y5" path="res://prefabs/MAIN_Balloon/Balloon.tscn" id="12_xavde"]
 [ext_resource type="PackedScene" uid="uid://dvxk5dg8ey7y7" path="res://prefabs/MAIN_Vines/Vine_Climb.tscn" id="13_75osr"]
 [ext_resource type="PackedScene" uid="uid://dgmid73kxl52v" path="res://prefabs/MAIN_Vines/Vine_01.tscn" id="14_exdvu"]
 [ext_resource type="PackedScene" uid="uid://c5xdvkhxw5slw" path="res://prefabs/MAIN_Vines/Vine_02.tscn" id="15_dum0f"]
 [ext_resource type="PackedScene" uid="uid://dra8k3tk823up" path="res://prefabs/MAIN_Vines/Vine_03.tscn" id="16_pbov8"]
 [ext_resource type="PackedScene" uid="uid://tg1jhxgfsofy" path="res://prefabs/MAIN_Vines/Vine_Over_Handle.tscn" id="17_ugcm0"]
-[ext_resource type="PackedScene" uid="uid://1ft7x5rkfmv2" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="18_v2u5q"]
+[ext_resource type="PackedScene" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="18_v2u5q"]
+[ext_resource type="PackedScene" uid="uid://c1f08mfvckxrh" path="res://prefabs/MAIN_Balloon/Balloon_Key_Anim.tscn" id="19_q3klv"]
+[ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="19_qi4wh"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kknuy"]
 frequency = 0.29
@@ -39,6 +40,8 @@ transform = Transform3D(0.794191, 0, 0, 0, 0.794191, 0, 0, 0, 0.794191, 0, 0, 0)
 
 [node name="Blockout_Cave_Floor" parent="." instance=ExtResource("1_dgxyr")]
 transform = Transform3D(0.794182, -0.00353716, 0.00148136, 0.00353264, 0.794179, 0.00241962, -0.00149211, -0.00241301, 0.794186, 0, 0, 0)
+
+[node name="Player_UI_ItemHold_SubViewport_ItemHoldCam_ItemHoldPos#ItemPulley" parent="." instance=ExtResource("6_4002e")]
 
 [node name="Door_Base" parent="." instance=ExtResource("3_8gru8")]
 transform = Transform3D(0.8024, 0, 0, 0, 0.8024, 0, 0, 0, 0.8024, -0.00587463, 0.155527, 0.0125771)
@@ -81,9 +84,6 @@ light_size = 20.0
 light_specular = 0.0
 omni_range = 419.168
 
-[node name="Player" parent="." instance=ExtResource("3_ht0e7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69057, 1.09445, 112.53)
-
 [node name="Tree01" parent="." instance=ExtResource("6_swcy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5363, -1.31028, 229.851)
 
@@ -98,12 +98,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.2731, -2.69874, 245.487)
 
 [node name="Tree05" parent="." instance=ExtResource("10_eou5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.3479, -2.65558, 249.402)
-
-[node name="Key" parent="." instance=ExtResource("11_1du3q")]
-transform = Transform3D(-0.409822, -0.679055, 0.60904, 0.135867, 0.614794, 0.776897, -0.90199, 0.401138, -0.159695, -13.5236, 1.64179, 50.746)
-
-[node name="Balloon" parent="." instance=ExtResource("12_xavde")]
-transform = Transform3D(1.61362, 0, 0, 0, 1.61362, 0, 0, 0, 1.61362, -4.82943, 17.5329, 53.7395)
 
 [node name="VineClimb" parent="." instance=ExtResource("13_75osr")]
 transform = Transform3D(-1.58585e-07, 0, 3.628, 0, 3.628, 0, -3.628, 0, -1.58585e-07, 10.841, 101.82, -0.761549)
@@ -134,3 +128,12 @@ transform = Transform3D(-4.36832e-08, 0.0358763, 0.999356, 1.5682e-09, 0.999356,
 
 [node name="Balloon_Deflated" parent="." instance=ExtResource("18_v2u5q")]
 transform = Transform3D(-0.250718, 0, -0.96806, 0, 1, 0, 0.96806, 0, -0.250718, 38.7544, 0.488963, 85.0586)
+
+[node name="EnvPulley" parent="." instance=ExtResource("19_qi4wh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38875, -0.292004, 104.896)
+
+[node name="Player" parent="." instance=ExtResource("3_ht0e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60536, -0.453512, 109.314)
+
+[node name="Balloon_Key_Anim" parent="." instance=ExtResource("19_q3klv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4016, 0.389378, 15.2508)

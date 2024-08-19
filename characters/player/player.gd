@@ -62,9 +62,9 @@ func _ready() -> void:
 	_collision = $CollisionShape3D;
 	_crosshair = $UI/Crosshair;
 	_grapple_throw_position = $Camera3D/GrappleThrowPosition;
-	_item_hold_pos = $UI/ItemHold/SubViewport/ItemHoldCam/ItemHoldPos;
+	_item_hold_pos = $Camera3D/ItemHoldPos;
 	_ui = $UI;
-	var item_hold_anim_tree : AnimationTree = $UI/ItemHold/SubViewport/ItemHoldCam/ItemHoldPos/AnimationTree;
+	var item_hold_anim_tree : AnimationTree = $Camera3D/ItemHoldPos/AnimationTree;
 	_item_hold_anim = item_hold_anim_tree["parameters/playback"];
 	
 	_interact_raycast.add_exception(self);

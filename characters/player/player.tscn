@@ -146,11 +146,20 @@ target_position = Vector3(0, 0, -1000)
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
-[node name="CameraRemote" type="RemoteTransform3D" parent="Camera3D"]
-remote_path = NodePath("../../UI/ItemHold/SubViewport/ItemHoldCam")
-
 [node name="GrappleThrowPosition" type="Node3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.506257)
+
+[node name="ItemHoldPos" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.886535, -0.462662, 0, 0.462662, 0.886535, 0.412791, -0.766827, -0.641769)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/ItemHoldPos"]
+libraries = {
+"": SubResource("AnimationLibrary_eyq60")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Camera3D/ItemHoldPos"]
+tree_root = SubResource("AnimationNodeStateMachine_rcxbx")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -161,51 +170,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="ItemHold" type="SubViewportContainer" parent="UI"]
-custom_minimum_size = Vector2(1024, 1024)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -512.0
-offset_top = -512.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="SubViewport" type="SubViewport" parent="UI/ItemHold"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1024, 1024)
-render_target_update_mode = 4
-
-[node name="ItemHoldCam" type="Camera3D" parent="UI/ItemHold/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-cull_mask = 1048064
-
-[node name="ItemHoldPos" type="Node3D" parent="UI/ItemHold/SubViewport/ItemHoldCam"]
-transform = Transform3D(1, 0, 0, 0, 0.886535, -0.462662, 0, 0.462662, 0.886535, 0.412791, -0.766827, -0.641769)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ItemHold/SubViewport/ItemHoldCam/ItemHoldPos"]
-libraries = {
-"": SubResource("AnimationLibrary_eyq60")
-}
-
-[node name="AnimationTree" type="AnimationTree" parent="UI/ItemHold/SubViewport/ItemHoldCam/ItemHoldPos"]
-tree_root = SubResource("AnimationNodeStateMachine_rcxbx")
-anim_player = NodePath("../AnimationPlayer")
-
 [node name="FPS Counter" type="RichTextLabel" parent="UI"]
 layout_mode = 1
 offset_right = 354.0
 offset_bottom = 40.0
 mouse_filter = 1
-text = "FPS: 142"
+text = "FPS: 145"
 script = ExtResource("4_bf4aw")
 
 [node name="Crosshair" parent="UI" instance=ExtResource("2_jyjei")]
 layout_mode = 1
 interact = ExtResource("5_1prdc")
 
-[connection signal="animation_finished" from="UI/ItemHold/SubViewport/ItemHoldCam/ItemHoldPos/AnimationTree" to="." method="on_animation_finished"]
+[connection signal="animation_finished" from="Camera3D/ItemHoldPos/AnimationTree" to="." method="on_animation_finished"]

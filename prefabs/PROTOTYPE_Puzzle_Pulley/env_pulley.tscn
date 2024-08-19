@@ -12,6 +12,8 @@ script = ExtResource("1_oapx6")
 item = ExtResource("2_pcfj3")
 
 [node name="PulleyModel" parent="." instance=ExtResource("2_1omdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("BoxShape3D_ql3ms")

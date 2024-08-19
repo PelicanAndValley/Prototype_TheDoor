@@ -3,6 +3,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_g5n2s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tvqc"]
+no_depth_test = true
 albedo_color = Color(1, 0, 1, 1)
 
 [node name="PulleyModel" type="Node3D"]
