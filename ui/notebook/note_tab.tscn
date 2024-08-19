@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqfxml2dm0ut8"]
+
+[ext_resource type="Texture2D" uid="uid://lf3qjvtwf7bn" path="res://ui/notebook/tab.png" id="1_31mwe"]
+[ext_resource type="Script" path="res://ui/notebook/note_tab.gd" id="2_2qeuo"]
+[ext_resource type="Theme" uid="uid://vqehe5qmfesu" path="res://ui/notebook/notebook_text_theme.tres" id="2_hxil0"]
+
+[node name="NoteTab" type="TextureButton"]
+custom_minimum_size = Vector2(0, 28.6)
+texture_normal = ExtResource("1_31mwe")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_2qeuo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.82501
+offset_top = 3.0
+offset_right = -2.17499
+offset_bottom = -1.6
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("2_hxil0")
+text = "Note tab"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

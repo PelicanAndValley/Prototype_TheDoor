@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn3l7r3e5mkev"]
+[gd_scene load_steps=5 format=3 uid="uid://dn3l7r3e5mkev"]
 
 [ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/anchor.gd" id="1_kmyns"]
 [ext_resource type="PackedScene" uid="uid://bpwcxycsjgaok" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/model/m_anchor.tscn" id="1_nsfjv"]
+[ext_resource type="AudioStream" uid="uid://cvt4d8ju34rh3" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/Crank_Wheel.ogg" id="3_6b4ap"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_02wgt"]
 
-[node name="Anchor" type="StaticBody3D"]
+[node name="Anchor" type="StaticBody3D" node_paths=PackedStringArray("audio")]
 script = ExtResource("1_kmyns")
+audio = NodePath("AudioStreamPlayer3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -16,3 +18,6 @@ shape = SubResource("BoxShape3D_02wgt")
 
 [node name="AnchorPos" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_6b4ap")

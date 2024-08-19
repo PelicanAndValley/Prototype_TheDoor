@@ -23,10 +23,10 @@ func hold (player: Player):
 	_player = player;
 	_player._held_rope = self;
 
-func drop (point: Vector3):
+func drop (point: Node3D):
 	_player._held_rope = null;
 	_player = null;
-	end_pos = point;
+	end = point;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,12 +39,23 @@ func position_segment (segment: Node3D, seg_start: Vector3, seg_end: Vector3) ->
 	if dif.length() > 0:
 		segment.look_at(seg_end);
 
-#func gen_positions (rope_start: Vector3, rope_end: Vector3):
-#	for n in segments:
-#		
+func gen_positions (rope_start: Vector3, rope_end: Vector3):
+	var rope_top : Vector3;
+	var rope_bottom : Vector3;
+	if rope_start.y > rope_end.y:
+		rope_top = rope_start;
+		rope_bottom = rope_end;
+	else:
+		rope_top = rope_end;
+		rope_bottom = rope_start;
+	
+	var total_dif = rope_top - rope_bottom;
+	total_dif
+	#for n in segments:
+	#	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if _player:
 		end_pos = _player._grapple_throw_position.global_position;
 	else:
@@ -52,8 +63,8 @@ func _process(delta: float) -> void:
 			end_pos = end.global_position;
 		else:
 			end_pos = global_position + Vector3.FORWARD;
-		if start:
-			start_pos = start.global_position;
+	if start:
+		start_pos = start.global_position;
 	global_position = start_pos;
 	_smooth_pos = lerp(_smooth_pos, end_pos, follow_speed * delta);
 	

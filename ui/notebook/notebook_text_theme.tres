@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://vqehe5qmfesu"]
+
+[ext_resource type="FontFile" uid="uid://cmwrbhf2d82ow" path="res://ui/fonts/Crozone.ttf" id="1_vw1a8"]
+
+[resource]
+default_font = ExtResource("1_vw1a8")
+default_font_size = 0

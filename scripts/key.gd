@@ -10,6 +10,9 @@ var balloon_rope : Node3D;
 var _rope_pos : Node3D;
 @export
 var anim_tree : AnimationTree;
+@export
+var sound : AudioStreamPlayer3D;
+
 var _anim_playback : AnimationNodeStateMachinePlayback;
 var _velocity : Vector3;
 
@@ -26,12 +29,15 @@ var acceleration : float;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_anim_playback = anim_tree["parameters/playback"];
+	balloon.process_mode = Node.PROCESS_MODE_DISABLED;
 	balloon.visible = false;
 	balloon_rope.visible = false;
 
 func dislodge () -> void:
+	sound.play();
 	_anim_playback.travel("Rise");
 	has_balloon = true;
+	balloon.process_mode = Node.PROCESS_MODE_INHERIT;
 	balloon.visible = true;
 	balloon_rope.visible = true;
 

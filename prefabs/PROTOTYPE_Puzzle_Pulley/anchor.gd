@@ -1,6 +1,13 @@
 extends Interactable
 
+class_name Anchor;
+
 var _anchor_pos : Node3D;
+
+@export
+var audio : AudioStreamPlayer3D;
+@export
+var volume : float;
 
 func _ready () -> void:
 	on_interact.connect(self.interacting);
@@ -8,7 +15,7 @@ func _ready () -> void:
 
 func interacting (player: Player, point: Vector3) -> void:
 	if player._held_rope:
-		player._held_rope.drop(_anchor_pos.global_position);
+		player._held_rope.drop(_anchor_pos);
 
 func can_interact (player: Player) -> bool:
 	return !!player._held_rope;

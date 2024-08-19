@@ -8,6 +8,10 @@ var speed : float = 1;
 var acceleration : float = 3;
 @export
 var can_move : bool = false;
+@export
+var key : Node3D;
+@export
+var anchor : Anchor;
 
 var _player : Player;
 var _velocity : Vector3;
@@ -37,4 +41,13 @@ func _physics_process(delta: float) -> void:
 	_velocity = lerp(_velocity, target_velocity, acceleration * delta);
 	
 	if !_raycast.is_colliding():
-		translate(_velocity);
+		_velocity = Vector3.ZERO;
+	
+	translate(_velocity);
+	key.translate(-_velocity);
+	if _velocity.length() > 0:
+		anchor.audio.playing = true;
+		#anchor.audio.volume_db = anchor.volume * _velocity.length();
+	else:
+		anchor.audio.playing = false;
+	

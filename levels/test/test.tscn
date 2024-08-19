@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dqumry5aefw8u" path="res://prefabs/PROTOTYPE_Puzzle_Key/key.tscn" id="5_towop"]
 [ext_resource type="Script" path="res://scripts/grappleable.gd" id="5_uypyd"]
 [ext_resource type="PackedScene" uid="uid://bludm1x4lop13" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/env_grappling_hook.tscn" id="6_neowm"]
-[ext_resource type="Script" path="res://levels/test/pulley_system.gd" id="7_013ym"]
+[ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/pulley_system.gd" id="7_013ym"]
 [ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="7_s6ys5"]
 [ext_resource type="PackedScene" uid="uid://dn3l7r3e5mkev" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/anchor.tscn" id="8_c17as"]
 [ext_resource type="PackedScene" uid="uid://gmsgwlhxnbi3" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/platform.tscn" id="9_rc5on"]

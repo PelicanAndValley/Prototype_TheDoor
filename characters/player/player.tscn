@@ -1,10 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2prbdiplyfkw"]
+[gd_scene load_steps=20 format=3 uid="uid://d2prbdiplyfkw"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_dtgyq"]
 [ext_resource type="PackedScene" uid="uid://pwppgtajejmn" path="res://ui/crosshair/crosshair.tscn" id="2_jyjei"]
 [ext_resource type="PackedScene" uid="uid://xesaaq3gl00m" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/grappling_hook.tscn" id="2_scdmv"]
+[ext_resource type="Script" path="res://ui/door_ui.gd" id="3_bpd1y"]
 [ext_resource type="Script" path="res://scripts/fps_counter.gd" id="4_bf4aw"]
 [ext_resource type="Texture2D" uid="uid://0qhg26k2c8ir" path="res://ui/crosshair/better_hand.png" id="5_1prdc"]
+[ext_resource type="PackedScene" uid="uid://wwt4cq3tjhnr" path="res://ui/notebook/notebook.tscn" id="6_fgias"]
+[ext_resource type="PackedScene" uid="uid://cfxi0u1uwn50f" path="res://ui/menu/menu.tscn" id="7_edjrs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aytt0"]
 
@@ -121,12 +124,13 @@ states/item_swap_out/node = SubResource("AnimationNodeAnimation_7a0te")
 states/item_swap_out/position = Vector2(428, 113)
 transitions = ["item_swap_out", "item_swap_in", SubResource("AnimationNodeStateMachineTransition_4qb8e"), "item_swap_in", "item_swap_out", SubResource("AnimationNodeStateMachineTransition_cn1dn"), "Start", "item_swap_out", SubResource("AnimationNodeStateMachineTransition_j5sq0")]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("door_ui")]
 script = ExtResource("1_dtgyq")
 walk_speed = 5.0
 run_speed = 10.0
 grappling_hook = ExtResource("2_scdmv")
 grapple_throw_strength = 30.0
+door_ui = NodePath("UI")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -161,7 +165,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_rcxbx")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("notebook", "menu")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,17 +174,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("3_bpd1y")
+notebook = NodePath("Notebook")
+menu = NodePath("Menu")
 
 [node name="FPS Counter" type="RichTextLabel" parent="UI"]
 layout_mode = 1
 offset_right = 354.0
 offset_bottom = 40.0
 mouse_filter = 1
-text = "FPS: 145"
+text = "FPS: 70"
 script = ExtResource("4_bf4aw")
 
 [node name="Crosshair" parent="UI" instance=ExtResource("2_jyjei")]
 layout_mode = 1
 interact = ExtResource("5_1prdc")
+
+[node name="Notebook" parent="UI" instance=ExtResource("6_fgias")]
+visible = false
+layout_mode = 1
+
+[node name="Menu" parent="UI" instance=ExtResource("7_edjrs")]
+visible = false
+layout_mode = 1
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
 
 [connection signal="animation_finished" from="Camera3D/ItemHoldPos/AnimationTree" to="." method="on_animation_finished"]

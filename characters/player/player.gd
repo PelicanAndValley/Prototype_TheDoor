@@ -29,6 +29,15 @@ var look_speed : float = 0.001;
 var grappling_hook : PackedScene;
 @export
 var grapple_throw_strength : float = 20;
+@export_group("UI")
+@export
+var door_ui : DoorUI;
+
+var open_ui: DoorUI.OpenUI:
+	get():
+		return door_ui.open_ui;
+	set(newval):
+		door_ui.open_ui = newval;
 
 enum MoveState { WALKING, CLIMBING, CONTROLLED };
 var move_state = MoveState.WALKING;
@@ -70,6 +79,8 @@ func _ready() -> void:
 	_interact_raycast.add_exception(self);
 	_grapple_raycast.add_exception(self);
 	
+	door_ui.set_player(self);
+	
 	capture_mouse();
 
 func capture_mouse() -> void:
@@ -84,10 +95,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		_look_direction = event.relative * look_speed;
 		if _mouse_captured: _rotate_camera();
-	if Input.is_action_just_pressed("Escape") and _mouse_captured:
-		release_mouse();
-	elif Input.is_action_just_pressed("Click") and !_mouse_captured:
-		capture_mouse();
 
 func _rotate_camera() -> void:
 	_camera.rotation.y -= _look_direction.x;

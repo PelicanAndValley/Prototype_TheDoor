@@ -1,0 +1,273 @@
+[gd_scene load_steps=19 format=3 uid="uid://wwt4cq3tjhnr"]
+
+[ext_resource type="Script" path="res://ui/notebook/notebook.gd" id="1_l86es"]
+[ext_resource type="PackedScene" uid="uid://dqfxml2dm0ut8" path="res://ui/notebook/note_tab.tscn" id="2_ecubk"]
+[ext_resource type="Texture2D" uid="uid://conc4wo36jkps" path="res://ui/notebook/notebook.png" id="3_h3fwl"]
+[ext_resource type="Theme" uid="uid://vqehe5qmfesu" path="res://ui/notebook/notebook_text_theme.tres" id="4_3ni13"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ykuob"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ky3qw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oyqlc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5jep"]
+
+[sub_resource type="Animation" id="Animation_h5848"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moveable:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ax8su"]
+resource_name = "notebook_close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moveable:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1500)]
+}
+
+[sub_resource type="Animation" id="Animation_b7su1"]
+resource_name = "notebook_open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moveable:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1500), Vector2(0, -100), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5uwx"]
+_data = {
+"RESET": SubResource("Animation_h5848"),
+"notebook_close": SubResource("Animation_ax8su"),
+"notebook_open": SubResource("Animation_b7su1")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w8tvm"]
+animation = &"notebook_close"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gjhoy"]
+animation = &"notebook_open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l5lx4"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_an4wv"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v7co3"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_no48v"]
+states/notebook_close/node = SubResource("AnimationNodeAnimation_w8tvm")
+states/notebook_close/position = Vector2(492, 148)
+states/notebook_open/node = SubResource("AnimationNodeAnimation_gjhoy")
+states/notebook_open/position = Vector2(492, 35)
+transitions = ["Start", "notebook_close", SubResource("AnimationNodeStateMachineTransition_l5lx4"), "notebook_close", "notebook_open", SubResource("AnimationNodeStateMachineTransition_an4wv"), "notebook_open", "notebook_close", SubResource("AnimationNodeStateMachineTransition_v7co3")]
+graph_offset = Vector2(101, -26)
+
+[node name="Notebook" type="Control" node_paths=PackedStringArray("title", "page1", "page2", "tabs", "page_number", "anim_tree")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_l86es")
+title = NodePath("Moveable/Title")
+page1 = NodePath("Moveable/CenterContainer/SplitContainer/Page1")
+page2 = NodePath("Moveable/CenterContainer/SplitContainer/Page2")
+start_notes = PackedStringArray("Entry 29 - Practical/Thank Heavens I remembered to bring my pulley set with me. I recall my colleagues thought the conveyance of such devices with me to be a daft expenditure of space, but how they thought to manipulate such equipment many times the size of mere men is beyond me. Perhaps they imagined themselves able to maneuver and utilize The Door by sheer force of will alone. It would hardly be the strangest departure from practicality I\'ve seen them take./By rigging the key to my pulley set, I was able to spend the afternoon hauling it from its resting place. The process was both exhausting and time-consuming, I don\'t suspect I should be able to replicate it, especially seeing as the damnable thing is still half-stuck in the ground./Still, I feel the effort was worth it in the end. The piece is fascinating! The metallurgic expenditure alone for this monster must have been enough to bankrupt a small town! At some point, I should make a more detailed examination of it, but for now, rest is calling me. I cannot imagine the tasks ahead should be simple.", "Entry 30 - Personal/A curious thought struck me this evening as I sat about my fire. What if I were to open it? The Door has been such a fixture through time, its secrets have held millions in thrall. Were I to be the one to finally breach it, would I be lauded as a hero? Would they pin a medal on my chest, write my name in the history books? Or would I instead be considered arrogant? A fool who thought he might touch the divine, and so made it mundane by his actions?/The effort to maneuver the key to its lock would be staggering, let alone pushing open this behemoth. To do so alone would be almost unthinkable. And yet, I cannot shake the thought from my mind. I\'ll come to a decision in the morning, tonight, I must rest. My muscles ache something terrible.", "Entry 37 - Practical/In attempting to rectify the mistakes of yesterday\'s encounter with the mome rath, I\'ve had to improvise. I\'ve taken one of my boat hooks and tied it to a tent pole, such that I can extend my reach some several feet. Hardly a professional affair, but hopefully this will help me disentangle that blasted grappling hook.")
+tabs = NodePath("Moveable/TabCrop/Tabs")
+note_tab = ExtResource("2_ecubk")
+page_number = NodePath("Moveable/PageNumber")
+anim_tree = NodePath("AnimationTree")
+open_anim = &"notebook_open"
+close_anim = &"notebook_close"
+
+[node name="Moveable" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1500.0
+offset_bottom = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Moveable"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Moveable/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_h3fwl")
+
+[node name="SplitContainer" type="SplitContainer" parent="Moveable/CenterContainer"]
+modulate = Color(0.180392, 0.109804, 0.0470588, 1)
+layout_mode = 2
+theme_override_constants/separation = 80
+dragger_visibility = 1
+
+[node name="Page1" type="RichTextLabel" parent="Moveable/CenterContainer/SplitContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(250, 400)
+layout_mode = 2
+theme = ExtResource("4_3ni13")
+bbcode_enabled = true
+text = "PAGE 1"
+fit_content = true
+scroll_active = false
+
+[node name="Page2" type="RichTextLabel" parent="Moveable/CenterContainer/SplitContainer"]
+custom_minimum_size = Vector2(250, 400)
+layout_mode = 2
+theme = ExtResource("4_3ni13")
+bbcode_enabled = true
+text = "PAGE 2"
+fit_content = true
+scroll_active = false
+
+[node name="Title" type="RichTextLabel" parent="Moveable"]
+self_modulate = Color(0.180392, 0.109804, 0.0470588, 1)
+custom_minimum_size = Vector2(250, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -239.0
+offset_right = -46.0
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_3ni13")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "TITLE"
+fit_content = true
+
+[node name="TabCrop" type="Control" parent="Moveable"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -483.16
+offset_top = -229.0
+offset_right = -331.16
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Tabs" type="VBoxContainer" parent="Moveable/TabCrop"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -122.665
+offset_right = 15.335
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="PageNumber" type="RichTextLabel" parent="Moveable"]
+self_modulate = Color(0.180392, 0.109804, 0.0470588, 1)
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 202.0
+offset_right = 50.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]1 / 1"
+
+[node name="PageButtons" type="SplitContainer" parent="Moveable"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 176.0
+offset_right = 20.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_3ni13")
+theme_override_constants/separation = 560
+dragger_visibility = 1
+
+[node name="Prev" type="Button" parent="Moveable/PageButtons"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ykuob")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ky3qw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oyqlc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m5jep")
+text = "<"
+
+[node name="Next" type="Button" parent="Moveable/PageButtons"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ykuob")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ky3qw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oyqlc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m5jep")
+text = ">"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g5uwx")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_no48v")
+anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="pressed" from="Moveable/PageButtons/Prev" to="." method="prev_page"]
+[connection signal="pressed" from="Moveable/PageButtons/Next" to="." method="next_page"]
