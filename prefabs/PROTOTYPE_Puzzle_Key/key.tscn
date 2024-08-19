@@ -1,17 +1,137 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqumry5aefw8u"]
+[gd_scene load_steps=9 format=3 uid="uid://dqumry5aefw8u"]
 
-[ext_resource type="Script" path="res://scripts/interactable.gd" id="1_y83jr"]
+[ext_resource type="Script" path="res://scripts/key.gd" id="1_2jh12"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6xadb"]
 size = Vector3(36.5, 16.26, 3.3)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3hf6w"]
+animation = &"key_dislodge"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6duhm"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vv1dx"]
+states/key_dislodge/node = SubResource("AnimationNodeAnimation_3hf6w")
+states/key_dislodge/position = Vector2(455, 100)
+transitions = ["Start", "key_dislodge", SubResource("AnimationNodeStateMachineTransition_6duhm")]
+
+[sub_resource type="Animation" id="Animation_mpini"]
+resource_name = "key_dislodge"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(6.83914, 13.5897, 0), Vector3(5.19126, 19.1252, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:quaternion")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Quaternion(0, 0, -0.592048, 0.805902), Quaternion(0, 0, -0.719534, 0.694457)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.12086, 22.8621, 0), Vector3(4.76874, 29.1065, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh:quaternion")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Quaternion(0.698753, 0.108372, 0.108372, 0.698753), Quaternion(0.70702, -0.011076, -0.011076, 0.70702)]
+}
+
+[sub_resource type="Animation" id="Animation_xbm4g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6.83914, 13.5897, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:quaternion")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Quaternion(0, 0, -0.592048, 0.805902)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.12086, 22.8621, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh:quaternion")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Quaternion(0.698753, 0.108372, 0.108372, 0.698753)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_17y0j"]
+_data = {
+"RESET": SubResource("Animation_xbm4g"),
+"key_dislodge": SubResource("Animation_mpini")
+}
+
 [node name="Key" type="AnimatableBody3D"]
-script = ExtResource("1_y83jr")
+script = ExtResource("1_2jh12")
 link_to_item = true
-item_name = "Balloon"
+item_names = PackedStringArray("ItemBalloon", "ItemPulley")
 
 [node name="Mesh" type="CSGCylinder3D" parent="."]
-transform = Transform3D(3.82137e-14, 8.74228e-07, 20, 20, -8.74228e-07, 0, 8.74228e-07, 20, -8.74228e-07, 0, 8, 0)
+transform = Transform3D(19.0604, 0, 6.05804, 6.05804, 2.38419e-06, -19.0604, 0, 20, 2.38419e-06, 3.12086, 22.8621, 0)
+rotation_edit_mode = 1
 radius = 0.405
 height = 0.166
 
@@ -39,5 +159,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129204, 0.000439501, 1.2876
 size = Vector3(0.2, 0.0811523, 0.1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.96, 7.77617, 0)
+transform = Transform3D(0.298958, 0.954267, 0, -0.954267, 0.298958, 0, 0, 0, 1, 6.83914, 13.5897, 0)
+rotation_edit_mode = 1
 shape = SubResource("BoxShape3D_6xadb")
+
+[node name="BalloonPos" type="Node3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.96, 8.20717, 0)
+
+[node name="RopePos" type="Node3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.96, 8.20717, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_vv1dx")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_17y0j")
+}

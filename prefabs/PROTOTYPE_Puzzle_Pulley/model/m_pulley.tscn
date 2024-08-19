@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://da1f4n3w1wx4o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g5n2s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tvqc"]
+albedo_color = Color(1, 0, 1, 1)
+
+[node name="PulleyModel" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_g5n2s")
+surface_material_override/0 = SubResource("StandardMaterial3D_4tvqc")

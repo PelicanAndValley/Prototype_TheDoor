@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://gmsgwlhxnbi3"]
+
+[ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/platform.gd" id="1_bqbr5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_65ufb"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xgib"]
+albedo_color = Color(0.4, 0.3, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ake1"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6m3l7"]
+size = Vector3(0.9, 0.1, 0.9)
+
+[node name="Platform" type="AnimatableBody3D"]
+script = ExtResource("1_bqbr5")
+
+[node name="PlatformModel" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_65ufb")
+surface_material_override/0 = SubResource("StandardMaterial3D_1xgib")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5ake1")
+
+[node name="Trigger" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_6m3l7")
+
+[connection signal="body_entered" from="Trigger" to="." method="on_trigger"]
+[connection signal="body_exited" from="Trigger" to="." method="on_trigger_exit"]

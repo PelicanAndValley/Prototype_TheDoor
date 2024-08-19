@@ -7,14 +7,17 @@ signal on_interact (player, point);
 @export
 var link_to_item : bool = false;
 @export
-var item_name : String;
+var item_names : PackedStringArray;
 
 func can_interact (player: Player) -> bool:
 	if !link_to_item:
 		return true;
 	if !player.current_item:
 		return false;
-	return player.current_item.name == item_name;
+	for name in item_names:
+		if player.current_item.name == name:
+			return true;
+	return false;
 
 func interact (player: Player, point: Vector3, normal: Vector3) -> void:
 	if link_to_item and can_interact(player):

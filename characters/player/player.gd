@@ -53,6 +53,7 @@ var _thrown_grappling_hook : GrapplingHook;
 var _ui : Control;
 var _climbing : Climbable;
 var _item_hold_anim : AnimationNodeStateMachinePlayback;
+var _held_rope : HangingRope = null;
 
 func _ready() -> void:
 	_camera = $Camera3D;
@@ -60,7 +61,7 @@ func _ready() -> void:
 	_grapple_raycast = $Camera3D/GrappleRaycast;
 	_collision = $CollisionShape3D;
 	_crosshair = $UI/Crosshair;
-	_grapple_throw_position = $GrappleThrowPosition;
+	_grapple_throw_position = $Camera3D/GrappleThrowPosition;
 	_item_hold_pos = $UI/ItemHold/SubViewport/ItemHoldCam/ItemHoldPos;
 	_ui = $UI;
 	var item_hold_anim_tree : AnimationTree = $UI/ItemHold/SubViewport/ItemHoldCam/ItemHoldPos/AnimationTree;
@@ -96,7 +97,7 @@ func throw_grappling_hook(grappleable: Grappleable, hit_pos: Vector3) -> void:
 	_thrown_grappling_hook = grappling_hook.instantiate();
 	add_sibling(_thrown_grappling_hook);
 	_thrown_grappling_hook.global_position = _grapple_throw_position.global_position;
-	_thrown_grappling_hook.throw(grappleable, hit_pos, grapple_throw_strength);
+	_thrown_grappling_hook.throw(_grapple_throw_position.global_position, grappleable, hit_pos, grapple_throw_strength);
 	consume_current_item();
 
 func climb (climbable: Climbable) -> void:
@@ -135,6 +136,7 @@ func equip_item (item: PackedScene) -> void:
 func consume_current_item () -> void:
 	items.remove_at(item_idx);
 	current_item.queue_free();
+	current_item = null;
 	if item_idx > items.size() - 1:
 		item_idx = 0;
 	cycle_item();

@@ -17,5 +17,6 @@ interact = ExtResource("3_mtr7h")
 grapple = ExtResource("4_3wjgj")
 
 [node name="CrosshairTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("2_flubn")

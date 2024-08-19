@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctoupxt2dsnu5"]
+[gd_scene load_steps=18 format=3 uid="uid://ctoupxt2dsnu5"]
 
 [ext_resource type="PackedScene" uid="uid://7xb1q1u0cfe2" path="res://prefabs/PROTOTYPE_Door_big_door/big_door.tscn" id="2_g3r4l"]
 [ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_kq0e6"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dqumry5aefw8u" path="res://prefabs/PROTOTYPE_Puzzle_Key/key.tscn" id="5_towop"]
 [ext_resource type="Script" path="res://scripts/grappleable.gd" id="5_uypyd"]
 [ext_resource type="PackedScene" uid="uid://bludm1x4lop13" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/env_grappling_hook.tscn" id="6_neowm"]
+[ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="7_s6ys5"]
+[ext_resource type="PackedScene" uid="uid://dn3l7r3e5mkev" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/anchor.tscn" id="8_c17as"]
+[ext_resource type="PackedScene" uid="uid://gmsgwlhxnbi3" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/platform.tscn" id="9_rc5on"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ftavj"]
 size = Vector3(5, 1, 5)
@@ -78,8 +81,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 32.2769)
 [node name="EnvGrapplingHook" parent="." instance=ExtResource("6_neowm")]
 transform = Transform3D(1, 0, 0, 0, 0.514574, -0.857446, 0, 0.857446, 0.514574, -16.3781, 0.176285, 32.931)
 
-[node name="Key" parent="." instance=ExtResource("5_towop")]
-transform = Transform3D(0.499859, 0.164113, -0.850417, -0.311937, 0.950103, 0, 0.807983, 0.265276, 0.52611, -5.56341, -0.807901, 27.697)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_l55qw")
+
+[node name="EnvPulley" parent="." instance=ExtResource("7_s6ys5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.25, 33)
+
+[node name="Anchor" parent="." instance=ExtResource("8_c17as")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56799, 200, 16.3182)
+
+[node name="KeyPos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64.7131)
+
+[node name="Key" parent="KeyPos" instance=ExtResource("5_towop")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Platform" parent="KeyPos" instance=ExtResource("9_rc5on")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87469, 199.357, -47.3963)

@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 		var new_pos = _original_pos + total_movement;
 		look_at(position + (new_pos - global_position));
 		global_position = new_pos;
+		print(global_position);
 	# Just landed
 	elif grappled and thrown:
 		thrown = false;
@@ -56,7 +57,7 @@ func on_hook_collided ():
 func _physics_process(delta: float) -> void:
 	pass;
 
-func throw (grappleable: Grappleable, hit_pos: Vector3, speed : float = 10) -> void:
+func throw (og_pos : Vector3, grappleable: Grappleable, hit_pos: Vector3, speed : float = 10) -> void:
 	target = grappleable;
 	var end_pos : Vector3;
 	if grappleable.grapple_position:
@@ -64,7 +65,8 @@ func throw (grappleable: Grappleable, hit_pos: Vector3, speed : float = 10) -> v
 	else:
 		end_pos = hit_pos;
 	grappleable.connect_hook(self);
-	_original_pos = global_position;
+	_original_pos = og_pos;
+	print(str("ORIGINAL POS ", _original_pos));
 	_move_vector = end_pos - _original_pos;
 	_speed = speed;
 	thrown = true;

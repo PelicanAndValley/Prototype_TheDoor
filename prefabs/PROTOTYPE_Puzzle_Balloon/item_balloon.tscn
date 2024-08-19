@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dni6v0r0d64y3" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/place_baloon.tscn" id="2_7ewtn"]
 [ext_resource type="PackedScene" uid="uid://dgxt25hhdt7hi" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/model/m_balloon.tscn" id="3_4xmud"]
 
-[node name="Balloon" type="Node3D"]
+[node name="ItemBalloon" type="Node3D"]
 script = ExtResource("1_lfm2x")
 place_balloon = ExtResource("2_7ewtn")
 

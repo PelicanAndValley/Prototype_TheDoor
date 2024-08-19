@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0qvn1cn44uwe"]
+
+[ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_HangingRope/hanging_rope.gd" id="1_xa1ti"]
+[ext_resource type="PackedScene" uid="uid://dhiswifgygjim" path="res://prefabs/PROTOTYPE_Puzzle_HangingRope/model/m_rope_segment.tscn" id="2_dsqsg"]
+
+[node name="HangingRope" type="Node3D"]
+script = ExtResource("1_xa1ti")
+follow_speed = 20.0
+
+[node name="RopeSegmentModel" parent="." instance=ExtResource("2_dsqsg")]
