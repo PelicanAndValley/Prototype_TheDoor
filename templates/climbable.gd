@@ -1,4 +1,4 @@
-extends AnimatableBody3D
+extends Node3D
 
 class_name Climbable;
 
@@ -88,7 +88,7 @@ func _physics_process(delta: float) -> void:
 				_hopping = false;
 		elif _player.is_on_floor():
 			if !_just_entered:
-				var clearance_pos = _player.global_position + (global_basis.z * clearance);
+				var clearance_pos = _player.global_position - (global_basis.x * clearance);
 				exit_to_pos(clearance_pos);
 		else:
 			_just_entered = false;

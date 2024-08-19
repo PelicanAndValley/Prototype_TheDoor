@@ -6,4 +6,5 @@
 [node name="RopeLength2" instance=ExtResource("1_2iytl")]
 
 [node name="RopeLength" parent="." index="0"]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-08, 10, 0, -1, -4.37114e-07, 0, 0, 0)
 surface_material_override/0 = ExtResource("2_owukg")

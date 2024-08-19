@@ -2,8 +2,14 @@ extends Interactable;
 
 class_name Key;
 
-var _balloon_pos : Node3D;
+@export
+var balloon : Node3D;
+@export
+var balloon_rope : Node3D;
+@export
 var _rope_pos : Node3D;
+@export
+var anim_tree : AnimationTree;
 var _anim_playback : AnimationNodeStateMachinePlayback;
 var _velocity : Vector3;
 
@@ -19,21 +25,15 @@ var acceleration : float;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_balloon_pos = $BalloonPos;
-	_rope_pos = $RopePos;
-	_anim_playback = get_node("../AnimationTree")["parameters/playback"];
+	_anim_playback = anim_tree["parameters/playback"];
+	balloon.visible = false;
+	balloon_rope.visible = false;
 
 func dislodge () -> void:
-	_anim_playback.travel("key_dislodge");
+	_anim_playback.travel("Rise");
+	has_balloon = true;
+	balloon.visible = true;
+	balloon_rope.visible = true;
 
 func _physics_process(delta: float) -> void:
-	if can_move:
-		print("MOVING");
-		var target_velocity = Vector3.UP * speed * delta;
-		var height_diff = key_up_pos.global_position.y - get_parent_node_3d().global_position.y;
-		if height_diff < 1:
-			target_velocity = Vector3.ZERO;
-		print(height_diff);
-		print(target_velocity);
-		_velocity = lerp (_velocity, target_velocity, acceleration * delta);
-		get_parent_node_3d().global_position += _velocity;
+	pass;

@@ -189,7 +189,7 @@ func _physics_process(delta: float) -> void:
 			_v_speed = lerp(_v_speed, target_v_speed, acceleration * delta);
 			velocity = Vector3.ZERO;
 			velocity.y = _v_speed * -_cur_direction.y;
-			velocity += _h_speed * _cur_direction.x * _climbing.global_basis.x;
+			velocity += _h_speed * _cur_direction.x * _climbing.global_basis.z;
 	
 	move_and_slide();
 	

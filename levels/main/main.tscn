@@ -1,8 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://eq1vhbs1qqn3"]
+[gd_scene load_steps=24 format=3 uid="uid://eq1vhbs1qqn3"]
 
 [ext_resource type="PackedScene" uid="uid://dxj6mqao7vyv1" path="res://prefabs/BLOCKOUT_Cave/model_floor/Blockout_Cave_Floor.tscn" id="1_dgxyr"]
 [ext_resource type="PackedScene" uid="uid://c2m5x78plefiv" path="res://prefabs/MAIN_Cave/Walls/Cave_Wall.tscn" id="1_eenla"]
-[ext_resource type="PackedScene" path="res://prefabs/MAIN_Door_Base/door_base.tscn" id="3_8gru8"]
+[ext_resource type="PackedScene" uid="uid://bqrch0mqe7w6" path="res://prefabs/MAIN_Door_Base/door_base.tscn" id="3_8gru8"]
 [ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_ht0e7"]
 [ext_resource type="PackedScene" uid="uid://bba6fjg537d6d" path="res://prefabs/MAIN_Cave/Main_Environment.tscn" id="4_bpwuy"]
 [ext_resource type="PackedScene" uid="uid://cbofi3hbjfyp5" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/item_pulley.tscn" id="6_4002e"]
@@ -17,8 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://dra8k3tk823up" path="res://prefabs/MAIN_Vines/Vine_03.tscn" id="16_pbov8"]
 [ext_resource type="PackedScene" uid="uid://tg1jhxgfsofy" path="res://prefabs/MAIN_Vines/Vine_Over_Handle.tscn" id="17_ugcm0"]
 [ext_resource type="PackedScene" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="18_v2u5q"]
-[ext_resource type="PackedScene" uid="uid://c1f08mfvckxrh" path="res://prefabs/MAIN_Balloon/Balloon_Key_Anim.tscn" id="19_q3klv"]
+[ext_resource type="PackedScene" uid="uid://bn70o146l2t40" path="res://prefabs/MAIN_Balloon/Balloon_Key_Anim.tscn" id="19_q3klv"]
 [ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="19_qi4wh"]
+[ext_resource type="PackedScene" uid="uid://ctxvrp188j7of" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/env_balloon.tscn" id="20_svckx"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kknuy"]
 frequency = 0.29
@@ -133,7 +134,15 @@ transform = Transform3D(-0.250718, 0, -0.96806, 0, 1, 0, 0.96806, 0, -0.250718, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38875, -0.292004, 104.896)
 
 [node name="Player" parent="." instance=ExtResource("3_ht0e7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60536, -0.453512, 109.314)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60536, -0.453512, 36.9581)
 
 [node name="Balloon_Key_Anim" parent="." instance=ExtResource("19_q3klv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4016, 0.389378, 15.2508)
+transform = Transform3D(0.825488, 0, -0.56442, 0, 1, 0, 0.56442, 0, 0.825488, -11.4016, 0.389378, 15.2508)
+
+[node name="HangingRope" parent="Balloon_Key_Anim/Balloon" index="2"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -1.1944, -6.8163, 1.04411)
+
+[node name="EnvBalloon" parent="." instance=ExtResource("20_svckx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.630499, -0.128932, 100.684)
+
+[editable path="Balloon_Key_Anim"]

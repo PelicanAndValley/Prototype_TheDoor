@@ -50,6 +50,8 @@ func _process(delta: float) -> void:
 	else:
 		if end:
 			end_pos = end.global_position;
+		else:
+			end_pos = global_position + Vector3.FORWARD;
 		if start:
 			start_pos = start.global_position;
 	global_position = start_pos;
