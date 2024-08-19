@@ -15,6 +15,57 @@ states/key_dislodge/node = SubResource("AnimationNodeAnimation_3hf6w")
 states/key_dislodge/position = Vector2(455, 100)
 transitions = ["Start", "key_dislodge", SubResource("AnimationNodeStateMachineTransition_6duhm")]
 
+[sub_resource type="Animation" id="Animation_xbm4g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6.83914, 13.5897, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:quaternion")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Quaternion(0, 0, -0.592048, 0.805902)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.12086, 22.8621, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh:quaternion")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Quaternion(0.698753, 0.108372, 0.108372, 0.698753)]
+}
+
 [sub_resource type="Animation" id="Animation_mpini"]
 resource_name = "key_dislodge"
 length = 2.0
@@ -67,57 +118,6 @@ tracks/3/keys = {
 "values": [Quaternion(0.698753, 0.108372, 0.108372, 0.698753), Quaternion(0.70702, -0.011076, -0.011076, 0.70702)]
 }
 
-[sub_resource type="Animation" id="Animation_xbm4g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(6.83914, 13.5897, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:quaternion")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Quaternion(0, 0, -0.592048, 0.805902)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(3.12086, 22.8621, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh:quaternion")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Quaternion(0.698753, 0.108372, 0.108372, 0.698753)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_17y0j"]
 _data = {
 "RESET": SubResource("Animation_xbm4g"),
@@ -130,7 +130,7 @@ link_to_item = true
 item_names = PackedStringArray("ItemBalloon", "ItemPulley")
 
 [node name="Mesh" type="CSGCylinder3D" parent="."]
-transform = Transform3D(19.0604, 0, 6.05804, 6.05804, 2.38419e-06, -19.0604, 0, 20, 2.38419e-06, 3.12086, 22.8621, 0)
+transform = Transform3D(19.0604, 0, 6.05801, 6.05801, 1.19209e-06, -19.0604, 0, 20, 1.19209e-06, 3.12086, 22.8621, 0)
 rotation_edit_mode = 1
 radius = 0.405
 height = 0.166

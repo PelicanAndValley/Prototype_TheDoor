@@ -94,7 +94,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56799, 200, 16.3182)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64.7131)
 
 [node name="Key" parent="KeyPos" instance=ExtResource("5_towop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Platform" parent="KeyPos" instance=ExtResource("9_rc5on")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87469, 199.357, -47.3963)
