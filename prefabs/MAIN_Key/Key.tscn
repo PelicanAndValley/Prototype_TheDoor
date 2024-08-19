@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8trni3ajtxaw"]
+
+[ext_resource type="PackedScene" uid="uid://bhchrd1k21xbh" path="res://prefabs/MAIN_Key/Key.glb" id="1_yqd2d"]
+[ext_resource type="Material" uid="uid://beg0v0r24fcp4" path="res://prefabs/MAIN_Key/Key_Material.tres" id="2_yntch"]
+
+[node name="Key" instance=ExtResource("1_yqd2d")]
+
+[node name="Cylinder_001" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_yntch")

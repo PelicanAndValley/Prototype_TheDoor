@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://beg0v0r24fcp4"]
+
+[ext_resource type="Texture2D" uid="uid://byl22cx2mmxxw" path="res://prefabs/MAIN_Key/Key_d.png" id="1_6uta7"]
+[ext_resource type="Texture2D" uid="uid://b7usg6cn63bm5" path="res://prefabs/MAIN_Key/Key_m.png" id="2_0lwe5"]
+[ext_resource type="Texture2D" uid="uid://bkgevwut8co14" path="res://prefabs/MAIN_Key/Key_n.png" id="3_avf7e"]
+[ext_resource type="Texture2D" uid="uid://b7vojjk1w84tc" path="res://prefabs/MAIN_Key/Key_r.png" id="4_geija"]
+
+[resource]
+albedo_texture = ExtResource("1_6uta7")
+metallic = 1.0
+metallic_specular = 0.57
+metallic_texture = ExtResource("2_0lwe5")
+roughness_texture = ExtResource("4_geija")
+normal_enabled = true
+normal_texture = ExtResource("3_avf7e")

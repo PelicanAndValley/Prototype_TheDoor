@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnv2ffmosep22"]
+
+[ext_resource type="PackedScene" uid="uid://bc6w17b7805ej" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Handle.glb" id="1_tluou"]
+[ext_resource type="Material" uid="uid://bjtsilgbuoo3g" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Bits_Material.tres" id="2_5m4kc"]
+
+[node name="Door_Handle" instance=ExtResource("1_tluou")]
+
+[node name="DoorHandle" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_5m4kc")

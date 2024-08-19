@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3h7qsmoj5ro8"]
+
+[ext_resource type="PackedScene" uid="uid://bax3cefbefbt2" path="res://prefabs/MAIN_Door_Base/Door_Base.glb" id="1_trefj"]
+[ext_resource type="PackedScene" uid="uid://bnv2ffmosep22" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Handle.tscn" id="2_nin17"]
+[ext_resource type="Material" uid="uid://cx4i42448mhty" path="res://prefabs/MAIN_Door_Base/DoorBase/Door_Base_Material.tres" id="2_um1p0"]
+[ext_resource type="PackedScene" uid="uid://d0182e4ual523" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Keyhole.tscn" id="3_dnmja"]
+[ext_resource type="PackedScene" uid="uid://cc8gwsp7am24y" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Latch.tscn" id="4_n0udy"]
+
+[node name="Door_Base" instance=ExtResource("1_trefj")]
+
+[node name="Door_Handle" parent="." index="0" instance=ExtResource("2_nin17")]
+
+[node name="Door_Keyhole" parent="." index="1" instance=ExtResource("3_dnmja")]
+
+[node name="Door_Latch" parent="." index="2" instance=ExtResource("4_n0udy")]
+
+[node name="DoorL" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_um1p0")
+
+[node name="DoorR" parent="." index="4"]
+material_override = ExtResource("2_um1p0")

@@ -1,9 +1,9 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cuh54pdcy0jyt"]
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://dcj8eaoy383tq"]
 
-[ext_resource type="Texture2D" uid="uid://cakhogashl31e" path="res://levels/main/nightsky.exr" id="1_inok0"]
+[ext_resource type="Texture2D" uid="uid://dadd2p33m1sdp" path="res://levels/main/dikhololo_night_4k.exr" id="1_jsyfh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n33qw"]
-panorama = ExtResource("1_inok0")
+panorama = ExtResource("1_jsyfh")
 
 [sub_resource type="Sky" id="Sky_pxwa2"]
 sky_material = SubResource("PanoramaSkyMaterial_n33qw")

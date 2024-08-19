@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0182e4ual523"]
+
+[ext_resource type="PackedScene" uid="uid://bo1jqqr83wj33" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Keyhole.glb" id="1_265v8"]
+[ext_resource type="Material" uid="uid://bjtsilgbuoo3g" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Bits_Material.tres" id="2_7owh0"]
+
+[node name="Door_Keyhole" instance=ExtResource("1_265v8")]
+
+[node name="Plane_001" parent="." index="0"]
+material_override = ExtResource("2_7owh0")
