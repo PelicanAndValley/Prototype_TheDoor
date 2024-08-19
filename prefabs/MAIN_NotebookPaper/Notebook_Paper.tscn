@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://de3pef5ytyhp2"]
+
+[ext_resource type="PackedScene" uid="uid://n5r3d6i6vf0b" path="res://prefabs/MAIN_NotebookPaper/Notebook_Paper.glb" id="1_tyat3"]
+[ext_resource type="Material" uid="uid://diwtxtcab4uv" path="res://prefabs/MAIN_NotebookPaper/Notebook_Paper_Material.tres" id="2_e44sk"]
+
+[node name="Notebook_Paper" instance=ExtResource("1_tyat3")]
+transform = Transform3D(1.87968, 0, 0, 0, 1.87968, 0, 0, 0, 1.87968, 0, 0, 0)
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_e44sk")

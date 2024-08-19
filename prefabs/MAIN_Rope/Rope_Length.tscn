@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://enxdn03vgyft"]
+
+[ext_resource type="PackedScene" uid="uid://bvsmwxbkdwxvt" path="res://prefabs/MAIN_Rope/RopeLength.glb" id="1_2iytl"]
+[ext_resource type="Material" uid="uid://bhkhthns5l5cs" path="res://prefabs/_MAIN_SHARED/Rope_Material.tres" id="2_owukg"]
+
+[node name="RopeLength2" instance=ExtResource("1_2iytl")]
+
+[node name="RopeLength" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_owukg")
