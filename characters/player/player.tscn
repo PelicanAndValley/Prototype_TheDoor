@@ -191,7 +191,7 @@ layout_mode = 1
 offset_right = 354.0
 offset_bottom = 40.0
 mouse_filter = 1
-text = "FPS: 145"
+text = "FPS: 140"
 script = ExtResource("4_bf4aw")
 
 [node name="Crosshair" parent="UI" instance=ExtResource("2_jyjei")]
@@ -211,11 +211,13 @@ current = true
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_vwlx0")
+volume_db = -5.0
 autoplay = true
 script = ExtResource("10_1b64p")
 
 [node name="AmbiencePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_bnn2t")
+volume_db = -5.0
 autoplay = true
 
 [node name="EffectPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,17 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://xesaaq3gl00m"]
+[gd_scene load_steps=7 format=3 uid="uid://xesaaq3gl00m"]
 
 [ext_resource type="PackedScene" uid="uid://cvetwn2ebaidd" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/model/s_grappling_hook.tscn" id="1_7i320"]
 [ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/grappling_hook.gd" id="2_oksrg"]
 [ext_resource type="PackedScene" uid="uid://ci3871kkc4v6y" path="res://particles/glint/glint.tscn" id="2_w21am"]
 [ext_resource type="AudioStream" uid="uid://6mqjkeu6fjvk" path="res://sounds/grapple/Throw.wav" id="4_yba8b"]
+[ext_resource type="AudioStream" uid="uid://cx1u1oxxqejwo" path="res://sounds/grapple/Hook_Hit_Distant.ogg" id="5_0qwur"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hqd6b"]
 radius = 0.275
 
-[node name="GrapplingHook" type="Area3D"]
+[node name="GrapplingHook" type="Area3D" node_paths=PackedStringArray("hit_audio")]
 script = ExtResource("2_oksrg")
 vertical_rise = 0.1
 land_particle = ExtResource("2_w21am")
+hit_audio = NodePath("Hit")
 
 [node name="GrapplingHookModel" parent="." instance=ExtResource("1_7i320")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -20,6 +22,10 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.134)
 shape = SubResource("SphereShape3D_hqd6b")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="Throw" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_yba8b")
 autoplay = true
+
+[node name="Hit" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_0qwur")
+volume_db = 20.0

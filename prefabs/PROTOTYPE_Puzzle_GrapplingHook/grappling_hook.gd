@@ -8,6 +8,8 @@ var vertical_rise : float = 20;
 var land_particle : PackedScene;
 @export
 var rope_climable : PackedScene;
+@export
+var hit_audio : AudioStreamPlayer3D;
 
 var target : Grappleable;
 var grappled : bool = false;
@@ -52,6 +54,7 @@ func _process(delta: float) -> void:
 
 func on_hook_collided ():
 	grappled = true;
+	hit_audio.play();
 
 func _physics_process(delta: float) -> void:
 	pass;
