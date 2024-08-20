@@ -7,9 +7,10 @@
 [ext_resource type="Material" uid="uid://o4o0no0qg0le" path="res://prefabs/MAIN_Trees/Tree_Material/Tree_Frond03_Material.tres" id="5_lomdy"]
 
 [node name="Tree01" instance=ExtResource("1_xjhos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.438915, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.438915, 0)
 
 [node name="Trunk" parent="." index="0"]
+transform = Transform3D(-1, -3.89414e-07, 0, 3.89414e-07, -1, 0, 0, 0, 1, 0, 0.349758, 0)
 surface_material_override/0 = ExtResource("2_j5qms")
 
 [node name="Frond01" parent="." index="1"]

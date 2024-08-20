@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bu0flyhxqq8rj"]
+
+[ext_resource type="Texture2D" uid="uid://dxvvmmg11w772" path="res://prefabs/MAIN_Boathook/Boathook_d.png" id="1_1kclt"]
+[ext_resource type="Texture2D" uid="uid://hs0y1b43kkta" path="res://prefabs/MAIN_Boathook/Boathook_m.png" id="2_wsv6t"]
+[ext_resource type="Texture2D" uid="uid://qj48igshpbv5" path="res://prefabs/MAIN_Boathook/Boathook_n.png" id="3_ognhq"]
+[ext_resource type="Texture2D" uid="uid://hyom0o3v2epv" path="res://prefabs/MAIN_Boathook/Boathook_r.png" id="4_atf6g"]
+
+[resource]
+albedo_texture = ExtResource("1_1kclt")
+metallic = 1.0
+metallic_specular = 0.66
+metallic_texture = ExtResource("2_wsv6t")
+roughness = 0.9
+roughness_texture = ExtResource("4_atf6g")
+normal_enabled = true
+normal_texture = ExtResource("3_ognhq")

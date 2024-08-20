@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://5jwjnl8vx2sy"]
+
+[ext_resource type="PackedScene" uid="uid://bau0adkfyclq7" path="res://prefabs/MAIN_Rope/RopeCoil.glb" id="1_882k0"]
+[ext_resource type="Material" uid="uid://bhkhthns5l5cs" path="res://prefabs/_MAIN_SHARED/Rope_Material.tres" id="2_64mys"]
+
+[node name="RopeCoil" instance=ExtResource("1_882k0")]
+
+[node name="Rope" parent="." index="0"]
+material_override = ExtResource("2_64mys")

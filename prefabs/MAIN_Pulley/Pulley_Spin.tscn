@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgp14p04ndtx8"]
+
+[ext_resource type="PackedScene" uid="uid://cfvmqsfob0ga7" path="res://prefabs/MAIN_Pulley/Pulley_Spin.glb" id="1_ufi6a"]
+[ext_resource type="Material" uid="uid://dno1i41baqklt" path="res://prefabs/MAIN_Pulley/Pulley_Material.tres" id="2_tchxi"]
+
+[node name="Pulley_Spin" instance=ExtResource("1_ufi6a")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="Pulley" parent="." index="0"]
+material_override = ExtResource("2_tchxi")
+
+[node name="PulleyWheel" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -0.944505, -0.328496, 0, 0.328496, -0.944505, 0.455481, 0, 0)
+material_override = ExtResource("2_tchxi")

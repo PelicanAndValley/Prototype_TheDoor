@@ -51,15 +51,15 @@ vec4 sample_tiling(in sampler2D tex, vec2 uv, float margin)
 	//Amount to interpolate between neighbors
 	vec2 weights;
 	
-	if (frac.x < 0.5) {
+	if (frac.x < .5) {
 		cell.x -= 1.0;
-		weights.x = min(frac.x / margin, .5) + .51;
+		weights.x = min(frac.x / margin, .5) + .5;
 	}
 	else {
 		weights.x = .5 - min((1.0 - frac.x) / margin, .5);
 	}
 	
-	if (frac.y < 0.5) {
+	if (frac.y < .5) {
 		cell.y -= 1.0;
 		weights.y = min(frac.y / margin, .5) + .5;
 	}

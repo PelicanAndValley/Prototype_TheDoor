@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://orwogqaeu6pt"]
+
+[ext_resource type="PackedScene" uid="uid://s5yhin3g2iyq" path="res://prefabs/MAIN_Pulley/Pulley_Static.glb" id="1_svalo"]
+[ext_resource type="Material" uid="uid://dno1i41baqklt" path="res://prefabs/MAIN_Pulley/Pulley_Material.tres" id="2_4ykrk"]
+
+[node name="Pulley_Static" instance=ExtResource("1_svalo")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="Pulley" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_4ykrk")

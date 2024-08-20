@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bgghs01kyh27b"]
+
+[ext_resource type="Texture2D" uid="uid://bmbojuac614mm" path="res://prefabs/MAIN_Lighter/Lighter_d.png" id="1_1a4cd"]
+[ext_resource type="Texture2D" uid="uid://dv30piv6yu6cv" path="res://prefabs/MAIN_Lighter/Lighter_m.png" id="2_csv1h"]
+[ext_resource type="Texture2D" uid="uid://bxgjtbkdtphy6" path="res://prefabs/MAIN_Lighter/Lighter_n.png" id="3_1sy0d"]
+[ext_resource type="Texture2D" uid="uid://d3xywsklmdlxq" path="res://prefabs/MAIN_Lighter/Lighter_r.png" id="4_r0e8w"]
+
+[resource]
+albedo_texture = ExtResource("1_1a4cd")
+metallic = 0.94
+metallic_specular = 0.88
+metallic_texture = ExtResource("2_csv1h")
+roughness = 0.88
+roughness_texture = ExtResource("4_r0e8w")
+normal_enabled = true
+normal_texture = ExtResource("3_1sy0d")
