@@ -1,11 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0qvn1cn44uwe"]
+[gd_scene load_steps=10 format=3 uid="uid://c0qvn1cn44uwe"]
 
 [ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_HangingRope/hanging_rope.gd" id="1_xa1ti"]
 [ext_resource type="PackedScene" uid="uid://enxdn03vgyft" path="res://prefabs/MAIN_Rope/Rope_Length.tscn" id="2_1evlu"]
+[ext_resource type="AudioStream" uid="uid://5o3ld07y3m4t" path="res://sounds/rope/Straining_Rope_01.ogg" id="3_oo1x8"]
+[ext_resource type="AudioStream" uid="uid://dbf8ime2mqff" path="res://sounds/rope/Straining_Rope_02.ogg" id="4_vd8j7"]
+[ext_resource type="AudioStream" uid="uid://cnyijm264gppu" path="res://sounds/rope/Straining_Rope_03.ogg" id="5_3olmu"]
+[ext_resource type="AudioStream" uid="uid://fbjguhgpb3w" path="res://sounds/rope/Straining_Rope_04.ogg" id="6_lh1qx"]
+[ext_resource type="AudioStream" uid="uid://ct0php201mk7b" path="res://sounds/rope/Straining_Rope_05.ogg" id="7_drjco"]
 
-[node name="HangingRope" type="Node3D"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_utul8"]
+streams_count = 5
+stream_0/stream = ExtResource("3_oo1x8")
+stream_1/stream = ExtResource("4_vd8j7")
+stream_2/stream = ExtResource("5_3olmu")
+stream_3/stream = ExtResource("6_lh1qx")
+stream_4/stream = ExtResource("7_drjco")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_304ps"]
+streams_count = 5
+stream_0/stream = ExtResource("3_oo1x8")
+stream_1/stream = ExtResource("4_vd8j7")
+stream_2/stream = ExtResource("5_3olmu")
+stream_3/stream = ExtResource("6_lh1qx")
+stream_4/stream = ExtResource("7_drjco")
+
+[node name="HangingRope" type="Node3D" node_paths=PackedStringArray("audio_start", "audio_end")]
 script = ExtResource("1_xa1ti")
 follow_speed = 20.0
+audio_start = NodePath("StartAudio")
+audio_end = NodePath("RopeSegmentModel/EndAudio")
 
 [node name="RopeSegmentModel" parent="." instance=ExtResource("2_1evlu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="EndAudio" type="AudioStreamPlayer3D" parent="RopeSegmentModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+stream = SubResource("AudioStreamRandomizer_utul8")
+
+[node name="StartAudio" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_304ps")
+
+[connection signal="finished" from="RopeSegmentModel/EndAudio" to="." method="on_sound_finish_end"]
+[connection signal="finished" from="StartAudio" to="." method="on_sound_finish_start"]

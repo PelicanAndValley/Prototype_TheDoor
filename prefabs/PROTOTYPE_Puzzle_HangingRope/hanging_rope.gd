@@ -14,10 +14,16 @@ var start : Node3D;
 var end : Node3D;
 @export
 var segments : int = 5;
+@export
+var audio_start : AudioStreamPlayer3D;
+@export
+var audio_end : AudioStreamPlayer3D;
 
 var _player : Player;
 var _rope_segment: Node3D;
 var _smooth_pos : Vector3;
+@export
+var _make_sound : bool = false;
 
 func hold (player: Player):
 	_player = player;
@@ -28,9 +34,27 @@ func drop (point: Node3D):
 	_player = null;
 	end = point;
 
+func start_sound () -> void:
+	_make_sound = true;
+	audio_start.play();
+	audio_end.play();
+
+func stop_sound() -> void:
+	_make_sound = false;
+
+func on_sound_finish_start () -> void:
+	if _make_sound:
+		audio_start.play();
+
+func on_sound_finish_end () -> void:
+	if _make_sound:
+		audio_end.play();
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_rope_segment = $RopeSegmentModel;
+	if _make_sound:
+		start_sound();
 
 func position_segment (segment: Node3D, seg_start: Vector3, seg_end: Vector3) -> void:
 	var dif = seg_end - seg_start;

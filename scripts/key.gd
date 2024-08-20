@@ -12,6 +12,8 @@ var _rope_pos : Node3D;
 var anim_tree : AnimationTree;
 @export
 var sound : AudioStreamPlayer3D;
+@export
+var rope_sound : AudioStreamPlayer3D;
 
 var _anim_playback : AnimationNodeStateMachinePlayback;
 var _velocity : Vector3;
@@ -35,6 +37,7 @@ func _ready() -> void:
 
 func dislodge () -> void:
 	sound.play();
+	rope_sound.play();
 	_anim_playback.travel("Rise");
 	has_balloon = true;
 	balloon.process_mode = Node.PROCESS_MODE_INHERIT;

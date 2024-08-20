@@ -1,10 +1,11 @@
-[gd_scene load_steps=39 format=4 uid="uid://bn70o146l2t40"]
+[gd_scene load_steps=40 format=4 uid="uid://bn70o146l2t40"]
 
 [ext_resource type="Script" path="res://scripts/key.gd" id="1_m2f6o"]
 [ext_resource type="Material" uid="uid://beg0v0r24fcp4" path="res://prefabs/MAIN_Key/Key_Material.tres" id="2_x3sn0"]
 [ext_resource type="Material" uid="uid://bhkhthns5l5cs" path="res://prefabs/_MAIN_SHARED/Rope_Material.tres" id="3_8ty8r"]
 [ext_resource type="AudioStream" uid="uid://bws7phc7ygf8a" path="res://prefabs/MAIN_Balloon/Key_Pull_Balloon_Animation.ogg" id="4_vsxie"]
-[ext_resource type="Material" uid="uid://cmh45eojj4u0q" path="res://prefabs/MAIN_Balloon/Balloon_Material.tres" id="4_y4qbp"]
+[ext_resource type="Material" path="res://prefabs/MAIN_Balloon/Balloon_Material.tres" id="4_y4qbp"]
+[ext_resource type="AudioStream" uid="uid://dkt6brg82knl1" path="res://sounds/key/Rope_Giant_Straining.ogg" id="5_hwj2u"]
 [ext_resource type="PackedScene" uid="uid://c0qvn1cn44uwe" path="res://prefabs/PROTOTYPE_Puzzle_HangingRope/hanging_rope.tscn" id="5_kmdux"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdkwx"]
@@ -441,11 +442,11 @@ states/End/position = Vector2(1358, 103)
 states/Rise/node = SubResource("AnimationNodeBlendTree_e7gmy")
 states/Rise/position = Vector2(811, 93)
 transitions = ["Start", "BalloonAnim_Static", SubResource("AnimationNodeStateMachineTransition_s3hyk"), "BalloonAnim_Static", "Rise", SubResource("AnimationNodeStateMachineTransition_48nkf")]
-graph_offset = Vector2(26, -6)
+graph_offset = Vector2(360, -23)
 
 [node name="Balloon_Key_Anim" type="Node3D"]
 
-[node name="Key" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("balloon", "balloon_rope", "_rope_pos", "anim_tree", "sound")]
+[node name="Key" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("balloon", "balloon_rope", "_rope_pos", "anim_tree", "sound", "rope_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2877, 15.9915, -5.18135)
 sync_to_physics = false
 script = ExtResource("1_m2f6o")
@@ -453,7 +454,8 @@ balloon = NodePath("../Balloon")
 balloon_rope = NodePath("../BalloonRope")
 _rope_pos = NodePath(".")
 anim_tree = NodePath("../AnimationTree")
-sound = NodePath("AudioStreamPlayer3D")
+sound = NodePath("DislodgeSound")
+rope_sound = NodePath("RopeSound")
 speed = 5.0
 acceleration = 10.0
 link_to_item = true
@@ -475,9 +477,13 @@ material_override = ExtResource("3_8ty8r")
 mesh = SubResource("ArrayMesh_t3n6c")
 skeleton = NodePath("")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Key"]
+[node name="DislodgeSound" type="AudioStreamPlayer3D" parent="Key"]
 stream = ExtResource("4_vsxie")
 volume_db = 22.857
+
+[node name="RopeSound" type="AudioStreamPlayer3D" parent="Key"]
+stream = ExtResource("5_hwj2u")
+volume_db = 5.0
 
 [node name="Balloon" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4821, 22.8078, -6.22546)

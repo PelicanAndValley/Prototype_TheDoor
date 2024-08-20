@@ -15,6 +15,7 @@ func _ready () -> void:
 
 func interacting (player: Player, point: Vector3) -> void:
 	if player._held_rope:
+		player._held_rope.start_sound();
 		player._held_rope.drop(_anchor_pos);
 
 func can_interact (player: Player) -> bool:

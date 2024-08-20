@@ -12,6 +12,8 @@ var can_move : bool = false;
 var key : Node3D;
 @export
 var anchor : Anchor;
+@export
+var rope : HangingRope;
 
 var _player : Player;
 var _velocity : Vector3;
@@ -46,11 +48,9 @@ func _physics_process(delta: float) -> void:
 	
 	translate(_velocity);
 	key.translate(-_velocity);
-	print(_velocity.length())
+	
 	if _velocity.length() > 0.1 * delta and !anchor.audio.playing:
-		print("PLAY")
 		anchor.audio.playing = true;
 		#anchor.audio.volume_db = anchor.volume * _velocity.length();
 	elif _velocity.length() <= 0.1 * delta and anchor.audio.playing:
-		print("STOP")
 		anchor.audio.playing = false;
