@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cnfa7h5b2dq44"
-path="res://.godot/imported/Door_Latch.glb-32edb096344e7f263d2ad89d3020b931.scn"
+uid="uid://bgh2q6iv7l4rm"
+path="res://.godot/imported/Door_Latch_L.glb-a25a193ae52870beedc17d983681205d.scn"
 
 [deps]
 
-source_file="res://prefabs/MAIN_Door_Base/DoorBits/Door_Latch.glb"
-dest_files=["res://.godot/imported/Door_Latch.glb-32edb096344e7f263d2ad89d3020b931.scn"]
+source_file="res://prefabs/MAIN_Door_Base/DoorBits/Door_Latch_L.glb"
+dest_files=["res://.godot/imported/Door_Latch_L.glb-a25a193ae52870beedc17d983681205d.scn"]
 
 [params]
 
