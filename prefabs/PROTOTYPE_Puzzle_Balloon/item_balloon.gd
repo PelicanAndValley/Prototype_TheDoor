@@ -2,9 +2,6 @@ extends Item
 
 class_name ItemBalloon;
 
-@export
-var place_balloon : PackedScene;
-
 func use (player: Player, point: Vector3, normal: Vector3, on: Interactable = null) -> void:
 	var key = on as Key;
 	key.dislodge();

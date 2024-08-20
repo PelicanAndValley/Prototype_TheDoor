@@ -11,6 +11,10 @@ var _rope_pos : Node3D;
 @export
 var anim_tree : AnimationTree;
 @export
+var key_turn_model : Node3D;
+@export
+var key_turn_anim : AnimationTree;
+@export
 var sound : AudioStreamPlayer3D;
 @export
 var rope_sound : AudioStreamPlayer3D;
@@ -28,6 +32,8 @@ var speed : float;
 @export
 var acceleration : float;
 
+var _in_place : bool = false;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_anim_playback = anim_tree["parameters/playback"];
@@ -43,6 +49,12 @@ func dislodge () -> void:
 	balloon.process_mode = Node.PROCESS_MODE_INHERIT;
 	balloon.visible = true;
 	balloon_rope.visible = true;
+
+func put_in_lock () -> void:
+	print("PUTTING IN LOCK")
+	$KeyModel.visible = false;
+	key_turn_model.visible = true;
+	key_turn_anim["parameters/playback"].travel("Animation");
 
 func _physics_process(delta: float) -> void:
 	pass;

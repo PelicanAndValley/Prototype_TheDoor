@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddcm4o4wkgccd"]
+
+[ext_resource type="PackedScene" uid="uid://dlt2vvhiq0p3t" path="res://prefabs/MAIN_Boathook/Boathook.tscn" id="1_4nxlw"]
+[ext_resource type="Script" path="res://scripts/pickable.gd" id="1_hypk2"]
+[ext_resource type="PackedScene" uid="uid://d2im77d4pw6s7" path="res://prefabs/MAIN_Boathook/item_boathook.tscn" id="2_s2xdh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wfbw1"]
+size = Vector3(0.507629, 0.587517, 8.61011)
+
+[node name="EnvBoathook" type="Area3D"]
+script = ExtResource("1_hypk2")
+item = ExtResource("2_s2xdh")
+
+[node name="Boathook2" parent="." instance=ExtResource("1_4nxlw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.99972, 0, 0.0236645, 0, 1, 0, -0.0236645, 0, 0.99972, -0.0224843, 0.0961571, 0.274104)
+shape = SubResource("BoxShape3D_wfbw1")

@@ -139,6 +139,10 @@ func on_animation_finished (anim_name: StringName) -> void:
 			current_item.visible = false;
 		new_item.visible = true;
 		current_item = new_item;
+		if current_item.name == "ItemBoathook":
+			_interact_raycast.target_position.z = -20;
+		else:
+			_interact_raycast.target_position.z = -5;
 
 
 func equip_item (item: PackedScene) -> void:

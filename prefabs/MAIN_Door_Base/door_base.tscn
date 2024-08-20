@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://tg1jhxgfsofy" path="res://prefabs/MAIN_Vines/Vine_Over_Handle.tscn" id="19_bplxy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vfnks"]
-size = Vector3(2.56049, 0.778259, 0.488647)
+size = Vector3(2.56049, 1.20034, 0.488647)
 
 [sub_resource type="Animation" id="Animation_nymsj"]
 length = 0.001
@@ -87,7 +87,7 @@ data = PackedVector3Array(0.2151, 4.912, 3.1076, 60.3481, -0.0094, 3.1076, 0.215
 [node name="Door_Handle" parent="." index="0" instance=ExtResource("2_nin17")]
 
 [node name="AnchorPoint" type="StaticBody3D" parent="Door_Handle" index="0" node_paths=PackedStringArray("pulley_system")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.3613, 238.378, 15.0935)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22.656, 237.87, 14.3073)
 script = ExtResource("3_de63b")
 pulley_system = NodePath("../PulleySystem")
 link_to_item = true
@@ -96,12 +96,13 @@ item_names = PackedStringArray("ItemAnchor")
 [node name="AnchorPointModel" parent="Door_Handle/AnchorPoint" index="0" instance=ExtResource("11_ukte6")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Handle/AnchorPoint" index="1"]
-transform = Transform3D(0.998743, -0.0501223, 5.49463e-11, 0.0501223, 0.998743, -2.19092e-09, 5.49356e-11, 2.19092e-09, 1, -0.170013, -0.297592, -0.0022583)
+transform = Transform3D(0.998743, -0.0501223, 5.49463e-11, 0.0501223, 0.998743, -2.19092e-09, 5.49356e-11, 2.19092e-09, 1, -0.180592, -0.0868225, -0.0022583)
 shape = SubResource("BoxShape3D_vfnks")
 
 [node name="PulleySystem" type="Node3D" parent="Door_Handle" index="2" node_paths=PackedStringArray("_platform")]
 process_mode = 4
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6869, 132.713, 12.45)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9816, 132.205, 11.6638)
+visible = false
 script = ExtResource("7_xdxyc")
 _platform = NodePath("Platform")
 
