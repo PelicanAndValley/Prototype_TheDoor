@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnv2ffmosep22"]
+[gd_scene load_steps=5 format=3 uid="uid://bnv2ffmosep22"]
 
 [ext_resource type="PackedScene" uid="uid://bc6w17b7805ej" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Handle.glb" id="1_tluou"]
 [ext_resource type="Material" uid="uid://bjtsilgbuoo3g" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Bits_Material.tres" id="2_5m4kc"]
@@ -6,11 +6,8 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pk52e"]
 points = PackedVector3Array(11.4428, 257.537, -1.61657, 3.22174, 215.528, -1.61657, 4.1359, 211.877, -1.61657, 8.77739, 234.221, 0.621452, 3.22174, 257.537, 0.210326, 11.4428, 215.528, -1.61657, 5.04926, 209.136, 0.210326, 3.22174, 257.537, -1.61657, 11.4428, 257.537, 0.210326, 11.4428, 215.528, 0.210326, 6.87597, 265.76, 0.210326, 3.22174, 215.528, 0.210326, 7.78772, 207.299, -1.61657, 7.78772, 265.76, -1.61657, 9.61444, 209.136, 0.210326, 4.91189, 237.604, 0.5606, 9.61444, 263.929, 0.210326, 5.04926, 263.929, -1.61657, 7.78772, 207.299, 0.210326, 9.61444, 263.929, -1.61657, 9.61444, 209.136, -1.61657, 4.1359, 261.188, 0.210326, 9.77556, 237.615, 0.568253, 6.87597, 207.299, -1.61657, 8.75349, 238.803, 0.607102, 5.91488, 234.266, 0.604474, 5.04926, 209.136, -1.61657, 5.93877, 238.758, 0.590133, 6.87597, 207.299, 0.210326, 7.78772, 265.76, 0.210326, 5.96261, 264.844, 0.210326, 10.5278, 211.877, 0.210326)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xtpmq"]
-points = PackedVector3Array(4.13447, 234.706, 1.12404, 11.4428, 237.445, 14.8264, 8.70215, 238.358, 15.7406, 9.61497, 239.272, 1.12404, 9.61497, 233.793, 1.12404, 6.87508, 233.793, 14.8264, 4.13447, 238.358, 2.95111, 5.048, 237.445, 15.7406, 11.4428, 234.706, 11.1722, 6.87508, 239.272, 14.8264, 7.78861, 232.878, 2.95111, 5.048, 239.272, 1.12404, 10.5285, 238.358, 1.12404, 11.4428, 238.358, 13.9136, 5.048, 235.62, 15.7406, 8.70215, 233.793, 14.8264, 10.5285, 234.706, 1.12404, 6.87508, 232.878, 1.12404, 11.4428, 234.706, 13.9136, 8.70215, 234.706, 15.7406, 5.048, 233.793, 2.95111, 8.70215, 239.272, 13.9136, 11.4428, 237.445, 10.2565, 4.13447, 234.706, 2.95111, 4.13447, 238.358, 1.12404, 9.61497, 235.62, 15.7406, 5.048, 239.272, 2.95111, 11.4428, 238.358, 11.1722, 6.87508, 232.878, 2.95111, 11.4428, 235.62, 14.8264, 5.96226, 234.706, 15.7406, 5.96226, 238.358, 15.7406)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_1npsc"]
-size = Vector3(25.0364, 3.31268, 3.43593)
+size = Vector3(18.6061, 3.31268, 3.43593)
 
 [node name="Door_Handle" instance=ExtResource("1_tluou")]
 
@@ -22,9 +19,10 @@ surface_material_override/0 = ExtResource("2_5m4kc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorHandle/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_pk52e")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="DoorHandle/StaticBody3D" index="1"]
-shape = SubResource("ConvexPolygonShape3D_xtpmq")
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="DoorHandle/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.929, 236.597, 12.7087)
+shape = SubResource("BoxShape3D_1npsc")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="DoorHandle/StaticBody3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4801, 236.597, 12.7087)
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="DoorHandle/StaticBody3D" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.2511, 236.597, 5.70865)
 shape = SubResource("BoxShape3D_1npsc")

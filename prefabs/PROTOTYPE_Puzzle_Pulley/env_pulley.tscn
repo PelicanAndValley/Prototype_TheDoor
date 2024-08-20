@@ -1,19 +1,18 @@
 [gd_scene load_steps=5 format=3 uid="uid://ccdar8xfugjui"]
 
 [ext_resource type="Script" path="res://scripts/pickable.gd" id="1_oapx6"]
-[ext_resource type="PackedScene" uid="uid://da1f4n3w1wx4o" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/model/m_pulley.tscn" id="2_1omdu"]
 [ext_resource type="PackedScene" uid="uid://cbofi3hbjfyp5" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/item_pulley.tscn" id="2_pcfj3"]
+[ext_resource type="PackedScene" uid="uid://5jwjnl8vx2sy" path="res://prefabs/MAIN_Rope/Rope_Coil.tscn" id="3_rtceq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ql3ms"]
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(4.31607, 1.59732, 4.13493)
 
 [node name="EnvPulley" type="Area3D"]
 script = ExtResource("1_oapx6")
 item = ExtResource("2_pcfj3")
 
-[node name="PulleyModel" parent="." instance=ExtResource("2_1omdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108078, 0.310715, -0.14669)
 shape = SubResource("BoxShape3D_ql3ms")
+
+[node name="RopeCoil" parent="." instance=ExtResource("3_rtceq")]

@@ -10,5 +10,5 @@ transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 material_override = ExtResource("2_tchxi")
 
 [node name="PulleyWheel" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, -0.944505, -0.328496, 0, 0.328496, -0.944505, 0.455481, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.455481, 0, 0)
 material_override = ExtResource("2_tchxi")

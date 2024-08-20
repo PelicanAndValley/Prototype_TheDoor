@@ -11,7 +11,7 @@ var _top_hop_pos : Node3D;
 var _bottom_hop_pos : Node3D;
 var _top_mount_pos : Node3D;
 var _climb_area : Area3D;
-var _boundaries : Node3D;
+#var _boundaries : Node3D;
 var _hop_pos : Vector3;
 var _hop_y_rot : float;
 var _player : Player = null;
@@ -27,7 +27,7 @@ func _ready() -> void:
 	_climb_area = $ClimbArea;
 	_top_hop_pos = $TopExitPos;
 	_top_mount_pos = $TopMountPos;
-	_boundaries = $Boundaries;
+	#_boundaries = $Boundaries;
 	_climb_area.body_entered.connect(self.on_body_entered_climb);
 	_climb_area.body_exited.connect(self.on_body_exited_climb);
 
@@ -53,6 +53,7 @@ func exit_to_transform (pos: Node3D) -> void:
 
 func exit_to_pos (pos: Vector3) -> void:
 	if _hopping:
+		print("HUH?");
 		return;
 	_hop_type = HopType.EXIT;
 	player_hop(pos, _player.global_rotation.y);
@@ -66,7 +67,7 @@ func mount_to_transform (pos: Node3D) -> void:
 func begin_climb (player: Player) -> void:
 	_player.climb(self);
 	_just_entered = true;
-	_boundaries.process_mode = Node.PROCESS_MODE_INHERIT;
+	#_boundaries.process_mode = Node.PROCESS_MODE_INHERIT;
 
 func _physics_process(delta: float) -> void:
 	# Move player on exit
@@ -81,7 +82,7 @@ func _physics_process(delta: float) -> void:
 					HopType.EXIT:
 						_player.exit_climb();
 						_player.move_state = Player.MoveState.WALKING;
-						_boundaries.process_mode = Node.PROCESS_MODE_DISABLED;
+						#_boundaries.process_mode = Node.PROCESS_MODE_DISABLED;
 						_player = null;
 					HopType.MOUNT:
 						begin_climb(_player);
@@ -99,10 +100,12 @@ func on_top_mount_interact(player: Player, _point: Vector3) -> void:
 
 func on_body_entered_climb(body: Node3D) -> void:
 	if body is Player and !_hopping:
+		print("ENTER");
 		_player = body as Player;
 		begin_climb(_player);
 
 func on_body_exited_climb(body: Node3D) -> void:
 	if body is Player and !_hopping and body.global_position.y - _top_hop_pos.global_position.y < top_mount_radius:
+		print("EXIT");
 		var local_x_offset = body.to_local(_top_hop_pos.global_position).x * _top_hop_pos.basis.x;
 		exit_to_pos(_top_hop_pos.global_position - local_x_offset);

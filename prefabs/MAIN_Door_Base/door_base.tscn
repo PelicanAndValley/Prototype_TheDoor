@@ -1,11 +1,72 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqrch0mqe7w6"]
+[gd_scene load_steps=27 format=3 uid="uid://bqrch0mqe7w6"]
 
 [ext_resource type="PackedScene" uid="uid://bax3cefbefbt2" path="res://prefabs/MAIN_Door_Base/Door_Base.glb" id="1_trefj"]
 [ext_resource type="PackedScene" uid="uid://bnv2ffmosep22" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Handle.tscn" id="2_nin17"]
 [ext_resource type="Material" uid="uid://cx4i42448mhty" path="res://prefabs/MAIN_Door_Base/DoorBase/Door_Base_Material.tres" id="2_um1p0"]
+[ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/anchor_point.gd" id="3_de63b"]
 [ext_resource type="PackedScene" uid="uid://d0182e4ual523" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Keyhole.tscn" id="3_dnmja"]
 [ext_resource type="Script" path="res://scripts/grappleable.gd" id="3_ujwnp"]
+[ext_resource type="Script" path="res://templates/climbable.gd" id="4_8xw2u"]
 [ext_resource type="PackedScene" uid="uid://cc8gwsp7am24y" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Latch.tscn" id="4_n0udy"]
+[ext_resource type="Script" path="res://scripts/grapple_rope.gd" id="4_wu6ew"]
+[ext_resource type="PackedScene" uid="uid://enxdn03vgyft" path="res://prefabs/MAIN_Rope/Rope_Length.tscn" id="5_eugna"]
+[ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/pulley_system.gd" id="7_xdxyc"]
+[ext_resource type="PackedScene" uid="uid://dn3l7r3e5mkev" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/anchor.tscn" id="8_esyhx"]
+[ext_resource type="PackedScene" uid="uid://gmsgwlhxnbi3" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/platform.tscn" id="9_0axrt"]
+[ext_resource type="PackedScene" uid="uid://c0qvn1cn44uwe" path="res://prefabs/PROTOTYPE_Puzzle_HangingRope/hanging_rope.tscn" id="10_235yk"]
+[ext_resource type="PackedScene" uid="uid://c4b2cp6xndx2" path="res://prefabs/MAIN_Piton/Piton.tscn" id="11_ukte6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vfnks"]
+size = Vector3(2.56049, 0.778259, 0.488647)
+
+[sub_resource type="Animation" id="Animation_nymsj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RopeLength2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cjxc7"]
+resource_name = "rope_grow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RopeLength2:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 120)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cdo4c"]
+_data = {
+"RESET": SubResource("Animation_nymsj"),
+"rope_grow": SubResource("Animation_cjxc7")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tryo7"]
+animation = &"rope_grow"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jckqa"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jxawt"]
+states/rope_grow/node = SubResource("AnimationNodeAnimation_tryo7")
+states/rope_grow/position = Vector2(390, 100)
+transitions = ["Start", "rope_grow", SubResource("AnimationNodeStateMachineTransition_jckqa")]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6166c"]
+size = Vector3(0.37, 118.457, 0.499)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xy88t"]
 size = Vector3(28.885, 6.4231, 8.24695)
@@ -20,16 +81,88 @@ data = PackedVector3Array(-0.0392, -0.0092, 2.9329, -0.0291, 5.1968, 1.495, -0.0
 
 [node name="Door_Handle" parent="." index="0" instance=ExtResource("2_nin17")]
 
-[node name="Area3D" type="Area3D" parent="Door_Handle" index="1"]
+[node name="AnchorPoint" type="StaticBody3D" parent="Door_Handle" index="0" node_paths=PackedStringArray("pulley_system")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.3613, 238.378, 15.0935)
+script = ExtResource("3_de63b")
+pulley_system = NodePath("../PulleySystem")
+link_to_item = true
+item_names = PackedStringArray("ItemAnchor")
+
+[node name="AnchorPointModel" parent="Door_Handle/AnchorPoint" index="0" instance=ExtResource("11_ukte6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Handle/AnchorPoint" index="1"]
+transform = Transform3D(0.998743, -0.0501223, 5.49463e-11, 0.0501223, 0.998743, -2.19092e-09, 5.49356e-11, 2.19092e-09, 1, -0.170013, -0.297592, -0.0022583)
+shape = SubResource("BoxShape3D_vfnks")
+
+[node name="PulleySystem" type="Node3D" parent="Door_Handle" index="2" node_paths=PackedStringArray("_platform")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6869, 132.713, 12.45)
+visible = false
+script = ExtResource("7_xdxyc")
+_platform = NodePath("Platform")
+
+[node name="Anchor" parent="Door_Handle/PulleySystem" index="0" instance=ExtResource("8_esyhx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59559, 102.604, 3.45118)
+
+[node name="Platform" parent="Door_Handle/PulleySystem" index="1" node_paths=PackedStringArray("anchor") instance=ExtResource("9_0axrt")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -5.97288, 97.6658, 4.16465)
+speed = 5.0
+anchor = NodePath("../Anchor")
+
+[node name="HangingRope" parent="Door_Handle/PulleySystem" index="2" node_paths=PackedStringArray("start", "end") instance=ExtResource("10_235yk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59559, 102.604, 3.95118)
+start = NodePath("../Anchor/AnchorPos")
+end = NodePath("../Platform")
+
+[node name="RopeLength2" parent="Door_Handle" index="3" instance=ExtResource("5_eugna")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32.0054, 238.252, 12.441)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Door_Handle/RopeLength2" index="1"]
+root_node = NodePath("../../RopeClimbable")
+libraries = {
+"": SubResource("AnimationLibrary_cdo4c")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Door_Handle/RopeLength2" index="2"]
+root_node = NodePath("../../RopeClimbable")
+tree_root = SubResource("AnimationNodeStateMachine_jxawt")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="RopeClimbable" type="Node3D" parent="Door_Handle" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0054, 238.252, 12.441)
+script = ExtResource("4_8xw2u")
+top_mount_radius = 7.0
+
+[node name="ClimbArea" type="Area3D" parent="Door_Handle/RopeClimbable" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Handle/RopeClimbable/ClimbArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000999451, -60.7715, 0.25)
+shape = SubResource("BoxShape3D_6166c")
+
+[node name="TopMountPos" type="Node3D" parent="Door_Handle/RopeClimbable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.588436, -0.0219269, -0.0342598)
+
+[node name="TopExitPos" type="Node3D" parent="Door_Handle/RopeClimbable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92246, 1.81514, 0)
+
+[node name="GrappleArea" type="Area3D" parent="Door_Handle" index="5" node_paths=PackedStringArray("grapple_position", "grapple_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3269, 236.494, 12.6084)
 script = ExtResource("3_ujwnp")
+grapple_position = NodePath("GrapplePos")
+grapple_area = NodePath(".")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Handle/Area3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Handle/GrappleArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4425, 0.139771, -0.557434)
 shape = SubResource("BoxShape3D_xy88t")
 
-[node name="Node3D" type="Node3D" parent="Door_Handle/Area3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32706, 0.613327, 0.616544)
+[node name="GrapplePos" type="Node3D" parent="Door_Handle/GrappleArea" index="1" node_paths=PackedStringArray("rope", "rope_length", "anim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.678547, 1.75752, -0.167356)
+script = ExtResource("4_wu6ew")
+rope = NodePath("../../RopeClimbable")
+rope_length = NodePath("../../RopeLength2")
+anim = NodePath("../../RopeLength2/AnimationTree")
 
 [node name="Door_Keyhole" parent="." index="1" instance=ExtResource("3_dnmja")]
 
@@ -50,3 +183,12 @@ material_override = ExtResource("2_um1p0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorR/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_5txig")
+
+[connection signal="on_interact" from="Door_Handle/PulleySystem/Anchor" to="Door_Handle/PulleySystem" method="_on_anchor_on_interact"]
+[connection signal="animation_finished" from="Door_Handle/RopeLength2/AnimationTree" to="Door_Handle/GrappleArea/GrapplePos" method="anim_finish"]
+[connection signal="body_entered" from="Door_Handle/RopeClimbable/ClimbArea" to="Door_Handle/RopeClimbable" method="on_body_entered_climb"]
+[connection signal="body_exited" from="Door_Handle/RopeClimbable/ClimbArea" to="Door_Handle/RopeClimbable" method="on_body_exited_climb"]
+[connection signal="hook_entered" from="Door_Handle/GrappleArea" to="Door_Handle/GrappleArea/GrapplePos" method="grow"]
+
+[editable path="Door_Handle/PulleySystem/Anchor"]
+[editable path="Door_Handle/PulleySystem/Anchor/Pulley_Spin"]

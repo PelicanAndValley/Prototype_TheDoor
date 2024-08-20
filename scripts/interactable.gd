@@ -10,6 +10,7 @@ var link_to_item : bool = false;
 var item_names : PackedStringArray;
 
 func can_interact (player: Player) -> bool:
+	print(str("INTERACT ", name));
 	if !link_to_item:
 		return true;
 	if !player.current_item:

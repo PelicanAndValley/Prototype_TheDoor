@@ -1,4 +1,4 @@
-extends AnimatableBody3D;
+extends Area3D;
 
 class_name GrapplingHook;
 
@@ -36,7 +36,6 @@ func _process(delta: float) -> void:
 		var new_pos = _original_pos + total_movement;
 		look_at(position + (new_pos - global_position));
 		global_position = new_pos;
-		print(global_position);
 	# Just landed
 	elif grappled and thrown:
 		thrown = false;
@@ -66,7 +65,6 @@ func throw (og_pos : Vector3, grappleable: Grappleable, hit_pos: Vector3, speed 
 		end_pos = hit_pos;
 	grappleable.connect_hook(self);
 	_original_pos = og_pos;
-	print(str("ORIGINAL POS ", _original_pos));
 	_move_vector = end_pos - _original_pos;
 	_speed = speed;
 	thrown = true;

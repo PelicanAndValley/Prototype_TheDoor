@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c74eluwnqlpd1"]
+
+[ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/item_anchor.gd" id="1_2ic77"]
+[ext_resource type="PackedScene" uid="uid://orwogqaeu6pt" path="res://prefabs/MAIN_Pulley/Pulley_Static.tscn" id="1_bhrj3"]
+
+[node name="ItemAnchor" type="Node3D"]
+script = ExtResource("1_2ic77")
+
+[node name="Pulley_Static" parent="." instance=ExtResource("1_bhrj3")]
+transform = Transform3D(-1.31134e-08, 0, 0.3, -0.0968284, 0.283944, -4.2325e-09, -0.283944, -0.0968284, -1.24116e-08, 0, -0.0555909, -0.347387)
+
+[node name="StaticBody3D" parent="Pulley_Static/Pulley" index="0"]
+process_mode = 4
+visible = false
+
+[editable path="Pulley_Static"]

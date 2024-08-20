@@ -32,6 +32,11 @@ var grapple_throw_strength : float = 20;
 @export_group("UI")
 @export
 var door_ui : DoorUI;
+@export_group("Sound")
+@export
+var audio_player : AudioStreamPlayer;
+@export
+var grapple_throw_sound : AudioStream;
 
 var open_ui: DoorUI.OpenUI:
 	get():
@@ -196,7 +201,7 @@ func _physics_process(delta: float) -> void:
 			_v_speed = lerp(_v_speed, target_v_speed, acceleration * delta);
 			velocity = Vector3.ZERO;
 			velocity.y = _v_speed * -_cur_direction.y;
-			velocity += _h_speed * _cur_direction.x * _climbing.global_basis.z;
+			#velocity += _h_speed * _cur_direction.x * _climbing.global_basis.z;
 	
 	move_and_slide();
 	

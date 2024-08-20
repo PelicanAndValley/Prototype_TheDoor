@@ -12,8 +12,6 @@ var can_move : bool = false;
 var key : Node3D;
 @export
 var anchor : Anchor;
-@export
-var rope : HangingRope;
 
 var _player : Player;
 var _velocity : Vector3;
@@ -48,6 +46,8 @@ func _physics_process(delta: float) -> void:
 	
 	translate(_velocity);
 	key.translate(-_velocity);
+	
+	anchor.anim_tree["parameters/TimeScale/scale"] = _velocity.length() * anchor.speed;
 	
 	if _velocity.length() > 0.1 * delta and !anchor.audio.playing:
 		anchor.audio.playing = true;
