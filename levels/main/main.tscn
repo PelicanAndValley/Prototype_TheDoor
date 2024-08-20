@@ -215,7 +215,7 @@ omni_range = 419.168
 transform = Transform3D(-1.58585e-07, 0, 3.628, 0, 3.628, 0, -3.628, 0, -1.58585e-07, 13.098, 101.82, -0.761549)
 
 [node name="EnvPulley" parent="." instance=ExtResource("19_qi4wh")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.38875, 1.46505, 28.0151)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -118.273, 38.6055, 117.562)
 
 [node name="Player" parent="." instance=ExtResource("3_ht0e7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60536, 1.40139, 36.9581)
@@ -236,13 +236,10 @@ process_mode = 4
 transform = Transform3D(1, -2.3283e-10, 1.49012e-07, -1.16415e-09, 1, -1.39698e-09, -1.49012e-07, 6.98492e-10, 1, -1.1944, -6.8163, 1.04411)
 
 [node name="EnvAnchor" parent="THE BIG KEY" instance=ExtResource("27_u03eo")]
-transform = Transform3D(0.825488, 0, 0.56442, 0, 1, 0, -0.56442, 0, 0.825488, 11.3792, -3.71812, 8.218)
+transform = Transform3D(0.756231, -0.206625, 0.620823, 0.199341, 0.976478, 0.0821756, -0.6232, 0.0616122, 0.779632, 75.2744, -2.16599, 45.5962)
 
 [node name="EnvBoathook" parent="THE BIG KEY" instance=ExtResource("11_1b1ns")]
-transform = Transform3D(0.825488, 0, 0.56442, 0, 1, 0, -0.56442, 0, 0.825488, 13.3244, -2.82024, 4.17257)
-
-[node name="EnvBalloon" parent="THE BIG KEY" instance=ExtResource("20_svckx")]
-transform = Transform3D(0.825488, 0, 0.56442, 0, 1, 0, -0.56442, 0, 0.825488, 1.72771, -3.71812, 17.7145)
+transform = Transform3D(0.815078, -0.195616, 0.545327, 0.244298, 0.969545, -0.0173543, -0.525324, 0.147368, 0.838044, 98.3123, -1.477, 88.2793)
 
 [node name="KeyTopLevel" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57224, 132.853, 14.4017)
@@ -267,7 +264,7 @@ shape = SubResource("BoxShape3D_kd6hk")
 transform = Transform3D(-0.985805, 0.0222627, 0.166412, 0.0468164, 0.988307, 0.14512, -0.161235, 0.150851, -0.975319, 101.069, 6.16548, 101.282)
 
 [node name="EnvGrapplingHook" parent="." instance=ExtResource("26_q4g71")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49694, 1.49257, 24.486)
+transform = Transform3D(-0.163265, -2.8481, 0.265738, 2.76169, -0.22629, -0.728576, 0.745235, 0.214627, 2.75817, 3.49694, 0.628436, 24.486)
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 storage = ExtResource("25_pb4sc")
