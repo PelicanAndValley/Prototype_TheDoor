@@ -31,6 +31,20 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:MainCaveWall": {
+"decomposition/advanced": true,
+"decomposition/convexhull_downsampling": 2,
+"decomposition/max_concavity": 0.918,
+"decomposition/max_convex_hulls": 5,
+"decomposition/max_num_vertices_per_convex_hull": 256,
+"decomposition/normalize_mesh": true,
+"decomposition/plane_downsampling": 2,
+"decomposition/resolution": 10002,
+"generate/physics": true
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
