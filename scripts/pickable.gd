@@ -10,4 +10,6 @@ func _ready () -> void:
 
 func on_interacted (player: Player, point: Vector3) -> void:
 	player.equip_item(item);
+	player.effect_player.stream = player.item_pickup_sound;
+	player.effect_player.play();
 	queue_free();

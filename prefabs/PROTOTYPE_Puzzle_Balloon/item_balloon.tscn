@@ -2,11 +2,17 @@
 
 [ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/item_balloon.gd" id="1_lfm2x"]
 [ext_resource type="PackedScene" uid="uid://dni6v0r0d64y3" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/place_baloon.tscn" id="2_7ewtn"]
-[ext_resource type="PackedScene" uid="uid://dgxt25hhdt7hi" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/model/m_balloon.tscn" id="3_4xmud"]
+[ext_resource type="PackedScene" uid="uid://tuuvywyqseqm" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="3_4fdol"]
 
 [node name="ItemBalloon" type="Node3D"]
 script = ExtResource("1_lfm2x")
 place_balloon = ExtResource("2_7ewtn")
 
-[node name="BalloonModel" parent="." instance=ExtResource("3_4xmud")]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, 0)
+[node name="Balloon_Deflated" parent="." instance=ExtResource("3_4fdol")]
+transform = Transform3D(0.204474, 0.014682, 0, -0.014682, 0.204474, 0, 0, 0, 0.205, 0, -0.97549, 0)
+
+[node name="StaticBody3D" parent="Balloon_Deflated/BalloonDef" index="0"]
+process_mode = 4
+visible = false
+
+[editable path="Balloon_Deflated"]

@@ -34,9 +34,15 @@ var grapple_throw_strength : float = 20;
 var door_ui : DoorUI;
 @export_group("Sound")
 @export
-var audio_player : AudioStreamPlayer;
+var effect_player : AudioStreamPlayer;
+@export
+var music_player : AudioStreamPlayer;
+@export
+var ambience_player : AudioStreamPlayer;
 @export
 var grapple_throw_sound : AudioStream;
+@export
+var item_pickup_sound : AudioStream;
 
 var open_ui: DoorUI.OpenUI:
 	get():

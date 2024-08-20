@@ -1,18 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctxvrp188j7of"]
 
 [ext_resource type="Script" path="res://scripts/pickable.gd" id="1_71i53"]
-[ext_resource type="PackedScene" uid="uid://dgxt25hhdt7hi" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/model/m_balloon.tscn" id="1_ee2ns"]
 [ext_resource type="PackedScene" uid="uid://byju4r1sfcoux" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/item_balloon.tscn" id="2_5aalv"]
+[ext_resource type="PackedScene" uid="uid://tuuvywyqseqm" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="3_uomfs"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yfvhr"]
-height = 2.5
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xibdu"]
+height = 4.664
+radius = 13.089
 
 [node name="EnvBalloon" type="Area3D"]
 script = ExtResource("1_71i53")
 item = ExtResource("2_5aalv")
 
-[node name="BalloonModel" parent="." instance=ExtResource("1_ee2ns")]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
-shape = SubResource("CapsuleShape3D_yfvhr")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1076, 2.27442, 0)
+shape = SubResource("CylinderShape3D_xibdu")
+
+[node name="Balloon_Deflated" parent="." instance=ExtResource("3_uomfs")]
