@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dls64irm3iavf"]
+
+[ext_resource type="PackedScene" uid="uid://bq4tf3p56m3xt" path="res://prefabs/MAIN_Key/KeyTurn.glb" id="1_ujsy4"]
+
+[node name="KeyTurn2" instance=ExtResource("1_ujsy4")]
+
+[node name="KeyTurnRoot" parent="." index="0"]
+transform = Transform3D(0.999731, -0.0231913, 0, 0.0231913, 0.999731, 0, 0, 0, 1, 0, 0, 3.92183)
+
+[node name="KeyTurn" parent="KeyTurnRoot/KeyWorldPos" index="0"]
+transform = Transform3D(0.825386, -0.545493, 0.145521, 0.563375, 0.77905, -0.275118, 0.0367069, 0.309061, 0.950334, 14.8576, 9.87569, -7.6257)

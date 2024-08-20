@@ -59,13 +59,10 @@ transform = Transform3D(0.794191, 0, 0, 0, 0.794191, 0, 0, 0, 0.794191, 0, -4.20
 transform = Transform3D(0.8024, 0, 0, 0, 0.8024, 0, 0, 0, 0.8024, -0.00587463, 0.155527, 0.0125771)
 
 [node name="PulleySystem" parent="Door_Base/Door_Handle" index="2" node_paths=PackedStringArray("_key")]
-_key = NodePath("../../../Balloon_Key_Anim/Key")
+_key = NodePath("../../../THE BIG KEY/Key")
 
 [node name="Platform" parent="Door_Base/Door_Handle/PulleySystem" index="1" node_paths=PackedStringArray("key")]
-key = NodePath("../../../../Balloon_Key_Anim")
-
-[node name="RopeLength2" parent="Door_Base/Door_Handle" index="3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32.0054, 238.252, 12.441)
+key = NodePath("../../../../THE BIG KEY")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.963052, -0.262816, -0.0588124, 0.0751703, -0.472012, 0.878381, -0.258613, 0.841506, 0.474328, 43.8251, -22.77, 159.783)
@@ -142,13 +139,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60536, 1.40139, 36.9581)
 [node name="EnvBalloon" parent="." instance=ExtResource("20_svckx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.630499, 0.29561, 22.3385)
 
-[node name="Balloon_Key_Anim" parent="." instance=ExtResource("19_q3klv")]
+[node name="THE BIG KEY" parent="." instance=ExtResource("19_q3klv")]
 transform = Transform3D(0.825488, 0, -0.56442, 0, 1, 0, 0.56442, 0, 0.825488, -11.4016, 3.31989, 18.487)
 
-[node name="Balloon" parent="Balloon_Key_Anim" index="1"]
+[node name="Balloon" parent="THE BIG KEY" index="1"]
 process_mode = 4
 
-[node name="HangingRope" parent="Balloon_Key_Anim/Balloon" index="2"]
+[node name="HangingRope" parent="THE BIG KEY/Balloon" index="2"]
 transform = Transform3D(1, -2.3283e-10, 1.49012e-07, -1.16415e-09, 1, -1.39698e-09, -1.49012e-07, 6.98492e-10, 1, -1.1944, -6.8163, 1.04411)
 
 [node name="LevelArt" type="Node3D" parent="."]
@@ -228,4 +225,4 @@ item = ExtResource("28_cgi0v")
 [editable path="Door_Base"]
 [editable path="Door_Base/Door_Handle/PulleySystem/Anchor"]
 [editable path="Door_Base/Door_Handle/PulleySystem/Anchor/Pulley_Spin"]
-[editable path="Balloon_Key_Anim"]
+[editable path="THE BIG KEY"]

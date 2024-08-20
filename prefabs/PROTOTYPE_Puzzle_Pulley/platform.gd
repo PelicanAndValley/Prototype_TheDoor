@@ -1,4 +1,4 @@
-extends AnimatableBody3D
+extends Node3D
 
 class_name Platform;
 
@@ -12,6 +12,8 @@ var can_move : bool = false;
 var key : Node3D;
 @export
 var anchor : Anchor;
+@export
+var collision : CollisionObject3D;
 
 var _player : Player;
 var _velocity : Vector3;
@@ -19,7 +21,7 @@ var _raycast : RayCast3D;
 
 func _ready() -> void:
 	_raycast = $RayCast3D;
-	_raycast.add_exception(self);
+	_raycast.add_exception(collision);
 
 func on_trigger_exit (body: Node3D) -> void:
 	if body is Player:

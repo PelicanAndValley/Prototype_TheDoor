@@ -97,7 +97,6 @@ shape = SubResource("BoxShape3D_vfnks")
 [node name="PulleySystem" type="Node3D" parent="Door_Handle" index="2" node_paths=PackedStringArray("_platform")]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6869, 132.713, 12.45)
-visible = false
 script = ExtResource("7_xdxyc")
 _platform = NodePath("Platform")
 

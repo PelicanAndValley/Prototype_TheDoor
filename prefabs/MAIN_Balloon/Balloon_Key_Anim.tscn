@@ -442,9 +442,9 @@ states/End/position = Vector2(1358, 103)
 states/Rise/node = SubResource("AnimationNodeBlendTree_e7gmy")
 states/Rise/position = Vector2(811, 93)
 transitions = ["Start", "BalloonAnim_Static", SubResource("AnimationNodeStateMachineTransition_s3hyk"), "BalloonAnim_Static", "Rise", SubResource("AnimationNodeStateMachineTransition_48nkf")]
-graph_offset = Vector2(360, -23)
+graph_offset = Vector2(487, -13)
 
-[node name="Balloon_Key_Anim" type="Node3D"]
+[node name="THE BIG KEY" type="Node3D"]
 
 [node name="Key" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("balloon", "balloon_rope", "_rope_pos", "anim_tree", "sound", "rope_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2877, 15.9915, -5.18135)
