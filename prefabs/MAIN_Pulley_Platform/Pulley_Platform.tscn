@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://clgr2t4lqf2kt"]
+
+[ext_resource type="PackedScene" uid="uid://ritw3ylk5s2s" path="res://prefabs/MAIN_Pulley_Platform/Pulley_Platform.glb" id="1_mxqu1"]
+[ext_resource type="Texture2D" uid="uid://qshajx4jx6ca" path="res://prefabs/MAIN_Pulley_Platform/Pulley_Plaform_d.png" id="2_tgho7"]
+[ext_resource type="Texture2D" uid="uid://ta4p6avmt6i0" path="res://prefabs/MAIN_Pulley_Platform/Pulley_Plaform_n.png" id="3_18e0d"]
+[ext_resource type="Texture2D" uid="uid://by658e5f4jea8" path="res://prefabs/MAIN_Pulley_Platform/Pulley_Plaform_r.png" id="4_svg5x"]
+[ext_resource type="Material" uid="uid://bhkhthns5l5cs" path="res://prefabs/_MAIN_SHARED/Rope_Material.tres" id="5_4ei7q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg8k4"]
+albedo_texture = ExtResource("2_tgho7")
+metallic_specular = 0.43
+roughness = 0.9
+roughness_texture = ExtResource("4_svg5x")
+normal_enabled = true
+normal_scale = 0.64
+normal_texture = ExtResource("3_18e0d")
+
+[node name="Pulley_Platform" instance=ExtResource("1_mxqu1")]
+
+[node name="Platform_Wood" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dg8k4")
+
+[node name="Platform_Rope" parent="." index="1"]
+material_override = ExtResource("5_4ei7q")
