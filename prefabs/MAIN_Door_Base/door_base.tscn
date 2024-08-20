@@ -14,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://gmsgwlhxnbi3" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/platform.tscn" id="9_0axrt"]
 [ext_resource type="PackedScene" uid="uid://c0qvn1cn44uwe" path="res://prefabs/PROTOTYPE_Puzzle_HangingRope/hanging_rope.tscn" id="10_235yk"]
 [ext_resource type="PackedScene" uid="uid://c4b2cp6xndx2" path="res://prefabs/MAIN_Piton/Piton.tscn" id="11_ukte6"]
-[ext_resource type="PackedScene" uid="uid://vgxfywnf8n5a" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Latch_L.tscn" id="15_gvkd6"]
+[ext_resource type="PackedScene" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Latch_L.tscn" id="15_gvkd6"]
 [ext_resource type="PackedScene" uid="uid://dgmid73kxl52v" path="res://prefabs/MAIN_Vines/Vine_01.tscn" id="15_vy61s"]
-[ext_resource type="PackedScene" uid="uid://cixqublwn72se" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Latch_R.tscn" id="16_5d5gy"]
+[ext_resource type="PackedScene" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Latch_R.tscn" id="16_5d5gy"]
 [ext_resource type="PackedScene" uid="uid://c5xdvkhxw5slw" path="res://prefabs/MAIN_Vines/Vine_02.tscn" id="16_b815w"]
 [ext_resource type="PackedScene" uid="uid://dra8k3tk823up" path="res://prefabs/MAIN_Vines/Vine_03.tscn" id="17_ot3l6"]
 [ext_resource type="PackedScene" uid="uid://tg1jhxgfsofy" path="res://prefabs/MAIN_Vines/Vine_Over_Handle.tscn" id="19_bplxy"]
@@ -102,7 +102,6 @@ shape = SubResource("BoxShape3D_vfnks")
 [node name="PulleySystem" type="Node3D" parent="Door_Handle" index="2" node_paths=PackedStringArray("_platform")]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9816, 132.205, 11.6638)
-visible = false
 script = ExtResource("7_xdxyc")
 _platform = NodePath("Platform")
 
@@ -110,7 +109,7 @@ _platform = NodePath("Platform")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59559, 102.604, 3.45118)
 
 [node name="Platform" parent="Door_Handle/PulleySystem" index="1" node_paths=PackedStringArray("anchor") instance=ExtResource("9_0axrt")]
-transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -5.97288, 97.6658, 4.16465)
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 1.28646, 91.9757, 4.16465)
 speed = 5.0
 anchor = NodePath("../Anchor")
 

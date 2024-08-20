@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://n8srkrdd01nf" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_03.tscn" id="8_je3ou"]
 [ext_resource type="PackedScene" uid="uid://dcj3aseqgqbrh" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_04.tscn" id="9_5ji0q"]
 [ext_resource type="PackedScene" uid="uid://cv8xhdjr0ltw" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_05.tscn" id="10_eou5l"]
+[ext_resource type="PackedScene" uid="uid://ddcm4o4wkgccd" path="res://prefabs/MAIN_Boathook/env_boathook.tscn" id="11_1b1ns"]
 [ext_resource type="PackedScene" uid="uid://dvxk5dg8ey7y7" path="res://prefabs/MAIN_Vines/Vine_Climb.tscn" id="13_75osr"]
-[ext_resource type="PackedScene" uid="uid://1ft7x5rkfmv2" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="18_v2u5q"]
+[ext_resource type="PackedScene" uid="uid://tuuvywyqseqm" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="18_v2u5q"]
 [ext_resource type="PackedScene" uid="uid://bn70o146l2t40" path="res://prefabs/MAIN_Balloon/Balloon_Key_Anim.tscn" id="19_q3klv"]
 [ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="19_qi4wh"]
 [ext_resource type="PackedScene" uid="uid://ctxvrp188j7of" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/env_balloon.tscn" id="20_svckx"]
@@ -28,7 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://c05rl5ll60v0v" path="res://prefabs/MAIN_Lighter/Lighter.tscn" id="27_l8lpb"]
 [ext_resource type="PackedScene" uid="uid://c61eavnrwsp2w" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_anchor.tscn" id="27_u03eo"]
 [ext_resource type="PackedScene" uid="uid://c4b2cp6xndx2" path="res://prefabs/MAIN_Piton/Piton.tscn" id="28_37tlk"]
-[ext_resource type="PackedScene" uid="uid://c74eluwnqlpd1" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/item_anchor.tscn" id="28_cgi0v"]
 [ext_resource type="Texture2D" uid="uid://c4efp0nn1xtiq" path="res://prefabs/MAIN_Terrain/Terrain_Textures/JungleRock01_d.png" id="28_e8mp7"]
 [ext_resource type="Texture2D" uid="uid://ctwdkyddpxpvq" path="res://prefabs/MAIN_Terrain/Terrain_Textures/JungleGrass02_n.png" id="28_ef04x"]
 [ext_resource type="Texture2D" uid="uid://ca6gwnrpj0mba" path="res://prefabs/MAIN_Terrain/Terrain_Textures/JungleGround02_d.png" id="29_bqo64"]
@@ -158,8 +158,12 @@ transform = Transform3D(0.8024, 0, 0, 0, 0.8024, 0, 0, 0, 0.8024, -0.00587463, 0
 [node name="PulleySystem" parent="Door_Base/Door_Handle" index="2" node_paths=PackedStringArray("_key")]
 _key = NodePath("../../../THE BIG KEY/Key")
 
-[node name="Platform" parent="Door_Base/Door_Handle/PulleySystem" index="1" node_paths=PackedStringArray("key")]
+[node name="Platform" parent="Door_Base/Door_Handle/PulleySystem" index="1" node_paths=PackedStringArray("key", "key_key", "key_top_level")]
+speed = 20.0
+acceleration = 10.0
 key = NodePath("../../../../THE BIG KEY")
+key_key = NodePath("../../../../THE BIG KEY/Key")
+key_top_level = NodePath("../../../../KeyTopLevel")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.963052, -0.262816, -0.0588124, 0.0751703, -0.472012, 0.878381, -0.258613, 0.841506, 0.474328, 43.8251, -22.77, 159.783)
@@ -213,13 +217,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60536, 1.40139, 36.9581)
 transform = Transform3D(-0.9886, 0.0454755, -0.143538, 0.0602366, 0.99314, -0.100227, 0.137995, -0.10773, -0.984557, 44.6722, 2.07104, 131.487)
 
 [node name="THE BIG KEY" parent="." instance=ExtResource("19_q3klv")]
-transform = Transform3D(0.825488, 0, -0.56442, 0, 1, 0, 0.56442, 0, 0.825488, -11.4016, 3.31989, 18.487)
+transform = Transform3D(0.825488, 0, -0.56442, 0, 1, 0, 0.56442, 0, 0.825488, 3.57224, 3.71812, 14.4017)
 
-[node name="Balloon" parent="THE BIG KEY" index="1"]
+[node name="Balloon" parent="THE BIG KEY" index="2"]
 process_mode = 4
 
 [node name="HangingRope" parent="THE BIG KEY/Balloon" index="2"]
 transform = Transform3D(1, -2.3283e-10, 1.49012e-07, -1.16415e-09, 1, -1.39698e-09, -1.49012e-07, 6.98492e-10, 1, -1.1944, -6.8163, 1.04411)
+
+[node name="EnvAnchor" parent="THE BIG KEY" instance=ExtResource("27_u03eo")]
+transform = Transform3D(0.825488, 0, 0.56442, 0, 1, 0, -0.56442, 0, 0.825488, 11.3792, -3.71812, 8.218)
+
+[node name="EnvBoathook" parent="THE BIG KEY" instance=ExtResource("11_1b1ns")]
+transform = Transform3D(0.825488, 0, 0.56442, 0, 1, 0, -0.56442, 0, 0.825488, 13.3244, -2.82024, 4.17257)
+
+[node name="EnvBalloon" parent="THE BIG KEY" instance=ExtResource("20_svckx")]
+transform = Transform3D(0.825488, 0, 0.56442, 0, 1, 0, -0.56442, 0, 0.825488, 1.72771, -3.71812, 17.7145)
+
+[node name="KeyTopLevel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57224, 132.853, 14.4017)
 
 [node name="LevelArt" type="Node3D" parent="."]
 
@@ -260,7 +276,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49694, 1.49257, 24.486)
 
 [node name="EnvAnchor" parent="." instance=ExtResource("27_u03eo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.701, 49.4542, 105.476)
-item = ExtResource("28_cgi0v")
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 storage = ExtResource("25_pb4sc")
@@ -508,3 +523,4 @@ transform = Transform3D(3.19527, 0, 0, 0, 3.19527, 0, 0, 0, 3.19527, -72.2053, 4
 [editable path="Door_Base/Door_Handle/PulleySystem/Anchor"]
 [editable path="Door_Base/Door_Handle/PulleySystem/Anchor/Pulley_Spin"]
 [editable path="THE BIG KEY"]
+[editable path="THE BIG KEY/KeyTurn2"]

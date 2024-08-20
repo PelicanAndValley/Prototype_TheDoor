@@ -451,6 +451,9 @@ graph_offset = Vector2(487, -13)
 transform = Transform3D(0.830858, 0, 0.556484, 0, 1, 0, -0.556484, 0, 0.830858, -17.507, 58.458, -8.703)
 visible = false
 
+[node name="KeyTurn" parent="KeyTurn2/KeyTurnRoot/KeyWorldPos" index="0"]
+transform = Transform3D(0.825386, -0.545493, 0.145521, 0.563375, 0.77905, -0.275118, 0.0367069, 0.309061, 0.950334, 14.8576, 9.87569, -7.6257)
+
 [node name="Key" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("balloon", "balloon_rope", "_rope_pos", "anim_tree", "key_turn_model", "key_turn_anim", "sound", "rope_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2877, 15.9915, -5.18135)
 sync_to_physics = false

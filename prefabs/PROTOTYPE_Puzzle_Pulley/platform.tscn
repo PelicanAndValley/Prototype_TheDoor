@@ -12,6 +12,9 @@ collision = NodePath("Pulley_Platform/Platform_Wood/StaticBody3D")
 
 [node name="Pulley_Platform" parent="." instance=ExtResource("2_crirj")]
 
+[node name="Platform_Wood" parent="Pulley_Platform" index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
 [node name="Trigger" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger"]
