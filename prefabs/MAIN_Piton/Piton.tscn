@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4b2cp6xndx2"]
+
+[ext_resource type="PackedScene" uid="uid://b3omcb6o1tuet" path="res://prefabs/MAIN_Piton/Piton.glb" id="1_fsv8d"]
+[ext_resource type="Material" uid="uid://cqting4t0t7fb" path="res://prefabs/MAIN_Piton/Piton_Material.tres" id="2_ee4qf"]
+
+[node name="Piton" instance=ExtResource("1_fsv8d")]
+
+[node name="Plane_004" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ee4qf")

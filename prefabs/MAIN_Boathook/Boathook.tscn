@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlt2vvhiq0p3t"]
+
+[ext_resource type="PackedScene" uid="uid://cidxcvwj658j6" path="res://prefabs/MAIN_Boathook/Boathook.glb" id="1_xc02u"]
+[ext_resource type="Material" uid="uid://bu0flyhxqq8rj" path="res://prefabs/MAIN_Boathook/Boathook_Material.tres" id="2_mjpi7"]
+
+[node name="Boathook2" instance=ExtResource("1_xc02u")]
+
+[node name="Boathook" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_mjpi7")

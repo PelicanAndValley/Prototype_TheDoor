@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://dno1i41baqklt"]
+
+[ext_resource type="Texture2D" uid="uid://di4r30dkeisl4" path="res://prefabs/MAIN_Pulley/Pulley_d.png" id="1_r4ihb"]
+[ext_resource type="Texture2D" uid="uid://b430cwoxfjdc5" path="res://prefabs/MAIN_Pulley/Pulley_m.png" id="2_jvn26"]
+[ext_resource type="Texture2D" uid="uid://jemmufooejn8" path="res://prefabs/MAIN_Pulley/Pulley_n.png" id="3_cgaq2"]
+[ext_resource type="Texture2D" uid="uid://c235t1nqy0st4" path="res://prefabs/MAIN_Pulley/Pulley_r.png" id="4_0gy7e"]
+
+[resource]
+albedo_texture = ExtResource("1_r4ihb")
+metallic = 0.93
+metallic_texture = ExtResource("2_jvn26")
+roughness_texture = ExtResource("4_0gy7e")
+normal_enabled = true
+normal_texture = ExtResource("3_cgaq2")

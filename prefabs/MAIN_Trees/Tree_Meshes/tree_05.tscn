@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://o4o0no0qg0le" path="res://prefabs/MAIN_Trees/Tree_Material/Tree_Frond03_Material.tres" id="5_hcu72"]
 
 [node name="Tree05" instance=ExtResource("1_stn2m")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.173851, 0.0434227, -0.152194)
 
 [node name="Trunk" parent="." index="0"]
 material_override = ExtResource("2_8iicx")

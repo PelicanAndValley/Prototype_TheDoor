@@ -27,7 +27,7 @@ code = "/**
 */
 
 shader_type spatial;
-render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+render_mode depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
 
 #include \"res://addons/terrain_layered_shader/shaders/terrain_tools.gdshaderinc\"
 

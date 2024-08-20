@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://g7whf4qypvj2"]
+
+[ext_resource type="PackedScene" uid="uid://dc5jp8xtptnkg" path="res://prefabs/MAIN_Pulley/Pulley_Rope.glb" id="1_813ql"]
+[ext_resource type="Material" uid="uid://bhkhthns5l5cs" path="res://prefabs/_MAIN_SHARED/Rope_Material.tres" id="2_l30gq"]
+
+[node name="Pulley_Rope" instance=ExtResource("1_813ql")]
+
+[node name="PulleyRope" parent="." index="0"]
+material_override = ExtResource("2_l30gq")

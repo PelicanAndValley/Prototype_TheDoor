@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cqting4t0t7fb"]
+
+[ext_resource type="Texture2D" uid="uid://di2p4t7ptuncl" path="res://prefabs/MAIN_Piton/Piton_d.png" id="1_4g1kv"]
+[ext_resource type="Texture2D" uid="uid://bswtr3gv5raxr" path="res://prefabs/MAIN_Piton/Piton_m.png" id="2_3erht"]
+[ext_resource type="Texture2D" uid="uid://bghue0ejx87pm" path="res://prefabs/MAIN_Piton/Piton_n.png" id="3_b5shy"]
+[ext_resource type="Texture2D" uid="uid://bposqi3gjeyjk" path="res://prefabs/MAIN_Piton/Piton_r.png" id="4_4jvcr"]
+
+[resource]
+albedo_texture = ExtResource("1_4g1kv")
+metallic = 1.0
+metallic_texture = ExtResource("2_3erht")
+roughness_texture = ExtResource("4_4jvcr")
+normal_enabled = true
+normal_texture = ExtResource("3_b5shy")
