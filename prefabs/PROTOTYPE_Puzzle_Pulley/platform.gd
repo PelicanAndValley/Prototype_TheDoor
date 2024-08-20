@@ -22,7 +22,8 @@ func _ready() -> void:
 	_raycast.add_exception(self);
 
 func on_trigger_exit (body: Node3D) -> void:
-	_player = null;
+	if body is Player:
+		_player = null;
 
 func on_trigger (body: Node3D) -> void:
 	if body is Player:
@@ -40,14 +41,16 @@ func _physics_process(delta: float) -> void:
 	
 	_velocity = lerp(_velocity, target_velocity, acceleration * delta);
 	
-	if !_raycast.is_colliding():
+	if _raycast.is_colliding():
 		_velocity = Vector3.ZERO;
 	
 	translate(_velocity);
 	key.translate(-_velocity);
-	if _velocity.length() > 0:
+	print(_velocity.length())
+	if _velocity.length() > 0.1 * delta and !anchor.audio.playing:
+		print("PLAY")
 		anchor.audio.playing = true;
 		#anchor.audio.volume_db = anchor.volume * _velocity.length();
-	else:
+	elif _velocity.length() <= 0.1 * delta and anchor.audio.playing:
+		print("STOP")
 		anchor.audio.playing = false;
-	

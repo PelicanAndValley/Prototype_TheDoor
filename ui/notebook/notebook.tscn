@@ -115,8 +115,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1500.0
-offset_bottom = 1500.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -129,6 +127,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Moveable/CenterContainer"]
+custom_minimum_size = Vector2(1101, 798)
 layout_mode = 2
 texture = ExtResource("3_h3fwl")
 
@@ -140,18 +139,20 @@ dragger_visibility = 1
 
 [node name="Page1" type="RichTextLabel" parent="Moveable/CenterContainer/SplitContainer"]
 clip_contents = false
-custom_minimum_size = Vector2(250, 400)
+custom_minimum_size = Vector2(375, 600)
 layout_mode = 2
 theme = ExtResource("4_3ni13")
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "PAGE 1"
 fit_content = true
 scroll_active = false
 
 [node name="Page2" type="RichTextLabel" parent="Moveable/CenterContainer/SplitContainer"]
-custom_minimum_size = Vector2(250, 400)
+custom_minimum_size = Vector2(375, 600)
 layout_mode = 2
 theme = ExtResource("4_3ni13")
+theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "PAGE 2"
 fit_content = true
@@ -166,14 +167,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -296.0
-offset_top = -239.0
-offset_right = -46.0
-offset_bottom = -155.0
+offset_left = -441.0
+offset_top = -359.0
+offset_right = -16.0
+offset_bottom = -275.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_3ni13")
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "TITLE"
 fit_content = true
@@ -186,10 +187,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -483.16
-offset_top = -229.0
-offset_right = -331.16
-offset_bottom = 229.0
+offset_left = -761.0
+offset_top = -318.0
+offset_right = -496.0
+offset_bottom = 321.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -201,8 +202,8 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -122.665
-offset_right = 15.335
+offset_left = -176.0
+offset_right = 15.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -216,11 +217,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
-offset_top = 202.0
+offset_top = 325.0
 offset_right = 50.0
-offset_bottom = 242.0
+offset_bottom = 365.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_3ni13")
 bbcode_enabled = true
 text = "[center]1 / 1"
 
@@ -232,14 +234,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 176.0
-offset_right = 20.0
-offset_bottom = 216.0
+offset_left = -320.0
+offset_top = 269.0
+offset_right = 320.0
+offset_bottom = 309.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_3ni13")
-theme_override_constants/separation = 560
+theme_override_constants/separation = 800
 dragger_visibility = 1
 
 [node name="Prev" type="Button" parent="Moveable/PageButtons"]

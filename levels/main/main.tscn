@@ -105,7 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.2731, -2.69874, 245.487)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.3479, -2.65558, 249.402)
 
 [node name="VineClimb" parent="." instance=ExtResource("13_75osr")]
-transform = Transform3D(-1.58585e-07, 0, 3.628, 0, 3.628, 0, -3.628, 0, -1.58585e-07, 10.841, 101.82, -0.761549)
+transform = Transform3D(-1.58585e-07, 0, 3.628, 0, 3.628, 0, -3.628, 0, -1.58585e-07, 13.098, 101.82, -0.761549)
 
 [node name="Vine01_1" parent="." instance=ExtResource("14_exdvu")]
 transform = Transform3D(0.0824954, 0.0868428, 0.992801, -0.0071913, 0.996222, -0.0865445, -0.996566, 0, 0.0828083, -50.3187, 230.385, -0.391172)
@@ -154,21 +154,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59559, 102.604, 3.45118)
 [node name="Balloon_Key_Anim" parent="PulleySystem" instance=ExtResource("19_q3klv")]
 transform = Transform3D(0.825488, 0, -0.56442, 0, 1, 0, 0.56442, 0, 0.825488, -11.4016, 0.389378, 15.2508)
 
-[node name="Key" parent="PulleySystem/Balloon_Key_Anim" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2877, 15.9915, -5.18135)
-
 [node name="Balloon" parent="PulleySystem/Balloon_Key_Anim" index="1"]
 process_mode = 4
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4821, 22.8078, -6.22546)
 
 [node name="HangingRope" parent="PulleySystem/Balloon_Key_Anim/Balloon" index="2"]
 transform = Transform3D(1, -2.3283e-10, 1.49012e-07, -1.16415e-09, 1, -1.39698e-09, -1.49012e-07, 6.98492e-10, 1, -1.1944, -6.8163, 1.04411)
 
-[node name="BalloonRope" parent="PulleySystem/Balloon_Key_Anim" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4821, 22.8078, -6.22546)
-
 [node name="Platform" parent="PulleySystem" node_paths=PackedStringArray("key", "anchor") instance=ExtResource("23_2em4v")]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -5.97288, 97.6658, 4.16465)
+speed = 5.0
 key = NodePath("../Balloon_Key_Anim")
 anchor = NodePath("../Anchor")
 

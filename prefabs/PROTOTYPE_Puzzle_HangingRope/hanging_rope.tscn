@@ -8,3 +8,4 @@ script = ExtResource("1_xa1ti")
 follow_speed = 20.0
 
 [node name="RopeSegmentModel" parent="." instance=ExtResource("2_1evlu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
