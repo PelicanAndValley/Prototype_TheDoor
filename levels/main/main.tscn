@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://n8srkrdd01nf" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_03.tscn" id="8_je3ou"]
 [ext_resource type="PackedScene" uid="uid://dcj3aseqgqbrh" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_04.tscn" id="9_5ji0q"]
 [ext_resource type="PackedScene" uid="uid://cv8xhdjr0ltw" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_05.tscn" id="10_eou5l"]
-[ext_resource type="PackedScene" path="res://prefabs/MAIN_Boathook/env_boathook.tscn" id="11_1b1ns"]
+[ext_resource type="PackedScene" uid="uid://ddcm4o4wkgccd" path="res://prefabs/MAIN_Boathook/env_boathook.tscn" id="11_1b1ns"]
 [ext_resource type="PackedScene" uid="uid://dvxk5dg8ey7y7" path="res://prefabs/MAIN_Vines/Vine_Climb.tscn" id="13_75osr"]
-[ext_resource type="PackedScene" uid="uid://1ft7x5rkfmv2" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="18_v2u5q"]
+[ext_resource type="PackedScene" uid="uid://tuuvywyqseqm" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="18_v2u5q"]
 [ext_resource type="PackedScene" uid="uid://bn70o146l2t40" path="res://prefabs/MAIN_Balloon/Balloon_Key_Anim.tscn" id="19_q3klv"]
 [ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="19_qi4wh"]
 [ext_resource type="PackedScene" uid="uid://ctxvrp188j7of" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/env_balloon.tscn" id="20_svckx"]
@@ -154,23 +154,15 @@ transform = Transform3D(-0.0714549, 0, -0.79097, 0, 0.794191, 0, 0.79097, 0, -0.
 
 [node name="Door_Base" parent="." instance=ExtResource("3_8gru8")]
 transform = Transform3D(0.8024, 0, 0, 0, 0.8024, 0, 0, 0, 0.8024, -0.00587463, 0.155527, 0.0125771)
-visible = false
 
-[node name="PulleySystem" parent="Door_Base/Door_Handle" index="2" node_paths=PackedStringArray("_key")]
-_key = NodePath("../../../THE BIG KEY/Key")
+[node name="PulleySystem" parent="Door_Base/DoorR/Door_Handle" index="2" node_paths=PackedStringArray("_key")]
+_key = NodePath("../../../../THE BIG KEY/Key")
 
-[node name="Platform" parent="Door_Base/Door_Handle/PulleySystem" index="1" node_paths=PackedStringArray("key", "key_key", "key_top_level")]
-speed = 20.0
-acceleration = 10.0
-key = NodePath("../../../../THE BIG KEY")
-key_key = NodePath("../../../../THE BIG KEY/Key")
-key_top_level = NodePath("../../../../KeyTopLevel")
-
-[node name="RopeLength2" parent="Door_Base/Door_Handle" index="3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32.0054, 238.252, 12.441)
-
-[node name="DoorR" parent="Door_Base" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.543, 0.04, -3.288)
+[node name="Platform" parent="Door_Base/DoorR/Door_Handle/PulleySystem" index="1" node_paths=PackedStringArray("key", "key_key", "key_top_level")]
+speed = 100.0
+key = NodePath("../../../../../THE BIG KEY")
+key_key = NodePath("../../../../../THE BIG KEY/Key")
+key_top_level = NodePath("../../../../../KeyTopLevel")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.963052, -0.262816, -0.0588124, 0.0751703, -0.472012, 0.878381, -0.258613, 0.841506, 0.474328, 43.8251, -22.77, 159.783)
@@ -226,8 +218,9 @@ transform = Transform3D(-0.9886, 0.0454755, -0.143538, 0.0602366, 0.99314, -0.10
 [node name="THE BIG KEY" parent="." instance=ExtResource("19_q3klv")]
 transform = Transform3D(0.825488, 0, -0.56442, 0, 1, 0, 0.56442, 0, 0.825488, 3.57224, 3.71812, 14.4017)
 
-[node name="KeyTurn" parent="THE BIG KEY/KeyTurn2/KeyTurnRoot/KeyWorldPos" index="0"]
-transform = Transform3D(0.825386, -0.545493, 0.145521, 0.563375, 0.77905, -0.275118, 0.0367069, 0.309061, 0.950334, 14.8576, 9.87569, -7.6257)
+[node name="Key" parent="THE BIG KEY" index="1" node_paths=PackedStringArray("_player", "_door")]
+_player = NodePath("../../Player")
+_door = NodePath("../../Door_Base")
 
 [node name="Balloon" parent="THE BIG KEY" index="2"]
 process_mode = 4
@@ -626,6 +619,7 @@ transform = Transform3D(1.67646, 0, 0, 0, 1.67646, 0, 0, 0, 1.67646, 206.15, 273
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.994293, -0.106681, 0, 0.106681, -0.994293, -6.65276, 95.0543, -256.495)
+visible = false
 light_energy = 10000.0
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 7.552
@@ -633,8 +627,10 @@ light_specular = 0.0
 spot_range = 392.685
 spot_angle = 31.8743
 
+[connection signal="animation_finished" from="THE BIG KEY/KeyTurn2/AnimationTree" to="THE BIG KEY/Key" method="anim_finished"]
+
 [editable path="Door_Base"]
-[editable path="Door_Base/Door_Handle/PulleySystem/Anchor"]
-[editable path="Door_Base/Door_Handle/PulleySystem/Anchor/Pulley_Spin"]
+[editable path="Door_Base/DoorR/Door_Handle/PulleySystem/Anchor"]
+[editable path="Door_Base/DoorR/Door_Handle/PulleySystem/Anchor/Pulley_Spin"]
 [editable path="THE BIG KEY"]
 [editable path="THE BIG KEY/KeyTurn2"]

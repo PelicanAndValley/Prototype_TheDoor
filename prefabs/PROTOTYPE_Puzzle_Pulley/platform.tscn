@@ -8,6 +8,8 @@ size = Vector3(7.20959, 0.408398, 6)
 
 [node name="Platform" type="Node3D" node_paths=PackedStringArray("collision")]
 script = ExtResource("1_bqbr5")
+speed = 100.0
+acceleration = 10.0
 collision = NodePath("Pulley_Platform/Platform_Wood/StaticBody3D")
 
 [node name="Pulley_Platform" parent="." instance=ExtResource("2_crirj")]

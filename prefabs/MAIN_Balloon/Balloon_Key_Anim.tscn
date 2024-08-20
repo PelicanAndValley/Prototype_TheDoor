@@ -452,7 +452,6 @@ graph_offset = Vector2(487, -13)
 transform = Transform3D(0.830858, 0, 0.556484, 0, 1, 0, -0.556484, 0, 0.830858, -17.507, 58.458, -8.703)
 
 [node name="KeyTurnSound" type="AudioStreamPlayer3D" parent="KeyTurn2/KeyTurnRoot/KeyWorldPos/KeyTurn/Key_Geom" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 stream = ExtResource("2_8vtpa")
 volume_db = 10.0
 
@@ -547,5 +546,7 @@ tree_root = SubResource("AnimationNodeStateMachine_t2u0s")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Rise/Add2/add_amount = 1.0
 "parameters/Rise/Add2 2/add_amount" = 1.0
+
+[connection signal="animation_finished" from="KeyTurn2/AnimationTree" to="Key" method="anim_finished"]
 
 [editable path="KeyTurn2"]

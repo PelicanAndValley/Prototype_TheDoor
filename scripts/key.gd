@@ -20,6 +20,10 @@ var sound : AudioStreamPlayer3D;
 var rope_sound : AudioStreamPlayer3D;
 @export
 var turn_sound : AudioStreamPlayer3D;
+@export
+var _player : Player;
+@export
+var _door : Door;
 
 var _anim_playback : AnimationNodeStateMachinePlayback;
 var _velocity : Vector3;
@@ -57,6 +61,10 @@ func put_in_lock () -> void:
 	$KeyModel.visible = false;
 	key_turn_model.visible = true;
 	key_turn_anim["parameters/playback"].travel("Animation");
+	
+func anim_finished (anim_name: StringName) -> void:
+	if anim_name == "Animation":
+		_door.open(_player);
 
 func _physics_process(delta: float) -> void:
 	pass;

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bq4tf3p56m3xt" path="res://prefabs/MAIN_Key/KeyTurn.glb" id="1_ujsy4"]
 [ext_resource type="Material" uid="uid://beg0v0r24fcp4" path="res://prefabs/MAIN_Key/Key_Material.tres" id="2_0ryeg"]
-[ext_resource type="Animation" uid="uid://cc6h7hrgmv55p" path="res://prefabs/MAIN_Key/key_turn.res" id="2_ue6ag"]
+[ext_resource type="Animation" uid="uid://cm86mp3lmfuoq" path="res://prefabs/MAIN_Key/key_turn.res" id="2_ue6ag"]
 [ext_resource type="Animation" uid="uid://b346rkg4d6k51" path="res://prefabs/MAIN_Key/key_turn_static.res" id="3_bsohs"]
 [ext_resource type="Material" uid="uid://bhkhthns5l5cs" path="res://prefabs/_MAIN_SHARED/Rope_Material.tres" id="3_fdrel"]
 
