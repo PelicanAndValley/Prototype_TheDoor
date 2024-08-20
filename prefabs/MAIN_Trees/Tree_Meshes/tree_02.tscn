@@ -14,9 +14,11 @@ material_override = ExtResource("2_kuomq")
 
 [node name="Frond01" parent="." index="1"]
 material_override = ExtResource("3_ua0ls")
+lod_bias = 0.5
 
 [node name="Frond02" parent="." index="2"]
 material_override = ExtResource("4_dnk8d")
+lod_bias = 0.5
 
 [node name="Frond03" parent="." index="3"]
 material_override = ExtResource("5_dq8j4")

@@ -72,7 +72,7 @@ void fragment() {
 	ROUGHNESS = roughness_tex * roughness;
 	NORMAL_MAP = sample_tiling(texture_normal, terrain_uv, tile_margin).rgb;
 	NORMAL_MAP_DEPTH = normal_scale;
-	
+
 	SPECULAR = specular;
 }
 "

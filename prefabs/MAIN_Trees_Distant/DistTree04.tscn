@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbbgatc8n1wpi"]
+
+[ext_resource type="Texture2D" uid="uid://dwce404ca7x3x" path="res://prefabs/MAIN_Trees_Distant/DistTree04_d.png" id="1_6s4nh"]
+[ext_resource type="Texture2D" uid="uid://cjbxxnsjhb1k4" path="res://prefabs/MAIN_Trees_Distant/DistTree04_ao.png" id="2_yf8aj"]
+[ext_resource type="Texture2D" uid="uid://tag7ot3hhhpv" path="res://prefabs/MAIN_Trees_Distant/DistTree04_n.png" id="3_hdmcq"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j8b4c"]
+size = Vector2(90, 90)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6rii"]
+transparency = 2
+alpha_scissor_threshold = 0.458
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_6s4nh")
+normal_enabled = true
+normal_texture = ExtResource("3_hdmcq")
+ao_enabled = true
+ao_texture = ExtResource("2_yf8aj")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[node name="DistTree03" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00157166, -0.00192451, 8.39233e-05)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.20646, 29.0758, 0.0192669)
+mesh = SubResource("PlaneMesh_j8b4c")
+material = SubResource("StandardMaterial3D_u6rii")
