@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3v3ik7k3l8s7"
-path="res://.godot/imported/DistTree_01_d.png-2853dd584c6e2ee817b9778d6519daac.ctex"
+uid="uid://bxfx3kkpojcmn"
+path="res://.godot/imported/Grap_d.png-69751539c33ed21cbd8406f03c2283c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://prefabs/MAIN_Trees_Distant/DistTree_01_d.png"
-dest_files=["res://.godot/imported/DistTree_01_d.png-2853dd584c6e2ee817b9778d6519daac.ctex"]
+source_file="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/Grap_d.png"
+dest_files=["res://.godot/imported/Grap_d.png-69751539c33ed21cbd8406f03c2283c4.ctex"]
 
 [params]
 
