@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d2prbdiplyfkw"]
+[gd_scene load_steps=31 format=3 uid="uid://d2prbdiplyfkw"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_dtgyq"]
 [ext_resource type="PackedScene" uid="uid://pwppgtajejmn" path="res://ui/crosshair/crosshair.tscn" id="2_jyjei"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cfxi0u1uwn50f" path="res://ui/menu/menu.tscn" id="7_edjrs"]
 [ext_resource type="Script" path="res://sounds/music/music_player.gd" id="10_1b64p"]
 [ext_resource type="AudioStream" uid="uid://dj7jfbcl41rdc" path="res://sounds/music/level_2/Music_Level_02_B.ogg" id="10_hqig8"]
+[ext_resource type="Script" path="res://characters/player/end_screen.gd" id="10_o2cj7"]
 [ext_resource type="AudioStream" uid="uid://c5gid7e3v0vyv" path="res://sounds/ambience/Jungle_Night_Ambience.ogg" id="11_bnn2t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aytt0"]
@@ -128,7 +129,54 @@ states/item_swap_out/node = SubResource("AnimationNodeAnimation_7a0te")
 states/item_swap_out/position = Vector2(428, 113)
 transitions = ["item_swap_out", "item_swap_in", SubResource("AnimationNodeStateMachineTransition_4qb8e"), "item_swap_in", "item_swap_out", SubResource("AnimationNodeStateMachineTransition_cn1dn"), "Start", "item_swap_out", SubResource("AnimationNodeStateMachineTransition_j5sq0")]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("door_ui", "effect_player", "music_player", "ambience_player")]
+[sub_resource type="Animation" id="Animation_e7jow"]
+resource_name = "End_screen"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/EndScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(9, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2nibt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/EndScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w71gl"]
+_data = {
+"End_screen": SubResource("Animation_e7jow"),
+"RESET": SubResource("Animation_2nibt")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hb1ia"]
+animation = &"End_screen"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2dxr5"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_46jjp"]
+states/End_screen/node = SubResource("AnimationNodeAnimation_hb1ia")
+states/End_screen/position = Vector2(490, 100)
+transitions = ["Start", "End_screen", SubResource("AnimationNodeStateMachineTransition_2dxr5")]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("door_ui", "effect_player", "music_player", "ambience_player", "end_screen")]
 script = ExtResource("1_dtgyq")
 walk_speed = 5.0
 run_speed = 10.0
@@ -139,6 +187,7 @@ effect_player = NodePath("EffectPlayer")
 music_player = NodePath("MusicPlayer")
 ambience_player = NodePath("AmbiencePlayer")
 item_pickup_sound = ExtResource("3_q3qe2")
+end_screen = NodePath("UI/EndScreen")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -187,11 +236,12 @@ notebook = NodePath("Notebook")
 menu = NodePath("Menu")
 
 [node name="FPS Counter" type="RichTextLabel" parent="UI"]
+visible = false
 layout_mode = 1
 offset_right = 354.0
 offset_bottom = 40.0
 mouse_filter = 1
-text = "FPS: 103"
+text = "FPS: 46"
 script = ExtResource("4_bf4aw")
 
 [node name="Crosshair" parent="UI" instance=ExtResource("2_jyjei")]
@@ -206,6 +256,30 @@ start_notes = PackedStringArray("Arrival in the Village/I arrived via riverboat 
 [node name="Menu" parent="UI" instance=ExtResource("7_edjrs")]
 visible = false
 layout_mode = 1
+
+[node name="EndScreen" type="ColorRect" parent="UI" node_paths=PackedStringArray("anim")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+script = ExtResource("10_o2cj7")
+anim = NodePath("AnimationTree")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/EndScreen"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_w71gl")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="UI/EndScreen"]
+root_node = NodePath("../../..")
+tree_root = SubResource("AnimationNodeStateMachine_46jjp")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 current = true

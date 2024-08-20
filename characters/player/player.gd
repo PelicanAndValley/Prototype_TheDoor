@@ -47,6 +47,8 @@ var ambience_player : AudioStreamPlayer;
 var grapple_throw_sound : AudioStream;
 @export
 var item_pickup_sound : AudioStream;
+@export
+var end_screen : EndScreen;
 
 var open_ui: DoorUI.OpenUI:
 	get():

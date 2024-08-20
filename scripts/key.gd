@@ -68,6 +68,8 @@ func anim_finished (anim_name: StringName) -> void:
 	if anim_name == "Animation":
 		_player.final_cam.make_current();
 		_player.final_stuff.visible = true;
+		_player.end_screen.visible = true;
+		_player.end_screen.start();
 		_door.open(_player);
 		my_daddy.reparent(_door.left);
 
