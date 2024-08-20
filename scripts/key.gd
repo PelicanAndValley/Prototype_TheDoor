@@ -24,6 +24,8 @@ var turn_sound : AudioStreamPlayer3D;
 var _player : Player;
 @export
 var _door : Door;
+@export
+var my_daddy : Node3D;
 
 var _anim_playback : AnimationNodeStateMachinePlayback;
 var _velocity : Vector3;
@@ -64,7 +66,11 @@ func put_in_lock () -> void:
 	
 func anim_finished (anim_name: StringName) -> void:
 	if anim_name == "Animation":
+		_player.final_cam.make_current();
+		_player.final_stuff.visible = true;
 		_door.open(_player);
+		my_daddy.reparent(_door.left);
 
 func _physics_process(delta: float) -> void:
-	pass;
+	if Input.is_action_just_pressed("Interact"):
+		anim_finished("Animation");

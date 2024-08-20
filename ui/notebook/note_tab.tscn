@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://vqehe5qmfesu" path="res://ui/notebook/notebook_text_theme.tres" id="2_hxil0"]
 
 [node name="NoteTab" type="TextureButton"]
-custom_minimum_size = Vector2(0, 42.9)
+custom_minimum_size = Vector2(0, 30)
 texture_normal = ExtResource("1_31mwe")
 ignore_texture_size = true
 stretch_mode = 0
@@ -24,6 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("2_hxil0")
+theme_override_font_sizes/normal_font_size = 15
 text = "Note tab"
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

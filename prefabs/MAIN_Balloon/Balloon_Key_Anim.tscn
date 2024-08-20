@@ -450,12 +450,13 @@ graph_offset = Vector2(487, -13)
 
 [node name="KeyTurn2" parent="." instance=ExtResource("1_qd5an")]
 transform = Transform3D(0.830858, 0, 0.556484, 0, 1, 0, -0.556484, 0, 0.830858, -17.507, 58.458, -8.703)
+visible = false
 
 [node name="KeyTurnSound" type="AudioStreamPlayer3D" parent="KeyTurn2/KeyTurnRoot/KeyWorldPos/KeyTurn/Key_Geom" index="0"]
 stream = ExtResource("2_8vtpa")
 volume_db = 10.0
 
-[node name="Key" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("balloon", "balloon_rope", "_rope_pos", "anim_tree", "key_turn_model", "key_turn_anim", "sound", "rope_sound", "turn_sound")]
+[node name="Key" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("balloon", "balloon_rope", "_rope_pos", "anim_tree", "key_turn_model", "key_turn_anim", "sound", "rope_sound", "turn_sound", "my_daddy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2877, 15.9915, -5.18135)
 sync_to_physics = false
 script = ExtResource("1_m2f6o")
@@ -468,6 +469,7 @@ key_turn_anim = NodePath("../KeyTurn2/AnimationTree")
 sound = NodePath("DislodgeSound")
 rope_sound = NodePath("RopeSound")
 turn_sound = NodePath("../KeyTurn2/KeyTurnRoot/KeyWorldPos/KeyTurn/Key_Geom/KeyTurnSound")
+my_daddy = NodePath("..")
 speed = 5.0
 acceleration = 10.0
 link_to_item = true

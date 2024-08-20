@@ -24,6 +24,10 @@ var hop_speed : float = 10;
 @export_group("Camera")
 @export
 var look_speed : float = 0.001;
+@export
+var final_cam : Camera3D;
+@export
+var final_stuff : Node3D;
 @export_group("Tools")
 @export
 var grappling_hook : PackedScene;

@@ -209,8 +209,10 @@ transform = Transform3D(-1.58585e-07, 0, 3.628, 0, 3.628, 0, -3.628, 0, -1.58585
 [node name="EnvPulley" parent="." instance=ExtResource("19_qi4wh")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -118.273, 38.6055, 117.562)
 
-[node name="Player" parent="." instance=ExtResource("3_ht0e7")]
+[node name="Player" parent="." node_paths=PackedStringArray("final_cam", "final_stuff") instance=ExtResource("3_ht0e7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60536, 1.40139, 36.9581)
+final_cam = NodePath("../EndGame/Camera3D")
+final_stuff = NodePath("../EndGame")
 
 [node name="EnvBalloon" parent="." instance=ExtResource("20_svckx")]
 transform = Transform3D(-0.9886, 0.0454755, -0.143538, 0.0602366, 0.99314, -0.100227, 0.137995, -0.10773, -0.984557, 44.6722, 2.07104, 131.487)
@@ -633,7 +635,6 @@ visible = false
 
 [node name="SpotLight3D" type="SpotLight3D" parent="EndGame"]
 transform = Transform3D(1, 0, 0, 0, -0.994293, -0.106681, 0, 0.106681, -0.994293, -6.65276, 95.0543, -256.495)
-visible = false
 light_energy = 10000.0
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 7.552
@@ -641,10 +642,11 @@ light_specular = 0.0
 spot_range = 392.685
 spot_angle = 31.8743
 
-[connection signal="animation_finished" from="THE BIG KEY/KeyTurn2/AnimationTree" to="THE BIG KEY/Key" method="anim_finished"]
 [node name="Camera3D" type="Camera3D" parent="EndGame"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 2.45, 5.037, 113.155)
 near = 1.0
+
+[connection signal="animation_finished" from="THE BIG KEY/KeyTurn2/AnimationTree" to="THE BIG KEY/Key" method="anim_finished"]
 
 [editable path="Door_Base"]
 [editable path="Door_Base/DoorR/Door_Handle/PulleySystem/Anchor"]

@@ -109,8 +109,10 @@ states/DoorOpen/node = SubResource("AnimationNodeBlendTree_tbvop")
 states/DoorOpen/position = Vector2(572, 100)
 transitions = ["Start", "DoorOpen", SubResource("AnimationNodeStateMachineTransition_gil8c")]
 
-[node name="Door_Base" node_paths=PackedStringArray("anim") instance=ExtResource("1_trefj")]
+[node name="Door_Base" node_paths=PackedStringArray("left", "right", "anim") instance=ExtResource("1_trefj")]
 script = ExtResource("2_m63br")
+left = NodePath("DoorL")
+right = NodePath("DoorR")
 anim = NodePath("AnimationTree")
 
 [node name="DoorR" parent="." index="0"]
