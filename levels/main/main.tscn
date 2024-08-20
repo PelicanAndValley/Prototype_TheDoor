@@ -64,6 +64,9 @@ _key = NodePath("../../../Balloon_Key_Anim/Key")
 [node name="Platform" parent="Door_Base/Door_Handle/PulleySystem" index="1" node_paths=PackedStringArray("key")]
 key = NodePath("../../../../Balloon_Key_Anim")
 
+[node name="RopeLength2" parent="Door_Base/Door_Handle" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32.0054, 238.252, 12.441)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.963052, -0.262816, -0.0588124, 0.0751703, -0.472012, 0.878381, -0.258613, 0.841506, 0.474328, 43.8251, -22.77, 159.783)
 light_color = Color(0.650056, 0.78129, 0.962707, 1)
