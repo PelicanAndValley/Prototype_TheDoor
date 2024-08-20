@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bqrch0mqe7w6"]
+[gd_scene load_steps=32 format=3 uid="uid://bqrch0mqe7w6"]
 
 [ext_resource type="PackedScene" uid="uid://bax3cefbefbt2" path="res://prefabs/MAIN_Door_Base/Door_Base.glb" id="1_trefj"]
 [ext_resource type="PackedScene" uid="uid://bnv2ffmosep22" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Handle.tscn" id="2_nin17"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://d0182e4ual523" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Keyhole.tscn" id="3_dnmja"]
 [ext_resource type="Script" path="res://scripts/grappleable.gd" id="3_ujwnp"]
 [ext_resource type="Script" path="res://templates/climbable.gd" id="4_8xw2u"]
-[ext_resource type="PackedScene" uid="uid://cc8gwsp7am24y" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Latch.tscn" id="4_n0udy"]
 [ext_resource type="Script" path="res://scripts/grapple_rope.gd" id="4_wu6ew"]
 [ext_resource type="PackedScene" uid="uid://enxdn03vgyft" path="res://prefabs/MAIN_Rope/Rope_Length.tscn" id="5_eugna"]
 [ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/pulley_system.gd" id="7_xdxyc"]
@@ -15,6 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://gmsgwlhxnbi3" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/platform.tscn" id="9_0axrt"]
 [ext_resource type="PackedScene" uid="uid://c0qvn1cn44uwe" path="res://prefabs/PROTOTYPE_Puzzle_HangingRope/hanging_rope.tscn" id="10_235yk"]
 [ext_resource type="PackedScene" uid="uid://c4b2cp6xndx2" path="res://prefabs/MAIN_Piton/Piton.tscn" id="11_ukte6"]
+[ext_resource type="PackedScene" uid="uid://vgxfywnf8n5a" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Latch_L.tscn" id="15_gvkd6"]
+[ext_resource type="PackedScene" uid="uid://dgmid73kxl52v" path="res://prefabs/MAIN_Vines/Vine_01.tscn" id="15_vy61s"]
+[ext_resource type="PackedScene" uid="uid://cixqublwn72se" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Latch_R.tscn" id="16_5d5gy"]
+[ext_resource type="PackedScene" uid="uid://c5xdvkhxw5slw" path="res://prefabs/MAIN_Vines/Vine_02.tscn" id="16_b815w"]
+[ext_resource type="PackedScene" uid="uid://dra8k3tk823up" path="res://prefabs/MAIN_Vines/Vine_03.tscn" id="17_ot3l6"]
+[ext_resource type="PackedScene" uid="uid://tg1jhxgfsofy" path="res://prefabs/MAIN_Vines/Vine_Over_Handle.tscn" id="19_bplxy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vfnks"]
 size = Vector3(2.56049, 0.778259, 0.488647)
@@ -165,20 +170,54 @@ anim = NodePath("../../RopeLength2/AnimationTree")
 
 [node name="Door_Keyhole" parent="." index="1" instance=ExtResource("3_dnmja")]
 
-[node name="Door_Latch" parent="." index="2" instance=ExtResource("4_n0udy")]
-
-[node name="DoorL" parent="." index="3"]
+[node name="DoorL" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.5433, 0.215866, -2.74202)
 surface_material_override/0 = ExtResource("2_um1p0")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="DoorL" index="0"]
+[node name="DoorDecoration" type="Node3D" parent="DoorL" index="0"]
+
+[node name="Vine01_1" parent="DoorL/DoorDecoration" index="0" instance=ExtResource("15_vy61s")]
+transform = Transform3D(0.10282, 0.108239, 1.2374, -0.00896307, 1.24167, -0.107867, -1.2421, 8.19209e-09, 0.10321, -1.17273, 286.931, 2.25447)
+
+[node name="Vine01_2" parent="DoorL/DoorDecoration" index="1" instance=ExtResource("15_vy61s")]
+transform = Transform3D(-0.00785274, -1.18573e-09, -1.24635, -1.88198e-07, 1.24638, 0, -1.24635, -1.88194e-07, 0.00785274, 57.925, 116.138, 2.21664)
+
+[node name="Vine02_2" parent="DoorL/DoorDecoration" index="2" instance=ExtResource("16_b815w")]
+transform = Transform3D(0.000217466, 0, 1.24638, 0, 1.24638, 0, -1.24638, 0, 0.000217466, 34.259, 116.445, 2.43157)
+
+[node name="Vine03_1" parent="DoorL/DoorDecoration" index="3" instance=ExtResource("17_ot3l6")]
+transform = Transform3D(0.570756, -0.0412529, 1.10724, 0.0759394, 1.24404, 0.0072048, -1.10541, 0.064163, 0.572199, 4.26833, 463.244, 4.17967)
+
+[node name="Vine03_3" parent="DoorL/DoorDecoration" index="4" instance=ExtResource("17_ot3l6")]
+transform = Transform3D(-0.301983, 0.0183205, 1.2091, -0.0154164, 1.24607, -0.0227311, -1.20914, -0.0204629, -0.301684, 38.296, 296.953, 5.09713)
+
+[node name="Door_Latch_L" parent="DoorL" index="1" instance=ExtResource("15_gvkd6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.547, 0, 2.728)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorL" index="2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorL/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_lhdpn")
 
-[node name="DoorR" parent="." index="4"]
+[node name="DoorR" parent="." index="3"]
 material_override = ExtResource("2_um1p0")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="DoorR" index="0"]
+[node name="DoorDecoration" type="Node3D" parent="DoorR" index="0"]
+transform = Transform3D(1.24638, 0, 0, 0, 1.24638, 0, 0, 0, 1.24638, -61.393, -0.0328979, 2.72831)
+
+[node name="Vine02_1" parent="DoorR/DoorDecoration" index="0" instance=ExtResource("16_b815w")]
+transform = Transform3D(0.0591844, 0, 0.998247, 0, 1, 0, -0.998247, 0, 0.0591844, 43.6869, 230.375, 0.631248)
+
+[node name="Vine03_2" parent="DoorR/DoorDecoration" index="1" instance=ExtResource("17_ot3l6")]
+transform = Transform3D(-0.242289, 0.014699, 0.970093, -0.012369, 0.999757, -0.0182378, -0.970125, -0.0164179, -0.242048, 34.3223, 372.269, 1.72812)
+
+[node name="VineOverHandle" parent="DoorR/DoorDecoration" index="2" instance=ExtResource("19_bplxy")]
+transform = Transform3D(-4.36551e-08, 0.0358763, 0.999356, 1.5682e-09, 0.999356, -0.0358763, -1, 1.00686e-12, -4.36832e-08, 7.0465, 207.037, 0.431233)
+
+[node name="Door_Latch_R" parent="DoorR" index="1" instance=ExtResource("16_5d5gy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.547, 0, 2.728)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorR" index="2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorR/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_5txig")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cffktnrtw545n"]
+
+[ext_resource type="PackedScene" uid="uid://dgmid73kxl52v" path="res://prefabs/MAIN_Vines/Vine_01.tscn" id="1_ucj6h"]
+[ext_resource type="PackedScene" uid="uid://c5xdvkhxw5slw" path="res://prefabs/MAIN_Vines/Vine_02.tscn" id="2_e018t"]
+[ext_resource type="PackedScene" uid="uid://dra8k3tk823up" path="res://prefabs/MAIN_Vines/Vine_03.tscn" id="3_62542"]
+[ext_resource type="PackedScene" uid="uid://tg1jhxgfsofy" path="res://prefabs/MAIN_Vines/Vine_Over_Handle.tscn" id="4_1uvrh"]
+
+[node name="VineOrg" type="Node3D"]
+
+[node name="Vine01_1" parent="." instance=ExtResource("1_ucj6h")]
+transform = Transform3D(0.0824954, 0.0868428, 0.992801, -0.0071913, 0.996222, -0.0865445, -0.996566, 0, 0.0828083, -50.3187, 230.385, -0.391172)
+
+[node name="Vine01_2" parent="." instance=ExtResource("1_ucj6h")]
+transform = Transform3D(-0.00630051, 0, -0.99998, 0, 1, 0, -0.99998, 0, 0.00630051, -2.90309, 93.3536, -0.421524)
+
+[node name="Vine02_1" parent="." instance=ExtResource("2_e018t")]
+transform = Transform3D(0.0591844, 0, 0.998247, 0, 1, 0, -0.998247, 0, 0.0591844, 43.6869, 230.375, 0.631248)
+
+[node name="Vine02_2" parent="." instance=ExtResource("2_e018t")]
+transform = Transform3D(0.000174489, 0, 1, 0, 1, 0, -1, 0, 0.000174489, -21.8909, 93.6, -0.249084)
+
+[node name="Vine03_1" parent="." instance=ExtResource("3_62542")]
+transform = Transform3D(0.457932, -0.0330982, 0.888371, 0.0609281, 0.998125, 0.00578064, -0.886897, 0.0514795, 0.45909, -45.9532, 371.846, 1.15346)
+
+[node name="Vine03_2" parent="." instance=ExtResource("3_62542")]
+transform = Transform3D(-0.242289, 0.014699, 0.970093, -0.012369, 0.999757, -0.0182378, -0.970125, -0.0164179, -0.242048, 34.3223, 372.269, 1.72812)
+
+[node name="Vine03_3" parent="." instance=ExtResource("3_62542")]
+transform = Transform3D(-0.242289, 0.014699, 0.970093, -0.012369, 0.999757, -0.0182378, -0.970125, -0.0164179, -0.242048, -18.6519, 238.426, 1.88956)
+
+[node name="VineOverHandle" parent="." instance=ExtResource("4_1uvrh")]
+transform = Transform3D(-4.36832e-08, 0.0358763, 0.999356, 1.5682e-09, 0.999356, -0.0358763, -1, 0, -4.37114e-08, 7.0465, 207.037, 0.431233)

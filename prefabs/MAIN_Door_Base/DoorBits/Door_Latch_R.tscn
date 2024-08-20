@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cixqublwn72se"]
+
+[ext_resource type="PackedScene" uid="uid://ckgd2isckunhc" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Latch_R.glb" id="1_l7pyn"]
+[ext_resource type="Material" uid="uid://bjtsilgbuoo3g" path="res://prefabs/MAIN_Door_Base/DoorBits/Door_Bits_Material.tres" id="2_y4mxy"]
+
+[node name="Door_Latch_R" instance=ExtResource("1_l7pyn")]
+
+[node name="Latch_R" parent="." index="0"]
+material_override = ExtResource("2_y4mxy")
