@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://clgr2t4lqf2kt" path="res://prefabs/MAIN_Pulley_Platform/Pulley_Platform.tscn" id="2_crirj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6m3l7"]
-size = Vector3(3.28579, 0.1, 2.76895)
+size = Vector3(7.20959, 0.408398, 6)
 
 [node name="Platform" type="Node3D" node_paths=PackedStringArray("collision")]
 script = ExtResource("1_bqbr5")
@@ -18,12 +18,13 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 [node name="Trigger" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0115478, 0.288629, -0.0461915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0640991, 0.442828, -0.0461915)
 shape = SubResource("BoxShape3D_6m3l7")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
-target_position = Vector3(0, -0.1, 0)
+target_position = Vector3(0, -0.2, 0)
+debug_shape_thickness = 5
 
 [connection signal="body_entered" from="Trigger" to="." method="on_trigger"]
 [connection signal="body_exited" from="Trigger" to="." method="on_trigger_exit"]

@@ -18,6 +18,8 @@ var key_turn_anim : AnimationTree;
 var sound : AudioStreamPlayer3D;
 @export
 var rope_sound : AudioStreamPlayer3D;
+@export
+var turn_sound : AudioStreamPlayer3D;
 
 var _anim_playback : AnimationNodeStateMachinePlayback;
 var _velocity : Vector3;
@@ -51,7 +53,7 @@ func dislodge () -> void:
 	balloon_rope.visible = true;
 
 func put_in_lock () -> void:
-	print("PUTTING IN LOCK")
+	turn_sound.play();
 	$KeyModel.visible = false;
 	key_turn_model.visible = true;
 	key_turn_anim["parameters/playback"].travel("Animation");

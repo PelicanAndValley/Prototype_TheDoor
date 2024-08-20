@@ -56,6 +56,7 @@ func _physics_process(delta: float) -> void:
 		_velocity = lerp(_velocity, target_velocity, acceleration * delta);
 		
 		if _raycast.is_colliding():
+			print("PLATFORM ON GROUND");
 			_velocity = Vector3.ZERO;
 			_positioning_key = true;
 		
