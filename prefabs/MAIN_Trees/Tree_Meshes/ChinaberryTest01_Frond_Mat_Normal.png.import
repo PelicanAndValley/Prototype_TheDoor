@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b4caoa1niu4sa"
+path.s3tc="res://.godot/imported/ChinaberryTest01_Frond_Mat_Normal.png-e1e85be8984e494a640c602baacc2051.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "3ed1c262de90ce17e4532136f785cd88"
+}
+
+[deps]
+
+source_file="res://prefabs/MAIN_Trees/Tree_Meshes/ChinaberryTest01_Frond_Mat_Normal.png"
+dest_files=["res://.godot/imported/ChinaberryTest01_Frond_Mat_Normal.png-e1e85be8984e494a640c602baacc2051.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://prefabs/MAIN_Trees/Tree_Meshes/ChinaberryTest01_Frond_Mat_Normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,0 +1,45 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxdm2hooap1e8"]
+
+[ext_resource type="PackedScene" uid="uid://d37ewyea0366" path="res://prefabs/MAIN_Trees/Tree_Meshes/ChinaberryTest01.glb" id="1_iic1a"]
+[ext_resource type="Shader" path="res://shaders/FoliageTestTrunk.gdshader" id="2_obcg2"]
+[ext_resource type="Shader" path="res://shaders/FoliageTestShader.gdshader" id="3_3ltt1"]
+[ext_resource type="Texture2D" uid="uid://bv1ii7yn38h1i" path="res://prefabs/MAIN_Trees/Tree_Material/Bark_d.jpg" id="3_hveyq"]
+[ext_resource type="Texture2D" uid="uid://bgev2doidn25i" path="res://prefabs/MAIN_Trees/Tree_Material/Chinaberry_Leaves_d.png" id="4_ic8b1"]
+[ext_resource type="Texture2D" uid="uid://dba0gcxxwl8fj" path="res://prefabs/MAIN_Trees/Tree_Material/Bark_n.jpg" id="4_w7d4i"]
+[ext_resource type="Texture2D" uid="uid://6nbixfiwkwhi" path="res://prefabs/MAIN_Trees/Tree_Material/Chinaberry_Leaves_n.png" id="5_0ft0t"]
+[ext_resource type="Texture2D" uid="uid://qbgjc0strqgy" path="res://prefabs/MAIN_Trees/Tree_Material/Bark_r.jpg" id="5_wjlcy"]
+[ext_resource type="Texture2D" uid="uid://cht6o36hw8euc" path="res://prefabs/MAIN_Trees/Tree_Material/Chinaberry_Leaves_r.png" id="6_f1aqm"]
+[ext_resource type="Texture2D" uid="uid://cg1riyjr14wyb" path="res://prefabs/MAIN_Trees/Tree_Material/Chinaberry_Leaves_t.png" id="8_nniac"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfn3w"]
+render_priority = 0
+shader = ExtResource("2_obcg2")
+shader_parameter/albedo = Color(0.687215, 0.687215, 0.687215, 1)
+shader_parameter/texture_albedo = ExtResource("3_hveyq")
+shader_parameter/normal_scale = 3.157
+shader_parameter/texture_normal = ExtResource("4_w7d4i")
+shader_parameter/roughness = 1.0
+shader_parameter/texture_roughness = ExtResource("5_wjlcy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22qto"]
+render_priority = 0
+shader = ExtResource("3_3ltt1")
+shader_parameter/albedo = Color(0.941222, 0.818012, 0.82071, 1)
+shader_parameter/texture_albedo = ExtResource("4_ic8b1")
+shader_parameter/normal_scale = 1.653
+shader_parameter/texture_normal = ExtResource("5_0ft0t")
+shader_parameter/roughness = 0.762
+shader_parameter/texture_roughness = ExtResource("6_f1aqm")
+shader_parameter/backlight_strength = 8.02
+shader_parameter/backlight_tint = Color(1, 1, 1, 1)
+shader_parameter/backlight = 1.0
+shader_parameter/texture_backlight = ExtResource("8_nniac")
+
+[node name="ChinaberryTest01" instance=ExtResource("1_iic1a")]
+
+[node name="Chinaberry" parent="." index="0"]
+material_override = SubResource("ShaderMaterial_wfn3w")
+
+[node name="Chinaberry_Leaves" parent="." index="1"]
+material_override = SubResource("ShaderMaterial_22qto")
+cast_shadow = 2
