@@ -145,7 +145,7 @@ func on_animation_finished (anim_name: StringName) -> void:
 			current_item.visible = false;
 		new_item.visible = true;
 		current_item = new_item;
-		if current_item.name == "ItemBoathook":
+		if current_item.name == "ItemBoathook" or current_item.name == "ItemPulley":
 			_interact_raycast.target_position.z = -20;
 		else:
 			_interact_raycast.target_position.z = -5;

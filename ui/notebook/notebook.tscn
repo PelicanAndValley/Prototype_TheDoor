@@ -146,7 +146,7 @@ layout_mode = 2
 theme = ExtResource("4_3ni13")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "PAGE 1"
+text = "Page 1"
 fit_content = true
 scroll_active = false
 
@@ -156,7 +156,7 @@ layout_mode = 2
 theme = ExtResource("4_3ni13")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "PAGE 2"
+text = "Page 2"
 fit_content = true
 scroll_active = false
 
@@ -178,7 +178,7 @@ grow_vertical = 2
 theme = ExtResource("4_3ni13")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "TITLE"
+text = "Title"
 fit_content = true
 
 [node name="TabCrop" type="Control" parent="Moveable"]

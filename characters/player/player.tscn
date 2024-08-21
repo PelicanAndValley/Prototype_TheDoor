@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d2prbdiplyfkw"]
+[gd_scene load_steps=32 format=3 uid="uid://d2prbdiplyfkw"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_dtgyq"]
 [ext_resource type="PackedScene" uid="uid://pwppgtajejmn" path="res://ui/crosshair/crosshair.tscn" id="2_jyjei"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dj7jfbcl41rdc" path="res://sounds/music/level_2/Music_Level_02_B.ogg" id="10_hqig8"]
 [ext_resource type="Script" path="res://characters/player/end_screen.gd" id="10_o2cj7"]
 [ext_resource type="AudioStream" uid="uid://c5gid7e3v0vyv" path="res://sounds/ambience/Jungle_Night_Ambience.ogg" id="11_bnn2t"]
+[ext_resource type="FontFile" uid="uid://clsl2debaadcr" path="res://ui/fonts/The Californication.ttf" id="11_meht0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aytt0"]
 
@@ -144,6 +145,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/EndScreen/RichTextLabel:theme_override_colors/default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(12, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_2nibt"]
 length = 0.001
@@ -158,6 +171,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/EndScreen/RichTextLabel:theme_override_colors/default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w71gl"]
@@ -236,12 +261,11 @@ notebook = NodePath("Notebook")
 menu = NodePath("Menu")
 
 [node name="FPS Counter" type="RichTextLabel" parent="UI"]
-visible = false
 layout_mode = 1
 offset_right = 354.0
 offset_bottom = 40.0
 mouse_filter = 1
-text = "FPS: 46"
+text = "FPS: 60"
 script = ExtResource("4_bf4aw")
 
 [node name="Crosshair" parent="UI" instance=ExtResource("2_jyjei")]
@@ -280,6 +304,22 @@ libraries = {
 root_node = NodePath("../../..")
 tree_root = SubResource("AnimationNodeStateMachine_46jjp")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/EndScreen"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 140.0
+offset_right = 1754.0
+offset_bottom = 1029.0
+theme_override_colors/default_color = Color(0, 0, 0, 0)
+theme_override_fonts/normal_font = ExtResource("11_meht0")
+theme_override_font_sizes/normal_font_size = 81
+bbcode_enabled = true
+text = "[center]It is said that beyond The Door lies the house of the Gods. It is the gateway to the unreal, the threshold of the otherworld. And no matter how we are warned or warded, we all find ourselves enthralled, or repulsed...
+
+By anabasis or katabasis, the only path men know is, in truth, through. For how flows man, but towards the beyond itself?
+
+THANKS FOR PLAYING"
 
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 current = true

@@ -1,20 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvxk5dg8ey7y7"]
+[gd_scene load_steps=7 format=3 uid="uid://dvxk5dg8ey7y7"]
 
 [ext_resource type="Script" path="res://templates/climbable.gd" id="1_n88sa"]
 [ext_resource type="PackedScene" uid="uid://v3f3flpj2jfv" path="res://prefabs/MAIN_Vines/Main_VINES_Near/VineClimb.glb" id="2_h56tn"]
 [ext_resource type="Material" uid="uid://ybhcsf7wke2n" path="res://prefabs/MAIN_Vines/Vines_Leaf_Climb_Material.tres" id="2_xrfjr"]
 [ext_resource type="Material" uid="uid://c7v0onapabsh" path="res://prefabs/MAIN_Vines/Vines_Trunk_Material.tres" id="3_qlr32"]
-[ext_resource type="Script" path="res://scripts/interactable.gd" id="5_6iph4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nk3nm"]
 size = Vector3(0.761414, 29.1801, 2.64258)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xoyvv"]
 size = Vector3(1, 28.8747, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ghodq"]
-resource_local_to_scene = true
-size = Vector3(0.771362, 0.919495, 3)
 
 [node name="Vine01" type="Node3D"]
 transform = Transform3D(3.628, 0, 0, 0, 3.628, 0, 0, 0, 3.628, 0, 0, 0)
@@ -48,13 +43,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52023, -13.9373, 2.93851)
 visible = false
 shape = SubResource("BoxShape3D_xoyvv")
 
-[node name="TopMountInteract" type="Area3D" parent="."]
-script = ExtResource("5_6iph4")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TopMountInteract"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34259, 0.521605, 0.647272)
-shape = SubResource("BoxShape3D_ghodq")
-
 [node name="VineClimb" parent="." instance=ExtResource("2_h56tn")]
 
 [node name="VineClimbLeaf" parent="VineClimb" index="0"]
@@ -62,7 +50,5 @@ material_override = ExtResource("2_xrfjr")
 
 [node name="VineClimbTrunk" parent="VineClimb" index="1"]
 material_override = ExtResource("3_qlr32")
-
-[connection signal="on_interact" from="TopMountInteract" to="." method="on_top_mount_interact"]
 
 [editable path="VineClimb"]

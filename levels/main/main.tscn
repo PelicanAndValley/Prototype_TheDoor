@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://eq1vhbs1qqn3"]
+[gd_scene load_steps=51 format=3 uid="uid://eq1vhbs1qqn3"]
 
 [ext_resource type="PackedScene" uid="uid://c2m5x78plefiv" path="res://prefabs/MAIN_Cave/Walls/Cave_Wall.tscn" id="1_eenla"]
 [ext_resource type="PackedScene" uid="uid://bqrch0mqe7w6" path="res://prefabs/MAIN_Door_Base/door_base.tscn" id="3_8gru8"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dcj3aseqgqbrh" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_04.tscn" id="9_5ji0q"]
 [ext_resource type="PackedScene" uid="uid://cv8xhdjr0ltw" path="res://prefabs/MAIN_Trees/Tree_Meshes/tree_05.tscn" id="10_eou5l"]
 [ext_resource type="PackedScene" uid="uid://ddcm4o4wkgccd" path="res://prefabs/MAIN_Boathook/env_boathook.tscn" id="11_1b1ns"]
-[ext_resource type="PackedScene" uid="uid://dvxk5dg8ey7y7" path="res://prefabs/MAIN_Vines/Vine_Climb.tscn" id="13_75osr"]
 [ext_resource type="PackedScene" uid="uid://tuuvywyqseqm" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="18_v2u5q"]
 [ext_resource type="PackedScene" uid="uid://bn70o146l2t40" path="res://prefabs/MAIN_Balloon/Balloon_Key_Anim.tscn" id="19_q3klv"]
 [ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="19_qi4wh"]
@@ -164,8 +163,8 @@ key = NodePath("../../../../../THE BIG KEY")
 key_key = NodePath("../../../../../THE BIG KEY/Key")
 key_top_level = NodePath("../../../../../KeyTopLevel")
 
-[node name="RopeLength2" parent="Door_Base/DoorR/Door_Handle" index="3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32.0054, 238.252, 12.441)
+[node name="VineClimb" parent="Door_Base/DoorR" index="4"]
+transform = Transform3D(-1.93991e-07, 0, 4.438, 0, 4.438, 0, -4.438, 0, -1.93991e-07, -38.7822, 124.683, 2.09436)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.963052, -0.262816, -0.0588124, 0.0751703, -0.472012, 0.878381, -0.258613, 0.841506, 0.474328, 43.8251, -22.77, 159.783)
@@ -206,9 +205,6 @@ light_size = 20.0
 light_specular = 0.0
 omni_range = 419.168
 
-[node name="VineClimb" parent="." instance=ExtResource("13_75osr")]
-transform = Transform3D(-1.58585e-07, 0, 3.628, 0, 3.628, 0, -3.628, 0, -1.58585e-07, 13.098, 101.82, -0.761549)
-
 [node name="EnvPulley" parent="." instance=ExtResource("19_qi4wh")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 38.0275, 1.7547, 117.562)
 
@@ -218,7 +214,7 @@ final_cam = NodePath("../EndGame/Camera3D")
 final_stuff = NodePath("../EndGame")
 
 [node name="EnvBalloon" parent="." instance=ExtResource("20_svckx")]
-transform = Transform3D(-0.410478, 0.0544381, -0.910245, 0.131778, 0.99128, -0.000141375, 0.902299, -0.120008, -0.414071, -119.668, 38.2002, 107.437)
+transform = Transform3D(-0.410478, 0.0544381, -0.910245, 0.131778, 0.99128, -0.000141375, 0.902299, -0.120008, -0.414071, 2.26233, 0.979221, 107.437)
 
 [node name="THE BIG KEY" parent="." instance=ExtResource("19_q3klv")]
 transform = Transform3D(0.825488, 0, -0.56442, 0, 1, 0, 0.56442, 0, 0.825488, 3.57224, 3.71812, 14.4017)
@@ -651,6 +647,8 @@ spot_angle = 31.8743
 [node name="Camera3D" type="Camera3D" parent="EndGame"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 2.45, 5.037, 113.155)
 near = 1.0
+
+[connection signal="animation_finished" from="THE BIG KEY/KeyTurn2/AnimationTree" to="THE BIG KEY/Key" method="anim_finished"]
 
 [editable path="Door_Base"]
 [editable path="Door_Base/DoorR/Door_Handle/PulleySystem/Anchor"]

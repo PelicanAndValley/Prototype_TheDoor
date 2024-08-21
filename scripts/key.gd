@@ -72,7 +72,3 @@ func anim_finished (anim_name: StringName) -> void:
 		_player.end_screen.start();
 		_door.open(_player);
 		my_daddy.reparent(_door.left);
-
-func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("Interact"):
-		anim_finished("Animation");

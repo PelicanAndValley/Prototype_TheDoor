@@ -32,7 +32,7 @@ func _process (delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Escape"):
 		if open_ui == OpenUI.NONE:
-			#menu.open(OpenUI.MENU);
+			menu.open(OpenUI.MENU);
 			open_ui = OpenUI.MENU;
 			get_tree().paused = true;
 			_player.release_mouse();
@@ -43,5 +43,5 @@ func _process (delta: float) -> void:
 func close_all_ui () -> void:
 	open_ui = OpenUI.NONE;
 	notebook.close();
-	#menu.close();
+	menu.close();
 	_player.capture_mouse();
