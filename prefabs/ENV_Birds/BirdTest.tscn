@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8321vfgbf07b"]
+
+[ext_resource type="PackedScene" uid="uid://bpgnef1h70ws2" path="res://prefabs/ENV_Birds/BirdTest.glb" id="1_qpqc4"]
+[ext_resource type="Shader" path="res://prefabs/ENV_Birds/BirdTestShader.gdshader" id="2_1lule"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3oaf0"]
+render_priority = 0
+shader = ExtResource("2_1lule")
+shader_parameter/time_scale = 1.0
+shader_parameter/lateral_strength = 0.2
+shader_parameter/pivot = 1.0
+shader_parameter/wave = 1.0
+shader_parameter/twist = 1.0
+
+[node name="BirdTest" instance=ExtResource("1_qpqc4")]
+
+[node name="Bird" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_3oaf0")

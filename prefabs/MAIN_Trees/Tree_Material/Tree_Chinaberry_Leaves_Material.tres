@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bulltpju8giam"]
 
-[ext_resource type="Texture2D" uid="uid://bgev2doidn25i" path="res://prefabs/MAIN_Trees/Tree_Material/Chinaberry_Leaves_d.png" id="1_em0k2"]
+[ext_resource type="Texture2D" path="res://prefabs/MAIN_Trees/Tree_Material/Chinaberry_Leaves_d.dds" id="1_yp7r8"]
 [ext_resource type="Texture2D" uid="uid://cg1riyjr14wyb" path="res://prefabs/MAIN_Trees/Tree_Material/Chinaberry_Leaves_t.png" id="2_bq83s"]
 [ext_resource type="Texture2D" uid="uid://6nbixfiwkwhi" path="res://prefabs/MAIN_Trees/Tree_Material/Chinaberry_Leaves_n.png" id="3_u4nlh"]
 [ext_resource type="Texture2D" uid="uid://cht6o36hw8euc" path="res://prefabs/MAIN_Trees/Tree_Material/Chinaberry_Leaves_r.png" id="4_w5ihe"]
@@ -11,7 +11,7 @@ alpha_scissor_threshold = 0.152
 alpha_antialiasing_mode = 1
 alpha_antialiasing_edge = 0.3
 cull_mode = 2
-albedo_texture = ExtResource("1_em0k2")
+albedo_texture = ExtResource("1_yp7r8")
 roughness_texture = ExtResource("4_w5ihe")
 normal_enabled = true
 normal_texture = ExtResource("3_u4nlh")
