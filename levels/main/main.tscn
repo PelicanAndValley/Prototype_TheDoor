@@ -1,13 +1,12 @@
-[gd_scene load_steps=42 format=3 uid="uid://eq1vhbs1qqn3"]
+[gd_scene load_steps=41 format=3 uid="uid://eq1vhbs1qqn3"]
 
 [ext_resource type="PackedScene" uid="uid://c2m5x78plefiv" path="res://prefabs/MAIN_Cave/Walls/Cave_Wall.tscn" id="1_eenla"]
 [ext_resource type="PackedScene" uid="uid://bqrch0mqe7w6" path="res://prefabs/MAIN_Door_Base/door_base.tscn" id="3_8gru8"]
 [ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_ht0e7"]
 [ext_resource type="PackedScene" uid="uid://bba6fjg537d6d" path="res://prefabs/MAIN_Cave/Main_Environment.tscn" id="4_bpwuy"]
 [ext_resource type="PackedScene" uid="uid://cbofi3hbjfyp5" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/item_pulley.tscn" id="6_4002e"]
-[ext_resource type="PackedScene" path="res://prefabs/MAIN_Boathook/env_boathook.tscn" id="11_1b1ns"]
-[ext_resource type="PackedScene" uid="uid://dvxk5dg8ey7y7" path="res://prefabs/MAIN_Vines/Vine_Climb.tscn" id="13_75osr"]
-[ext_resource type="PackedScene" uid="uid://1ft7x5rkfmv2" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="18_v2u5q"]
+[ext_resource type="PackedScene" uid="uid://ddcm4o4wkgccd" path="res://prefabs/MAIN_Boathook/env_boathook.tscn" id="11_1b1ns"]
+[ext_resource type="PackedScene" uid="uid://tuuvywyqseqm" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="18_v2u5q"]
 [ext_resource type="PackedScene" uid="uid://bn70o146l2t40" path="res://prefabs/MAIN_Balloon/Balloon_Key_Anim.tscn" id="19_q3klv"]
 [ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="19_qi4wh"]
 [ext_resource type="PackedScene" uid="uid://ctxvrp188j7of" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/env_balloon.tscn" id="20_svckx"]
@@ -153,6 +152,9 @@ key = NodePath("../../../../../THE BIG KEY")
 key_key = NodePath("../../../../../THE BIG KEY/Key")
 key_top_level = NodePath("../../../../../KeyTopLevel")
 
+[node name="RopeLength2" parent="Door_Base/DoorR/Door_Handle" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32.0054, 238.252, 12.441)
+
 [node name="VineClimb" parent="Door_Base/DoorR" index="4"]
 transform = Transform3D(-1.93991e-07, 0, 4.438, 0, 4.438, 0, -4.438, 0, -1.93991e-07, -38.7822, 124.683, 2.09436)
 
@@ -274,7 +276,6 @@ spot_angle = 31.8743
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 2.45, 5.037, 113.155)
 near = 1.0
 
-[connection signal="animation_finished" from="THE BIG KEY/KeyTurn2/AnimationTree" to="THE BIG KEY/Key" method="anim_finished"]
 [node name="ChinaberryTest01" parent="." instance=ExtResource("25_gdejc")]
 transform = Transform3D(2.82279, 0, 0, 0, 2.82279, 0, 0, 0, 2.82279, 3.20838, -1.95924, 167.287)
 
