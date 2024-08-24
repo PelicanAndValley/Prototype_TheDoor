@@ -1,10 +1,8 @@
 @tool
-extends Area3D;
+extends MeshInstance3D;
 
-class_name DynamicWindObject;
+class_name DynamicWindMesh;
 
-@export
-var meshes: Array[MeshInstance3D];
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

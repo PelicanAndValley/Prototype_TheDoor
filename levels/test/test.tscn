@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ctoupxt2dsnu5"]
+[gd_scene load_steps=25 format=3 uid="uid://ctoupxt2dsnu5"]
 
 [ext_resource type="PackedScene" uid="uid://7xb1q1u0cfe2" path="res://prefabs/PROTOTYPE_Door_big_door/big_door.tscn" id="2_g3r4l"]
 [ext_resource type="PackedScene" uid="uid://d2prbdiplyfkw" path="res://characters/player/player.tscn" id="3_kq0e6"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://c0qvn1cn44uwe" path="res://prefabs/PROTOTYPE_Puzzle_HangingRope/hanging_rope.tscn" id="10_h8fmk"]
 [ext_resource type="PackedScene" uid="uid://cxdm2hooap1e8" path="res://prefabs/MAIN_Trees/chinaberry_test_01.tscn" id="12_0er6w"]
 [ext_resource type="Script" path="res://addons/dynamic_wind/dynamic_wind_area.gd" id="13_sdtwf"]
+[ext_resource type="Script" path="res://addons/dynamic_wind/dynamic_wind_force.gd" id="14_6wgic"]
+[ext_resource type="Script" path="res://addons/dynamic_wind/dynamic_wind_mesh.gd" id="15_yhgqo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ftavj"]
 size = Vector3(5, 1, 5)
@@ -131,6 +133,17 @@ script = ExtResource("13_sdtwf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DynamicWindArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.70972, 3.45665, -8.87061)
 shape = SubResource("BoxShape3D_12wqn")
+
+[node name="DynamicWindForce" type="Node3D" parent="DynamicWindArea"]
+transform = Transform3D(-0.613225, 0, 0.789909, 0, 1, 0, -0.789909, 0, -0.613225, 11.139, 4.67635, -13.9464)
+script = ExtResource("14_6wgic")
+
+[node name="DynamicWindForce2" type="Node3D" parent="DynamicWindArea"]
+transform = Transform3D(-0.999818, 0, 0.0190926, 0, 1, 0, -0.0190926, 0, -0.999818, 5.1073, 4.67635, -2.28503)
+script = ExtResource("14_6wgic")
+
+[node name="DynamicWindMesh" type="MeshInstance3D" parent="DynamicWindArea"]
+script = ExtResource("15_yhgqo")
 
 [connection signal="on_interact" from="PulleySystem/Anchor" to="PulleySystem" method="_on_anchor_on_interact"]
 
