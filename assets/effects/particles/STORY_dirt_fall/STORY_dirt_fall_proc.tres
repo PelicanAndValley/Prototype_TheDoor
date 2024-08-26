@@ -1,0 +1,28 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://bemuo3f2h7dmo"]
+
+[resource]
+lifetime_randomness = 0.05
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_damping_as_friction = true
+angle_min = -180.0
+angle_max = 180.0
+spread = 15.652
+flatness = 0.457
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+scale_min = 0.0
+scale_max = 2.98
+hue_variation_min = -0.27
+hue_variation_max = 0.12
+anim_speed_max = 16.0
+turbulence_enabled = true
+turbulence_noise_strength = 0.18
+turbulence_noise_scale = 0.72
+turbulence_noise_speed_random = 4.0
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.0
+turbulence_initial_displacement_min = 57.5
+turbulence_initial_displacement_max = 57.5

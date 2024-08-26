@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d37ewyea0366" path="res://prefabs/MAIN_Trees/Tree_Meshes/ChinaberryTest01.glb" id="1_iic1a"]
 [ext_resource type="Shader" path="res://shaders/FoliageTrunk.gdshader" id="2_obcg2"]
-[ext_resource type="Shader" path="res://shaders/FoliageShader.gdshader" id="3_3ltt1"]
+[ext_resource type="Shader" path="res://shaders/FoliageLeaf.gdshader" id="3_3ltt1"]
 [ext_resource type="Texture2D" uid="uid://bv1ii7yn38h1i" path="res://prefabs/MAIN_Trees/Tree_Material/Bark_d.jpg" id="3_hveyq"]
 [ext_resource type="Texture2D" uid="uid://dba0gcxxwl8fj" path="res://prefabs/MAIN_Trees/Tree_Material/Bark_n.jpg" id="4_w7d4i"]
 [ext_resource type="Texture2D" uid="uid://6nbixfiwkwhi" path="res://prefabs/MAIN_Trees/Tree_Material/Chinaberry_Leaves_n.png" id="5_0ft0t"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://chevsilg4jfk3"]
 
 [ext_resource type="PackedScene" uid="uid://dkuo86gm3o7vh" path="res://assets/flora/flora_fern_01/fern_01.glb" id="1_f5lmp"]
-[ext_resource type="Shader" path="res://shaders/FoliageShader.gdshader" id="2_i2x7p"]
+[ext_resource type="Shader" path="res://shaders/FoliageLeaf.gdshader" id="2_i2x7p"]
 [ext_resource type="Texture2D" uid="uid://dta2bokhws1vs" path="res://assets/flora/flora_fern_01/flora_fern_01_d.png" id="3_gqelt"]
 [ext_resource type="Texture2D" uid="uid://ce1hrojn5om0" path="res://assets/flora/flora_fern_01/flora_fern_01_n.png" id="4_703yw"]
 [ext_resource type="Texture2D" uid="uid://d4jw8211yg4tf" path="res://assets/flora/flora_fern_01/flora_fern_01_r.png" id="5_egdvs"]

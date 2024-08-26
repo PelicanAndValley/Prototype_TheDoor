@@ -1,8 +1,7 @@
 shader_type spatial;
 render_mode cull_disabled, alpha_to_coverage_and_one;
 
-#include "res://shaders/perlin3d.gdshaderinc"
-
+#include "res://shaders/_resource_Perlin3D.gdshaderinc"
 
 group_uniforms Config;
 //uniform float ao_strength;
