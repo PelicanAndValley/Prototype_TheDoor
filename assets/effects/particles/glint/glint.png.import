@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://22s0fqs4sn2e"
-path.s3tc="res://.godot/imported/glint.png-f4ae449e60c26bd5cc69ba0aeb2e9140.s3tc.ctex"
+path.s3tc="res://.godot/imported/glint.png-46b5b98879aba8f462aed9ba6f79271d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://particles/glint/glint.png"
-dest_files=["res://.godot/imported/glint.png-f4ae449e60c26bd5cc69ba0aeb2e9140.s3tc.ctex"]
+source_file="res://assets/effects/particles/glint/glint.png"
+dest_files=["res://.godot/imported/glint.png-46b5b98879aba8f462aed9ba6f79271d.s3tc.ctex"]
 
 [params]
 

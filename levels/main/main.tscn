@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://eq1vhbs1qqn3"]
+[gd_scene load_steps=44 format=3 uid="uid://eq1vhbs1qqn3"]
 
 [ext_resource type="PackedScene" uid="uid://c2m5x78plefiv" path="res://prefabs/MAIN_Cave/Walls/Cave_Wall.tscn" id="1_eenla"]
 [ext_resource type="PackedScene" uid="uid://bqrch0mqe7w6" path="res://prefabs/MAIN_Door_Base/door_base.tscn" id="3_8gru8"]
@@ -6,11 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bba6fjg537d6d" path="res://prefabs/MAIN_Cave/Main_Environment.tscn" id="4_bpwuy"]
 [ext_resource type="PackedScene" uid="uid://cbofi3hbjfyp5" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/item_pulley.tscn" id="6_4002e"]
 [ext_resource type="PackedScene" uid="uid://ddcm4o4wkgccd" path="res://prefabs/MAIN_Boathook/env_boathook.tscn" id="11_1b1ns"]
+[ext_resource type="Material" uid="uid://bemuo3f2h7dmo" path="res://assets/effects/particles/STORY_dirt_fall/STORY_dirt_fall_mat.tres" id="13_yw8ak"]
 [ext_resource type="PackedScene" uid="uid://tuuvywyqseqm" path="res://prefabs/MAIN_Balloon/Balloon_Deflated.tscn" id="18_v2u5q"]
 [ext_resource type="PackedScene" uid="uid://bn70o146l2t40" path="res://prefabs/MAIN_Balloon/Balloon_Key_Anim.tscn" id="19_q3klv"]
 [ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="19_qi4wh"]
 [ext_resource type="PackedScene" uid="uid://ctxvrp188j7of" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/env_balloon.tscn" id="20_svckx"]
 [ext_resource type="PackedScene" uid="uid://cxdm2hooap1e8" path="res://prefabs/MAIN_Trees/chinaberry_test_01.tscn" id="25_gdejc"]
+[ext_resource type="PackedScene" uid="uid://chevsilg4jfk3" path="res://assets/flora/flora_fern_01/fern_01.tscn" id="25_jfmap"]
 [ext_resource type="Terrain3DStorage" uid="uid://dlyqcsdd3dr0p" path="res://levels/main/main_terrain.res" id="25_pb4sc"]
 [ext_resource type="Texture2D" uid="uid://byg4hgop8bn6k" path="res://prefabs/MAIN_Terrain/Terrain_Textures/JungleGrass01_d.png" id="25_wy6cb"]
 [ext_resource type="Texture2D" uid="uid://d1rcsk73gkkda" path="res://prefabs/MAIN_Terrain/Terrain_Textures/JungleGround01_d.png" id="26_6oov7"]
@@ -40,6 +42,12 @@ density_texture = SubResource("NoiseTexture3D_i327d")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kd6hk"]
 size = Vector3(267.442, 138.29, 13.8331)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4heu"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_kaw41"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_r4heu")
 
 [sub_resource type="Gradient" id="Gradient_xs0cf"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -77,23 +85,16 @@ _shader_parameters = {
 "vertex_normals_distance": 128.0
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmjvt"]
-cull_mode = 2
-vertex_color_use_as_albedo = true
-backlight_enabled = true
-backlight = Color(0.5, 0.5, 0.5, 1)
-
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_4lbxo"]
-height_offset = 0.5
-density = 10.0
-material_override = SubResource("StandardMaterial3D_fmjvt")
-generated_type = 1
+name = "fern_01"
+density = 3.67157
+scene_file = ExtResource("25_jfmap")
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_j2js5"]
 name = "JungleGrass01_d"
 albedo_texture = ExtResource("25_wy6cb")
 normal_texture = ExtResource("26_num6f")
-uv_scale = 0.2
+uv_scale = 0.5
 detiling = 0.198
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_xbk08"]
@@ -101,7 +102,7 @@ name = "JungleGrass02_d"
 id = 1
 albedo_texture = ExtResource("27_jahw1")
 normal_texture = ExtResource("28_ef04x")
-uv_scale = 0.2
+uv_scale = 0.5
 detiling = 0.255
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_06ak7"]
@@ -109,7 +110,7 @@ name = "JungleGround02_d"
 id = 2
 albedo_texture = ExtResource("29_bqo64")
 normal_texture = ExtResource("30_l7xmb")
-uv_scale = 0.2
+uv_scale = 0.5
 detiling = 0.198
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_02he1"]
@@ -117,7 +118,7 @@ name = "JungleGround01"
 id = 3
 albedo_texture = ExtResource("26_6oov7")
 normal_texture = ExtResource("27_3tsga")
-uv_scale = 0.2
+uv_scale = 0.5
 detiling = 0.535
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_lv5y7"]
@@ -125,6 +126,7 @@ name = "JungleRock01_d"
 id = 4
 albedo_texture = ExtResource("28_e8mp7")
 normal_texture = ExtResource("29_fh0ub")
+uv_scale = 0.5
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_75h48"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_4lbxo")])
@@ -235,6 +237,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57224, 132.853, 14.4017)
 
 [node name="LevelArt" type="Node3D" parent="."]
 
+[node name="ChinaberryTest01" parent="LevelArt" instance=ExtResource("25_gdejc")]
+transform = Transform3D(2.82279, 0, 0, 0, 2.82279, 0, 0, 0, 2.82279, 3.20838, -1.95924, 167.287)
+
+[node name="fern_01" parent="LevelArt" instance=ExtResource("25_jfmap")]
+transform = Transform3D(0.999648, -0.0265259, 0, 0.0265259, 0.999648, 0, 0, 0, 1, -8.77175, 5.02414, 152.065)
+
+[node name="fern_02" parent="LevelArt" instance=ExtResource("25_jfmap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.13609, -0.269338, 165.193)
+
 [node name="InvisWall" type="Node3D" parent="LevelArt"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="LevelArt/InvisWall"]
@@ -247,12 +258,20 @@ shape = SubResource("BoxShape3D_kd6hk")
 transform = Transform3D(0.196716, 0, 0.98046, 0, 1, 0, -0.98046, 0, 0.196716, 103.395, 8.4652, 132.768)
 shape = SubResource("BoxShape3D_kd6hk")
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="LevelArt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0644, 13.6954, 16.3936)
+lifetime = 1.69
+randomness = 0.2
+trail_lifetime = 1.13
+process_material = ExtResource("13_yw8ak")
+draw_pass_1 = SubResource("QuadMesh_kaw41")
+
 [node name="LevelStoryProps" type="Node3D" parent="."]
 
 [node name="Balloon_Deflated" parent="LevelStoryProps" instance=ExtResource("18_v2u5q")]
 transform = Transform3D(-0.985805, 0.0222627, 0.166412, 0.0468164, 0.988307, 0.14512, -0.161235, 0.150851, -0.975319, 101.069, 6.16548, 101.282)
 
-[node name="EnvGrapplingHook" parent="." instance=ExtResource("26_q4g71")]
+[node name="EnvGrapplingHook" parent="LevelStoryProps" instance=ExtResource("26_q4g71")]
 transform = Transform3D(-0.163265, -2.8481, 0.265738, 2.76169, -0.22629, -0.728576, 0.745235, 0.214627, 2.75817, 3.49694, 0.628436, 24.486)
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
@@ -275,9 +294,6 @@ spot_angle = 31.8743
 [node name="Camera3D" type="Camera3D" parent="EndGame"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 2.45, 5.037, 113.155)
 near = 1.0
-
-[node name="ChinaberryTest01" parent="." instance=ExtResource("25_gdejc")]
-transform = Transform3D(2.82279, 0, 0, 0, 2.82279, 0, 0, 0, 2.82279, 3.20838, -1.95924, 167.287)
 
 [editable path="Door_Base"]
 [editable path="Door_Base/DoorR/Door_Handle/PulleySystem/Anchor"]

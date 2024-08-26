@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cvetwn2ebaidd" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/model/s_grappling_hook.tscn" id="1_7i320"]
 [ext_resource type="Script" path="res://prefabs/PROTOTYPE_Puzzle_GrapplingHook/grappling_hook.gd" id="2_oksrg"]
-[ext_resource type="PackedScene" uid="uid://ci3871kkc4v6y" path="res://particles/glint/glint.tscn" id="2_w21am"]
+[ext_resource type="PackedScene" uid="uid://ci3871kkc4v6y" path="res://assets/effects/particles/glint/glint.tscn" id="2_w21am"]
 [ext_resource type="AudioStream" uid="uid://6mqjkeu6fjvk" path="res://sounds/grapple/Throw.wav" id="4_yba8b"]
 [ext_resource type="AudioStream" uid="uid://cx1u1oxxqejwo" path="res://sounds/grapple/Hook_Hit_Distant.ogg" id="5_0qwur"]
 

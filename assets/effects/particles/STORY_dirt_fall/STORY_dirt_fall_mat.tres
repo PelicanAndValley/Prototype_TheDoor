@@ -1,0 +1,5 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://bemuo3f2h7dmo"]
+
+[resource]
+particle_flag_align_y = true
+particle_flag_rotate_y = true

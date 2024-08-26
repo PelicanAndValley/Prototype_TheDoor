@@ -7,7 +7,9 @@ group_uniforms Config;
 //uniform float ao_strength;
 
 group_uniforms Wind;
-uniform sampler2D noise_texture;
+uniform bool has_wind = true; //Currently does fuck all
+uniform float wind_strength : hint_range(0.0, 10.0) = 1.0;
+uniform float wind_speed: hint_range (0.0, 10.0) = 1.0;
 
 group_uniforms Albedo;
 uniform vec4 albedo : source_color = vec4(1.0, 1.0, 1.0, 1.0);
@@ -29,8 +31,9 @@ uniform float backlight : hint_range(0, 1) = 1.0;
 uniform sampler2D texture_backlight : filter_linear_mipmap, repeat_enable;
 
 void vertex() {
-	float offset_pos = _perlin3dNoiseFunc(vec3((COLOR.b + COLOR.b + COLOR.b)*(UV.s*90.0)*80.0, 0.0, TIME*1.0), float(0.1));
-	float offset_neg = _perlin3dNoiseFunc(vec3((COLOR.b + COLOR.b + COLOR.b)*(UV.s*30.0)*80.0, 0.0, TIME), float(0.1));
+	float wind_strength_adjust = wind_strength * 0.1;
+	float offset_pos = _perlin3dNoiseFunc(vec3((COLOR.b + COLOR.b + COLOR.b)*(UV.s*90.0)*80.0, 0.0, TIME*wind_speed), wind_strength_adjust);
+	float offset_neg = _perlin3dNoiseFunc(vec3((COLOR.b + COLOR.b + COLOR.b)*(UV.s*30.0)*80.0, 0.0, TIME*wind_speed), wind_strength_adjust);
  	VERTEX.x += offset_pos * COLOR.b;
 	VERTEX.x -= offset_neg * COLOR.b;
 	VERTEX.z += offset_pos * COLOR.b;

@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://chevsilg4jfk3"]
+
+[ext_resource type="PackedScene" uid="uid://dkuo86gm3o7vh" path="res://assets/flora/flora_fern_01/fern_01.glb" id="1_f5lmp"]
+[ext_resource type="Shader" path="res://shaders/FoliageShader.gdshader" id="2_i2x7p"]
+[ext_resource type="Texture2D" uid="uid://dta2bokhws1vs" path="res://assets/flora/flora_fern_01/flora_fern_01_d.png" id="3_gqelt"]
+[ext_resource type="Texture2D" uid="uid://ce1hrojn5om0" path="res://assets/flora/flora_fern_01/flora_fern_01_n.png" id="4_703yw"]
+[ext_resource type="Texture2D" uid="uid://d4jw8211yg4tf" path="res://assets/flora/flora_fern_01/flora_fern_01_r.png" id="5_egdvs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ipl30"]
+render_priority = 0
+shader = ExtResource("2_i2x7p")
+shader_parameter/has_wind = false
+shader_parameter/wind_strength = 0.0
+shader_parameter/wind_speed = 0.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_gqelt")
+shader_parameter/normal_scale = 3.517
+shader_parameter/texture_normal = ExtResource("4_703yw")
+shader_parameter/roughness = 0.99
+shader_parameter/texture_roughness = ExtResource("5_egdvs")
+shader_parameter/backlight_boost = 0.509
+shader_parameter/backlight_strength = 4.921
+shader_parameter/backlight_tint = Color(0.266896, 0.390076, 0.29976, 1)
+shader_parameter/backlight = 1.0
+
+[node name="fern_01" instance=ExtResource("1_f5lmp")]
+
+[node name="Plane_011" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_ipl30")
