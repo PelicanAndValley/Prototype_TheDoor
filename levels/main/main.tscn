@@ -212,9 +212,6 @@ transform = Transform3D(-0.410478, 0.0544381, -0.910245, 0.131778, 0.99128, -0.0
 [node name="THE BIG KEY" parent="." instance=ExtResource("19_q3klv")]
 transform = Transform3D(0.825488, 0, -0.56442, 0, 1, 0, 0.56442, 0, 0.825488, 3.57224, 3.71812, 14.4017)
 
-[node name="KeyTurn" parent="THE BIG KEY/KeyTurn2/KeyTurnRoot/KeyWorldPos" index="0"]
-transform = Transform3D(0.825386, -0.545493, 0.145521, 0.563375, 0.77905, -0.275118, 0.0367069, 0.309061, 0.950334, 14.8576, 9.87569, -7.6257)
-
 [node name="Key" parent="THE BIG KEY" index="1" node_paths=PackedStringArray("_player", "_door")]
 _player = NodePath("../../Player")
 _door = NodePath("../../Door_Base")
@@ -282,6 +279,8 @@ spot_angle = 31.8743
 [node name="Camera3D" type="Camera3D" parent="EndGame"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 2.45, 5.037, 113.155)
 near = 1.0
+
+[connection signal="animation_finished" from="THE BIG KEY/KeyTurn2/AnimationTree" to="THE BIG KEY/Key" method="anim_finished"]
 
 [editable path="Door_Base"]
 [editable path="Door_Base/DoorR/Door_Handle/PulleySystem/Anchor"]

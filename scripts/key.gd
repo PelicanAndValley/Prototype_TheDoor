@@ -72,3 +72,4 @@ func anim_finished (anim_name: StringName) -> void:
 		_player.end_screen.start();
 		_door.open(_player);
 		my_daddy.reparent(_door.left);
+		

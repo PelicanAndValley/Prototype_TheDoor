@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://dxsnuec7rsgdy"]
+
+[ext_resource type="Texture2D" uid="uid://dg187isnmi5ht" path="res://assets/effects/particles/_particles_shared/dust_cloud_01.png" id="1_g8qkt"]
+
+[sub_resource type="Curve" id="Curve_qo8xs"]
+_data = [Vector2(0, 0), 0.0, 0.419661, 0, 0, Vector2(0.101911, 0.274725), 1.10226, 1.10226, 0, 0, Vector2(0.159236, 0.802198), 0.561717, 0.561717, 0, 0, Vector2(0.624204, 0.241758), -1.51615, -1.51615, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_hbo0h"]
+curve = SubResource("Curve_qo8xs")
+
+[sub_resource type="Curve" id="Curve_lsskk"]
+min_value = -1.0
+max_value = 2.0
+_data = [Vector2(0, -0.901098), 0.0, 0.0, 0, 0, Vector2(1, 1.24176), 4.57861, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uxlgy"]
+curve = SubResource("Curve_lsskk")
+
+[sub_resource type="Gradient" id="Gradient_5hy2j"]
+colors = PackedColorArray(0.370309, 0.302916, 0.200759, 1, 0.668357, 0.458431, 0.330672, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i4mmg"]
+gradient = SubResource("Gradient_5hy2j")
+
+[sub_resource type="Curve" id="Curve_t8h87"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.968153, 2.24176), 2.71731, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_os1cq"]
+curve = SubResource("Curve_t8h87")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_025cj"]
+lifetime_randomness = 0.05
+particle_flag_align_y = true
+angle_min = -1.99999
+angle_max = 2.00001
+angle_curve = SubResource("CurveTexture_uxlgy")
+inherit_velocity_ratio = 0.098
+direction = Vector3(2, 2, 2)
+spread = 46.957
+flatness = 0.41
+initial_velocity_max = 2.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 1.99998
+gravity = Vector3(0, -6, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = -2.23517e-06
+damping_min = 14.508
+damping_max = 31.606
+scale_over_velocity_curve = SubResource("CurveTexture_os1cq")
+color_ramp = SubResource("GradientTexture1D_i4mmg")
+alpha_curve = SubResource("CurveTexture_hbo0h")
+anim_offset_max = 1.0
+collision_mode = 1
+collision_friction = 0.29
+collision_bounce = 0.0
+collision_use_scale = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxuqd"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.74558, 0.74558, 0.74558, 1)
+albedo_texture = ExtResource("1_g8qkt")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l1x53"]
+material = SubResource("StandardMaterial3D_oxuqd")
+size = Vector2(8, 8)
+subdivide_width = 8
+center_offset = Vector3(0, 3, 0)
+orientation = 2
+
+[node name="STORY_dirt_fall" type="GPUParticles3D"]
+cast_shadow = 0
+amount = 5
+lifetime = 5.49
+preprocess = 4.6
+explosiveness = 1.0
+randomness = 0.46
+draw_order = 3
+transform_align = 3
+trail_lifetime = 0.01
+process_material = SubResource("ParticleProcessMaterial_025cj")
+draw_passes = 2
+draw_pass_1 = SubResource("PlaneMesh_l1x53")
+draw_pass_2 = null
