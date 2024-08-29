@@ -529,7 +529,7 @@ shadow_opacity = 0.91
 shadow_blur = 10.0
 
 [node name="HangingRope" parent="Balloon" node_paths=PackedStringArray("start", "end") instance=ExtResource("5_kmdux")]
-transform = Transform3D(0.998817, 7.82534e-07, -9.20724e-08, 5.27507e-07, 0.999772, 1.10269e-06, -3.35693e-07, -1.22658e-05, 0.998742, -1.1944, -6.8163, 1.04411)
+transform = Transform3D(0.993065, 7.77049e-07, -9.13868e-08, 5.27507e-07, 0.999772, 1.10269e-06, -3.32951e-07, -1.21781e-05, 0.992991, -1.1944, -6.8163, 1.04411)
 start = NodePath("../../Key")
 end = NodePath("../BalloonRopeOrigin")
 
