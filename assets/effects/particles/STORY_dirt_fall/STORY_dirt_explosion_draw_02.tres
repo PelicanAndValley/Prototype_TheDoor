@@ -1,0 +1,26 @@
+[gd_resource type="PlaneMesh" load_steps=3 format=3 uid="uid://dtd0mavthn0gj"]
+
+[ext_resource type="Texture2D" uid="uid://cbln6ia5d2bwg" path="res://assets/effects/particles/_particles_shared/dust_cloud_02.png" id="1_eag0l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8jyg"]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.359514, 0.339714, 0.285568, 0.364706)
+albedo_texture = ExtResource("1_eag0l")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_enabled = true
+proximity_fade_distance = 0.5
+
+[resource]
+material = SubResource("StandardMaterial3D_g8jyg")
+size = Vector2(6, 6)
+subdivide_width = 4
+center_offset = Vector3(0, 2, 0)
+orientation = 2

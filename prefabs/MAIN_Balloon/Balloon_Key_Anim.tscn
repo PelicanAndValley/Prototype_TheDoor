@@ -529,7 +529,7 @@ shadow_opacity = 0.91
 shadow_blur = 10.0
 
 [node name="HangingRope" parent="Balloon" node_paths=PackedStringArray("start", "end") instance=ExtResource("5_kmdux")]
-transform = Transform3D(0.993065, 7.77049e-07, -9.13868e-08, 5.27507e-07, 0.999772, 1.10269e-06, -3.32951e-07, -1.21781e-05, 0.992991, -1.1944, -6.8163, 1.04411)
+transform = Transform3D(0.992729, 7.76729e-07, -9.13467e-08, 5.27507e-07, 0.999772, 1.10269e-06, -3.32791e-07, -1.21729e-05, 0.992655, -1.1944, -6.8163, 1.04411)
 start = NodePath("../../Key")
 end = NodePath("../BalloonRopeOrigin")
 
@@ -559,7 +559,6 @@ parameters/Rise/Add2/add_amount = 1.0
 
 [node name="STORY_dirt_explosion" parent="." instance=ExtResource("11_y3a18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20927, -1.55533, 2.26309)
-preprocess = 0.0
 randomness = 0.53
 
 [connection signal="animation_finished" from="KeyTurn2/AnimationTree" to="Key" method="anim_finished"]
