@@ -40,6 +40,15 @@ func _process (delta: float) -> void:
 			get_tree().paused = false;
 			close_all_ui();
 
+func open_notebook () -> void:
+	if open_ui == OpenUI.NOTEBOOK:
+		return;
+	if open_ui != OpenUI.NONE:
+		close_all_ui();
+	open_ui = OpenUI.NOTEBOOK;
+	notebook.open(OpenUI.NOTEBOOK);
+	_player.release_mouse()
+
 func close_all_ui () -> void:
 	open_ui = OpenUI.NONE;
 	notebook.close();

@@ -26,6 +26,11 @@ var _player : Player;
 var _door : Door;
 @export
 var my_daddy : Node3D;
+@export
+var dust_effect : StoryDirtExplosion;
+@export
+var dust_delay : float = 5500;
+var dust_start : float = 0;
 
 var _anim_playback : AnimationNodeStateMachinePlayback;
 var _velocity : Vector3;
@@ -33,8 +38,6 @@ var _velocity : Vector3;
 var has_balloon : bool = false;
 var has_rope : bool = false;
 var can_move : bool = false;
-@export
-var key_up_pos : Node3D;
 @export
 var speed : float;
 @export
@@ -57,6 +60,12 @@ func dislodge () -> void:
 	balloon.process_mode = Node.PROCESS_MODE_INHERIT;
 	balloon.visible = true;
 	balloon_rope.visible = true;
+	dust_start = Time.get_ticks_msec();
+
+func _process(delta: float) -> void:
+	if dust_start > 0 and Time.get_ticks_msec() - dust_start >= dust_delay:
+		dust_effect.trigger();
+		dust_start = 0;
 
 func put_in_lock () -> void:
 	turn_sound.play();

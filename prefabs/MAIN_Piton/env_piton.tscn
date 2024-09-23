@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0pbv1g813exf"]
+
+[ext_resource type="PackedScene" uid="uid://c4b2cp6xndx2" path="res://prefabs/MAIN_Piton/Piton.tscn" id="1_5m2kb"]
+[ext_resource type="Script" path="res://scripts/pickable.gd" id="1_j25g7"]
+[ext_resource type="PackedScene" uid="uid://c433u65bj3x6c" path="res://prefabs/MAIN_Piton/item_piton.tscn" id="2_wcdk3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rn4p7"]
+size = Vector3(2.24896, 0.73938, 1)
+
+[node name="EnvPiton" type="StaticBody3D"]
+script = ExtResource("1_j25g7")
+item = ExtResource("2_wcdk3")
+
+[node name="Piton" parent="." instance=ExtResource("1_5m2kb")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0572205, -0.13031, 0)
+shape = SubResource("BoxShape3D_rn4p7")

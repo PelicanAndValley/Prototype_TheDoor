@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyofxrqdyuk1c"]
+
+[ext_resource type="Script" path="res://scripts/item.gd" id="1_eufqv"]
+[ext_resource type="PackedScene" uid="uid://de3pef5ytyhp2" path="res://prefabs/MAIN_NotebookPaper/Notebook_Paper.tscn" id="1_y6rb8"]
+
+[node name="ItemNote" type="Node3D"]
+script = ExtResource("1_eufqv")
+
+[node name="Notebook_Paper" parent="." instance=ExtResource("1_y6rb8")]
+transform = Transform3D(1.87968, 0, 0, 0, 1.87968, 0, 0, 0, 1.87968, 0, 0, -0.402884)

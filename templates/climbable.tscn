@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dpjmn5r5p5hff"]
 
-[ext_resource type="Script" path="res://templates/climbable.gd" id="1_o0mmn"]
+[ext_resource type="Script" path="res://scripts/climbable.gd" id="1_o0mmn"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="2_f2ulx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vaoob"]
@@ -24,7 +24,7 @@ size = Vector3(15, 1, 1.325)
 resource_local_to_scene = true
 size = Vector3(1, 200, 1.815)
 
-[node name="Climbable" type="AnimatableBody3D"]
+[node name="PitonClimbable" type="AnimatableBody3D"]
 script = ExtResource("1_o0mmn")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]

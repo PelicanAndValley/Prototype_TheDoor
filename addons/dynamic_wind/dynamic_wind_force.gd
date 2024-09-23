@@ -3,6 +3,9 @@ extends Node3D
 
 class_name DynamicWindForce
 
+@export
+var strength: float = 1;
+
 var _parent_wind_area : DynamicWindArea;
 var _config_warnings : PackedStringArray = [];
 

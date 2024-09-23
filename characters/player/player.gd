@@ -44,9 +44,10 @@ var music_player : AudioStreamPlayer;
 @export
 var ambience_player : AudioStreamPlayer;
 @export
-var grapple_throw_sound : AudioStream;
-@export
 var item_pickup_sound : AudioStream;
+@export
+var notebook_sound : AudioStream;
+@export_group("End screen")
 @export
 var end_screen : EndScreen;
 

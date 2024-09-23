@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://eq1vhbs1qqn3"]
+[gd_scene load_steps=42 format=3 uid="uid://eq1vhbs1qqn3"]
 
 [ext_resource type="PackedScene" uid="uid://c2m5x78plefiv" path="res://prefabs/MAIN_Cave/Walls/Cave_Wall.tscn" id="1_eenla"]
 [ext_resource type="PackedScene" uid="uid://bqrch0mqe7w6" path="res://prefabs/MAIN_Door_Base/door_base.tscn" id="3_8gru8"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="19_qi4wh"]
 [ext_resource type="PackedScene" uid="uid://ctxvrp188j7of" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/env_balloon.tscn" id="20_svckx"]
 [ext_resource type="PackedScene" uid="uid://chevsilg4jfk3" path="res://assets/flora/flora_fern_01/fern_01.tscn" id="25_jfmap"]
+[ext_resource type="PackedScene" uid="uid://c0pbv1g813exf" path="res://prefabs/MAIN_Piton/env_piton.tscn" id="25_o3gbh"]
 [ext_resource type="Terrain3DStorage" uid="uid://dlyqcsdd3dr0p" path="res://levels/main/main_terrain.res" id="25_pb4sc"]
 [ext_resource type="Texture2D" uid="uid://byg4hgop8bn6k" path="res://prefabs/MAIN_Terrain/Terrain_Textures/JungleGrass01_d.png" id="25_wy6cb"]
 [ext_resource type="Texture2D" uid="uid://d1rcsk73gkkda" path="res://prefabs/MAIN_Terrain/Terrain_Textures/JungleGround01_d.png" id="26_6oov7"]
@@ -153,9 +154,6 @@ key = NodePath("../../../../../THE BIG KEY")
 key_key = NodePath("../../../../../THE BIG KEY/Key")
 key_top_level = NodePath("../../../../../KeyTopLevel")
 
-[node name="RopeLength2" parent="Door_Base/DoorR/Door_Handle" index="3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32.0054, 238.252, 12.441)
-
 [node name="VineClimb" parent="Door_Base/DoorR" index="4"]
 transform = Transform3D(-1.93991e-07, 0, 4.438, 0, 4.438, 0, -4.438, 0, -1.93991e-07, -38.7822, 124.683, 2.09436)
 
@@ -202,7 +200,7 @@ omni_range = 419.168
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 38.0275, 1.7547, 117.562)
 
 [node name="Player" parent="." node_paths=PackedStringArray("final_cam", "final_stuff") instance=ExtResource("3_ht0e7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60536, 1.67913, 36.9581)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60536, 240.185, 0.710063)
 final_cam = NodePath("../EndGame/Camera3D")
 final_stuff = NodePath("../EndGame")
 
@@ -215,12 +213,16 @@ transform = Transform3D(0.825488, 0, -0.56442, 0, 1, 0, 0.56442, 0, 0.825488, 3.
 [node name="Key" parent="THE BIG KEY" index="1" node_paths=PackedStringArray("_player", "_door")]
 _player = NodePath("../../Player")
 _door = NodePath("../../Door_Base")
+dust_delay = 6300.0
 
 [node name="Balloon" parent="THE BIG KEY" index="2"]
 process_mode = 4
 
 [node name="HangingRope" parent="THE BIG KEY/Balloon" index="2"]
 transform = Transform3D(1, -2.3283e-10, 1.49012e-07, -1.16415e-09, 1, -1.39698e-09, -1.49012e-07, 6.98492e-10, 1, -1.1944, -6.8163, 1.04411)
+
+[node name="STORY_dirt_explosion" parent="THE BIG KEY" index="6"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -0.55135, -2.67064, 0.489791)
 
 [node name="EnvAnchor" parent="THE BIG KEY" instance=ExtResource("27_u03eo")]
 transform = Transform3D(0.756231, -0.206625, 0.620823, 0.199341, 0.976478, 0.0821756, -0.6232, 0.0616122, 0.779632, 75.2744, -2.16599, 45.5962)
@@ -279,6 +281,9 @@ spot_angle = 31.8743
 [node name="Camera3D" type="Camera3D" parent="EndGame"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 2.45, 5.037, 113.155)
 near = 1.0
+
+[node name="EnvPiton" parent="." instance=ExtResource("25_o3gbh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4994, 239.42, 1.50997)
 
 [connection signal="animation_finished" from="THE BIG KEY/KeyTurn2/AnimationTree" to="THE BIG KEY/Key" method="anim_finished"]
 

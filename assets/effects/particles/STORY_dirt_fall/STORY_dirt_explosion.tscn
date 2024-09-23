@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxsnuec7rsgdy"]
+[gd_scene load_steps=21 format=3 uid="uid://dxsnuec7rsgdy"]
 
 [ext_resource type="PlaneMesh" uid="uid://c3e5b52i1hnph" path="res://assets/effects/particles/STORY_dirt_fall/STORY_dirt_explosion_draw.tres" id="1_nb4j4"]
 [ext_resource type="PlaneMesh" uid="uid://dtd0mavthn0gj" path="res://assets/effects/particles/STORY_dirt_fall/STORY_dirt_explosion_draw_02.tres" id="2_5jkpj"]
+[ext_resource type="Script" path="res://assets/effects/particles/STORY_dirt_fall/story_dirt_explosion.gd" id="2_b64hh"]
 
 [sub_resource type="Curve" id="Curve_qo8xs"]
 _data = [Vector2(0, 0), 0.0, 0.419661, 0, 0, Vector2(0.0955414, 0.67033), 1.20769, 1.20769, 0, 0, Vector2(0.369427, 0.252747), -1.32271, -1.32271, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -108,19 +109,25 @@ alpha_curve = SubResource("CurveTexture_8eosf")
 hue_variation_min = -2.23517e-08
 hue_variation_max = 0.03
 
-[node name="STORY_dirt_emit_01" type="GPUParticles3D"]
+[node name="STORY_dirt_emit_01" type="GPUParticles3D" node_paths=PackedStringArray("sub_particles")]
 cast_shadow = 0
+emitting = false
 amount = 5
 lifetime = 8.0
+one_shot = true
 explosiveness = 1.0
 randomness = 0.52
 fixed_fps = 60
 trail_lifetime = 0.01
 process_material = SubResource("ParticleProcessMaterial_025cj")
 draw_pass_1 = ExtResource("1_nb4j4")
+script = ExtResource("2_b64hh")
+sub_particles = NodePath("STORY_dirt_emit_02")
 
 [node name="STORY_dirt_emit_02" type="GPUParticles3D" parent="."]
+emitting = false
 lifetime = 8.0
+one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_41u5x")

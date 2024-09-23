@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://cpd2r3ftdv73u"]
+
+[ext_resource type="AudioStream" uid="uid://blcg363mwmj4t" path="res://sounds/ui/notes/Journal_01.ogg" id="1_lpugh"]
+[ext_resource type="AudioStream" uid="uid://cfywhf10bw7yw" path="res://sounds/ui/notes/Journal_02.ogg" id="2_65a0i"]
+[ext_resource type="AudioStream" uid="uid://dr00a8bskew3v" path="res://sounds/ui/notes/Journal_03.ogg" id="3_qpyyl"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_lpugh")
+stream_1/stream = ExtResource("2_65a0i")
+stream_2/stream = ExtResource("3_qpyyl")

@@ -461,7 +461,7 @@ transform = Transform3D(0.825386, -0.545493, 0.145521, 0.563375, 0.77905, -0.275
 stream = ExtResource("2_8vtpa")
 volume_db = 10.0
 
-[node name="Key" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("balloon", "balloon_rope", "_rope_pos", "anim_tree", "key_turn_model", "key_turn_anim", "sound", "rope_sound", "turn_sound", "my_daddy")]
+[node name="Key" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("balloon", "balloon_rope", "_rope_pos", "anim_tree", "key_turn_model", "key_turn_anim", "sound", "rope_sound", "turn_sound", "my_daddy", "dust_effect")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2877, 15.9915, -5.18135)
 sync_to_physics = false
 script = ExtResource("1_m2f6o")
@@ -475,6 +475,7 @@ sound = NodePath("DislodgeSound")
 rope_sound = NodePath("RopeSound")
 turn_sound = NodePath("../KeyTurn2/KeyTurnRoot/KeyWorldPos/KeyTurn/Key_Geom/KeyTurnSound")
 my_daddy = NodePath("..")
+dust_effect = NodePath("../STORY_dirt_explosion")
 speed = 5.0
 acceleration = 10.0
 link_to_item = true

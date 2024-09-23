@@ -1,3 +1,4 @@
+@tool
 extends EditorNode3DGizmoPlugin;
 
 class_name DynamicWindGizmo;

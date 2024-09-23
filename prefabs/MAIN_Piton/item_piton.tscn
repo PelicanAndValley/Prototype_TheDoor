@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c433u65bj3x6c"]
+
+[ext_resource type="Script" path="res://prefabs/MAIN_Piton/item_piton.gd" id="1_277tj"]
+[ext_resource type="PackedScene" uid="uid://c4b2cp6xndx2" path="res://prefabs/MAIN_Piton/Piton.tscn" id="1_xe4t1"]
+
+[node name="ItemPiton" type="Node3D"]
+script = ExtResource("1_277tj")
+
+[node name="Piton" parent="." instance=ExtResource("1_xe4t1")]
+transform = Transform3D(-4.2849e-08, 8.63988e-09, -1, 0.197657, 0.980271, 0, 0.980271, -0.197657, -4.37114e-08, 0, 0.0669489, -1.45181)

@@ -1,5 +1,7 @@
 extends OpenableUI;
 
+class_name Notebook;
+
 @export
 var title : RichTextLabel;
 @export
