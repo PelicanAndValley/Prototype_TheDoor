@@ -1,0 +1,51 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=9 format=3 uid="uid://df2sk41xsfqyl"]
+
+[sub_resource type="Curve" id="Curve_wcqy3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.148064, 0.189596), 0.288656, 0.288656, 0, 0, Vector2(0.179954, 0.139295), -0.712327, -0.712327, 0, 0, Vector2(0.259681, 0.061049), -0.184017, -0.184017, 0, 0, Vector2(0.738041, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_dmlk8"]
+curve = SubResource("Curve_wcqy3")
+
+[sub_resource type="Gradient" id="Gradient_c5tgp"]
+colors = PackedColorArray(0.298039, 0.258824, 0.223529, 1, 0.970872, 0.958196, 0.946378, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4pr1l"]
+gradient = SubResource("Gradient_c5tgp")
+
+[sub_resource type="Curve" id="Curve_5v8rm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.047836, 1), 0.0557631, 0.0557631, 0, 0, Vector2(0.143508, 0.877042), -3.24504, -3.24504, 0, 0, Vector2(0.332574, 0.301376), -1.55226, -1.55226, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_40hok"]
+curve = SubResource("Curve_5v8rm")
+
+[sub_resource type="Curve" id="Curve_j45r2"]
+max_value = 7.0
+_data = [Vector2(0.0022779, 0.311264), 0.0, 0.0, 0, 0, Vector2(0.0136674, 1.07137), 5.19579, 5.19579, 0, 0, Vector2(1, 7), 15.8538, 0.482669, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vji1x"]
+curve = SubResource("Curve_j45r2")
+
+[resource]
+angle_min = -45.0
+angle_max = 45.0
+inherit_velocity_ratio = 0.768
+direction = Vector3(0, 1, 0)
+spread = 18.416
+flatness = 0.365
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+radial_velocity_min = 0.999978
+radial_velocity_max = 0.999978
+radial_velocity_curve = SubResource("CurveTexture_40hok")
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_curve = SubResource("CurveTexture_vji1x")
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 1.0
+color = Color(0.650128, 0.650128, 0.650128, 1)
+color_ramp = SubResource("GradientTexture1D_4pr1l")
+alpha_curve = SubResource("CurveTexture_dmlk8")
