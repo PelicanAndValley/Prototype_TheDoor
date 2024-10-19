@@ -2,7 +2,7 @@
 
 [ext_resource type="PlaneMesh" uid="uid://c3e5b52i1hnph" path="res://assets/effects/particles/STORY_dirt_fall/STORY_dirt_explosion_draw.tres" id="1_nb4j4"]
 [ext_resource type="PlaneMesh" uid="uid://dtd0mavthn0gj" path="res://assets/effects/particles/STORY_dirt_fall/STORY_dirt_explosion_draw_02.tres" id="2_5jkpj"]
-[ext_resource type="Script" path="res://assets/effects/particles/STORY_dirt_fall/story_dirt_explosion.gd" id="2_b64hh"]
+[ext_resource type="Script" path="res://assets/effects/particles/STORY_dirt_fall/effect.gd" id="2_b64hh"]
 
 [sub_resource type="Curve" id="Curve_qo8xs"]
 _data = [Vector2(0, 0), 0.0, 0.419661, 0, 0, Vector2(0.0955414, 0.67033), 1.20769, 1.20769, 0, 0, Vector2(0.369427, 0.252747), -1.32271, -1.32271, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

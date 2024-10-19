@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://pt34he3a1dv6"]
+
+[ext_resource type="PackedScene" uid="uid://bul2fwmxjdsre" path="res://prefabs/PROTOTYPE_Explosive/model/m_dynamite.glb" id="1_25ojo"]
+
+[node name="DynamiteModel" instance=ExtResource("1_25ojo")]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(0.215, 0, 0, 0, 1, 0, 0, 0, 0.215, 0, 0, 0)

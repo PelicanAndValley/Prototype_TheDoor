@@ -206,6 +206,7 @@ transitions = ["Start", "End_screen", SubResource("AnimationNodeStateMachineTran
 script = ExtResource("1_dtgyq")
 walk_speed = 5.0
 run_speed = 10.0
+climb_rotate_speed = 0.3
 grappling_hook = ExtResource("2_scdmv")
 grapple_throw_strength = 30.0
 door_ui = NodePath("UI")
@@ -267,7 +268,7 @@ layout_mode = 1
 offset_right = 354.0
 offset_bottom = 40.0
 mouse_filter = 1
-text = "FPS: 48"
+text = "FPS: 60"
 script = ExtResource("4_bf4aw")
 
 [node name="Crosshair" parent="UI" instance=ExtResource("2_jyjei")]
@@ -328,16 +329,16 @@ current = true
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_hqig8")
-volume_db = -5.0
+volume_db = -20.0
 autoplay = true
 script = ExtResource("10_1b64p")
 
 [node name="AmbiencePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_bnn2t")
-volume_db = -5.0
+volume_db = -20.0
 autoplay = true
 
 [node name="EffectPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -5.0
+volume_db = -20.0
 
 [connection signal="animation_finished" from="Camera3D/ItemHoldPos/AnimationTree" to="." method="on_animation_finished"]

@@ -1,0 +1,105 @@
+[gd_scene load_steps=15 format=3 uid="uid://dkkoe30vh6nei"]
+
+[ext_resource type="PackedScene" uid="uid://0r3lgwgjqnmk" path="res://prefabs/PROTOTYPE_Chain/s_chain.tscn" id="1_jdfkg"]
+[ext_resource type="Script" path="res://prefabs/PROTOTYPE_Chain/chain.gd" id="1_qjclk"]
+[ext_resource type="Animation" uid="uid://clhwxsu0yxl4c" path="res://prefabs/PROTOTYPE_Chain/anim_chain_fall.res" id="3_lhogw"]
+[ext_resource type="Animation" uid="uid://x37l30tb5bwe" path="res://prefabs/PROTOTYPE_Chain/anim_default.res" id="4_r4bod"]
+
+[sub_resource type="Animation" id="Animation_vdah0"]
+resource_name = "ChainExplodeSequence"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"detonate_dynamite"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ysmbg"]
+_data = {
+"ChainExplodeSequence": SubResource("Animation_vdah0"),
+"ChainFall": ExtResource("3_lhogw"),
+"Default": ExtResource("4_r4bod")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wfb40"]
+animation = &"ChainExplodeSequence"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_301yr"]
+animation = &"ChainFall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jbx1m"]
+animation = &"Default"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aelft"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_45xk6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oggwd"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_a82jo"]
+states/ChainExplodeSequence/node = SubResource("AnimationNodeAnimation_wfb40")
+states/ChainExplodeSequence/position = Vector2(586, 100)
+states/ChainFall/node = SubResource("AnimationNodeAnimation_301yr")
+states/ChainFall/position = Vector2(801, 100)
+states/Default/node = SubResource("AnimationNodeAnimation_jbx1m")
+states/Default/position = Vector2(379, 100)
+states/End/position = Vector2(954, 100)
+transitions = ["Start", "Default", SubResource("AnimationNodeStateMachineTransition_aelft"), "Default", "ChainExplodeSequence", SubResource("AnimationNodeStateMachineTransition_45xk6"), "ChainExplodeSequence", "ChainFall", SubResource("AnimationNodeStateMachineTransition_oggwd")]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ui1kh"]
+radius = 5.49824
+
+[node name="Chain" type="Area3D"]
+script = ExtResource("1_qjclk")
+link_to_item = true
+item_names = PackedStringArray("ItemDynamite")
+
+[node name="ChainModel" parent="." instance=ExtResource("1_jdfkg")]
+
+[node name="Torus_010" parent="ChainModel" index="10"]
+transform = Transform3D(1.13435, 0.157122, 2.11108e-08, -0.180473, 0.987579, -1.66885e-09, -2.42482e-08, -1.66885e-09, 1, 52.9211, -0.789845, -1.06123e-07)
+
+[node name="Torus_011" parent="ChainModel" index="11"]
+transform = Transform3D(1.09786, 3.39894e-07, -0.293975, -0.337664, -1.17984e-07, -0.955813, -4.12995e-07, 1, -1.28501e-08, 58.1317, -1.57969, -2.12245e-07)
+
+[node name="Torus_012" parent="ChainModel" index="12"]
+transform = Transform3D(1.10663, 0.267885, 3.59927e-08, -0.307695, 0.963451, -4.91068e-09, -4.13416e-08, -4.91069e-09, 1, 63.189, -3.21204, -4.31565e-07)
+
+[node name="Torus_014" parent="ChainModel" index="14"]
+transform = Transform3D(1.10375, 0.276741, 3.71826e-08, -0.317867, 0.960945, -5.24745e-09, -4.27083e-08, -5.24744e-09, 1, 73.299, -6.10813, 0)
+
+[node name="Torus_015" parent="ChainModel" index="15"]
+transform = Transform3D(1.12509, -8.95149e-10, -0.20134, -0.231262, -8.80086e-09, -0.979521, -1.02818e-09, 1, -8.80085e-09, 78.3524, -7.51932, 0)
+
+[node name="Torus_016" parent="ChainModel" index="16"]
+transform = Transform3D(1.10624, 0.269121, 3.61587e-08, -0.309117, 0.963106, -4.95698e-09, -4.15325e-08, -4.95697e-09, 1, 83.5144, -8.97264, 0)
+
+[node name="AnimationPlayer" parent="ChainModel" index="18"]
+libraries = {
+"": SubResource("AnimationLibrary_ysmbg")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../ChainModel")
+tree_root = SubResource("AnimationNodeStateMachine_a82jo")
+anim_player = NodePath("../ChainModel/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.0613, -10.0028, 0)
+shape = SubResource("SphereShape3D_ui1kh")
+
+[connection signal="on_interact" from="." to="." method="_on_interact"]
+
+[editable path="ChainModel"]

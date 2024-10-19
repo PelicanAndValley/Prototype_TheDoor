@@ -20,6 +20,10 @@ var climb_speed : float = 30;
 @export
 var climb_strafe_speed : float = 5;
 @export
+var climb_strafe_margin : float = 0.1;
+@export
+var climb_rotate_speed : float = 1;
+@export
 var hop_speed : float = 10;
 @export_group("Camera")
 @export
@@ -116,7 +120,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _rotate_camera() -> void:
 	_camera.rotation.y -= _look_direction.x;
-	_camera.rotation.x = clamp(_camera.rotation.x - _look_direction.y, -1.5, 1.5);
+	_camera.rotation.x = clamp(_camera.rotation.x - _look_direction.y, -PI/2, PI/2);
 
 func throw_grappling_hook(grappleable: Grappleable, hit_pos: Vector3) -> void:
 	_thrown_grappling_hook = grappling_hook.instantiate();
@@ -185,15 +189,20 @@ func _physics_process(delta: float) -> void:
 		_v_speed += get_gravity().y * delta;
 
 	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor() and move_state == MoveState.WALKING:
-		_v_speed = jump_strength;
+	if Input.is_action_just_pressed("Jump"):
+		if is_on_floor() and move_state == MoveState.WALKING:
+			_v_speed = jump_strength;
+		elif move_state == MoveState.CLIMBING:
+			_climbing.stop_climb();
+			return;
 	
-	# Linear movement
+	# Inputs
 	var move_vector = Input.get_vector("Left", "Right", "Forward", "Back");
 	var target_speed : float = 0;
 	# For climbing only
 	var target_v_speed : float = 0;
 	
+	# Target speed selection
 	if move_vector.length() > 0:
 		_cur_direction = move_vector;
 		match move_state:
@@ -209,6 +218,7 @@ func _physics_process(delta: float) -> void:
 	
 	_h_speed = lerp(_h_speed, target_speed, acceleration * delta);
 	
+	# Movement
 	match move_state:
 		MoveState.WALKING:
 			velocity = Vector3(_cur_direction.x, 0, _cur_direction.y) * _h_speed;
@@ -218,10 +228,28 @@ func _physics_process(delta: float) -> void:
 			_v_speed = lerp(_v_speed, target_v_speed, acceleration * delta);
 			velocity = Vector3.ZERO;
 			velocity.y = _v_speed * -_cur_direction.y;
-			#velocity += _h_speed * _cur_direction.x * _climbing.global_basis.z;
-	
+			
+			match _climbing.strafe_mode:
+				Climbable.StrafeMode.LINEAR:
+					var side_normal = _climbing.climb_normal.rotated(Vector3.UP, -PI / 2);
+					var margin = 0;
+					if _h_speed > 0:
+						margin = _h_speed * climb_strafe_margin;
+					var strafe_predict = margin * _cur_direction.x * side_normal;
+					var predicted_player_h_pos = Vector3(global_position.x, 0, global_position.z) + strafe_predict;
+					var climbing_h_pos = Vector3(_climbing.global_position.x, 0, _climbing.global_position.z);
+					var h_dist = predicted_player_h_pos - climbing_h_pos;
+					var predicted_side_normal_dist = h_dist.project(side_normal);
+					if predicted_side_normal_dist.length() < _climbing.strafe_width:
+						velocity += _h_speed * _cur_direction.x * side_normal;
+				Climbable.StrafeMode.ROTATIONAL:
+					var center = _climbing.global_position;
+					if _h_speed > 0:
+						var signed_dir = -signf(_cur_direction.x);
+						rotate_around(center, Vector3.UP, _h_speed * climb_rotate_speed * delta * signed_dir);
 	move_and_slide();
 	
+	# Item cycling
 	if Input.is_action_just_pressed("ItemCycleUp"):
 		item_idx += 1;
 		if item_idx > items.size() - 1:
@@ -233,9 +261,9 @@ func _physics_process(delta: float) -> void:
 			item_idx = items.size() - 1;
 		cycle_item();
 	
+	# Interactions
 	_crosshair.state = Crosshair.State.Normal;
 	if move_state != MoveState.CLIMBING:
-		# Interaction
 		var interactable : Interactable = null;
 		var interact_hit_pos : Vector3;
 		var interact_hit_normal : Vector3;
@@ -267,4 +295,15 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("Interact"):
 			if grappleable:
 				throw_grappling_hook(grappleable, grapple_hit_pos);
-	#print(move_state);
+
+func rotate_around(point, axis, angle):
+	var rot = angle;
+	# Use body to get camera rotation, then reset player rotation, as player body does not rotate
+	var og_rot = self.rotation;
+	var tStart = point;
+	global_translate (-tStart)
+	transform = transform.rotated(axis, -rot)
+	var rot_dif = self.rotation - og_rot;
+	_camera.rotation += rot_dif;
+	self.rotation = og_rot;
+	global_translate (tStart)

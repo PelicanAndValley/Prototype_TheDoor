@@ -8,12 +8,37 @@ var clearance : float = 1.5;
 var top_mount_radius : float = 3;
 @export
 var can_climb : bool = true;
+@export
+var strafe_width : float = 1;
+
+enum StrafeMode {NONE, LINEAR, ROTATIONAL};
+@export
+var strafe_mode : StrafeMode;
+enum ExitDir { X, Y, Z, NX, NY, NZ };
+@export
+var exit_dir : ExitDir;
+var climb_normal : Vector3:
+	get:
+		var dir = Vector3.ZERO;
+		match exit_dir:
+			ExitDir.X:
+				dir = global_basis.x;
+			ExitDir.Y:
+				dir = global_basis.y;
+			ExitDir.Z:
+				dir = global_basis.z;
+			ExitDir.NX:
+				dir = -global_basis.x;
+			ExitDir.NY:
+				dir = -global_basis.y;
+			ExitDir.NZ:
+				dir = -global_basis.z;
+		return dir;
 
 var _top_hop_pos : Node3D;
 var _bottom_hop_pos : Node3D;
 var _top_mount_pos : Node3D;
 var _climb_area : Area3D;
-#var _boundaries : Node3D;
 var _hop_pos : Vector3;
 var _hop_y_rot : float;
 var _player : Player = null;
@@ -55,10 +80,21 @@ func exit_to_transform (pos: Node3D) -> void:
 
 func exit_to_pos (pos: Vector3) -> void:
 	if _hopping:
-		print("HUH?");
+		print("HUH? Tried to exit while already hopping!");
 		return;
 	_hop_type = HopType.EXIT;
-	player_hop(pos, _player.global_ssrotation.y);
+	player_hop(pos, _player.global_rotation.y);
+
+func stop_climb () -> void:
+	var exit_normal = climb_normal;
+	if strafe_mode == StrafeMode.ROTATIONAL:
+		var player_level_pos = _player.global_position;
+		player_level_pos.y = 0;
+		var climb_level_pos = global_position;
+		climb_level_pos.y = 0;
+		exit_normal = (climb_level_pos - player_level_pos).normalized();
+	var clearance_pos = _player.global_position - (exit_normal * clearance);
+	exit_to_pos(clearance_pos);
 
 func mount_to_transform (pos: Node3D) -> void:
 	if _hopping:
@@ -91,8 +127,7 @@ func _physics_process(delta: float) -> void:
 				_hopping = false;
 		elif _player.is_on_floor():
 			if !_just_entered:
-				var clearance_pos = _player.global_position - (global_basis.x * clearance);
-				exit_to_pos(clearance_pos);
+				stop_climb();
 		else:
 			_just_entered = false;
 
@@ -106,12 +141,13 @@ func on_piton_interact(player: Player, _point: Vector3) -> void:
 
 func on_body_entered_climb(body: Node3D) -> void:
 	if can_climb and body is Player and !_hopping:
-		print("ENTER");
 		_player = body as Player;
 		begin_climb(_player);
 
 func on_body_exited_climb(body: Node3D) -> void:
-	if can_climb and body is Player and !_hopping and body.global_position.y - _top_hop_pos.global_position.y < top_mount_radius:
-		print("EXIT");
-		var local_x_offset = body.to_local(_top_hop_pos.global_position).x * _top_hop_pos.basis.x;
+	print("DETECTED EXIT...")
+	if body is Player and !_hopping and abs(body.global_position.y - _top_hop_pos.global_position.y) < top_mount_radius:
+		print("EXITING!")
+		var dir = _top_hop_pos.basis.x;
+		var local_x_offset = body.to_local(_top_hop_pos.global_position).x * dir;
 		exit_to_pos(_top_hop_pos.global_position - local_x_offset);

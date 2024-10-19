@@ -28,17 +28,17 @@ void fragment() {
 	vec4 albedo_tex = texture(texture_albedo, UV);
 	vec4 roughness_tex = texture(texture_roughness, UV);
 	vec4 normal_tex = texture(texture_normal, UV);
-	
+
 	ALPHA = albedo_tex.a;
 	ALPHA_SCISSOR_THRESHOLD = 0.5;
-	
+
 	ALBEDO = albedo.rgb * albedo_tex.rgb;
 	NORMAL_MAP = normal_tex.rgb;
 	NORMAL_MAP_DEPTH = normal_scale;
 	ROUGHNESS = roughness_tex.r * roughness;
 	AO = COLOR.g;
 
-	
+
 }
 
 //void light() {

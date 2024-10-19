@@ -27,7 +27,7 @@ var _door : Door;
 @export
 var my_daddy : Node3D;
 @export
-var dust_effect : StoryDirtExplosion;
+var dust_effect : Effect;
 @export
 var dust_delay : float = 5500;
 var dust_start : float = 0;

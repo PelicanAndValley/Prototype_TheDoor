@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbgmltl64euao"]
+
+[ext_resource type="Script" path="res://scripts/pickable.gd" id="1_2884b"]
+[ext_resource type="PackedScene" uid="uid://pt34he3a1dv6" path="res://prefabs/PROTOTYPE_Explosive/model/s_dynamite.tscn" id="1_pcicd"]
+[ext_resource type="PackedScene" uid="uid://be4722m3l2c62" path="res://prefabs/PROTOTYPE_Explosive/item_dynamite.tscn" id="2_hgag0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q48xm"]
+radius = 0.757633
+height = 3.05599
+
+[node name="EnvDynamite" type="StaticBody3D"]
+script = ExtResource("1_2884b")
+item = ExtResource("2_hgag0")
+
+[node name="DynamiteModel" parent="." instance=ExtResource("1_pcicd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0521483, 1.27512, 0.0506793)
+shape = SubResource("CapsuleShape3D_q48xm")

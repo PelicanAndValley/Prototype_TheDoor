@@ -14,6 +14,7 @@ var hit_audio : AudioStreamPlayer3D;
 var target : Grappleable;
 var grappled : bool = false;
 var thrown : bool = false;
+var _end_pos : Vector3;
 var _move_vector : Vector3;
 var _original_pos : Vector3;
 var _distance_travelled : float = 0;
@@ -34,13 +35,14 @@ func _process(delta: float) -> void:
 			grappled = true;
 		var travelled_frac = _distance_travelled / _move_vector.length();
 		_vertical_offset = sin(travelled_frac * PI) * vertical_rise * _move_vector.length();
-		var total_movement = (_move_vector.normalized() * _distance_travelled) + (Vector3.UP * _vertical_offset);
+		var total_movement = (_move_vector.normalized() * _distance_travelled) + (Vector3.UP * _vertical_offset) * delta;
 		var new_pos = _original_pos + total_movement;
 		look_at(position + (new_pos - global_position));
 		global_position = new_pos;
 	# Just landed
 	elif grappled and thrown:
 		thrown = false;
+		global_position = _end_pos;
 		# glint
 		var particles : GPUParticles3D = land_particle.instantiate();
 		add_child(particles);
@@ -61,14 +63,13 @@ func _physics_process(delta: float) -> void:
 
 func throw (og_pos : Vector3, grappleable: Grappleable, hit_pos: Vector3, speed : float = 10) -> void:
 	target = grappleable;
-	var end_pos : Vector3;
 	if grappleable.grapple_position:
-		end_pos = grappleable.grapple_position.global_position;
+		_end_pos = grappleable.grapple_position.global_position;
 	else:
-		end_pos = hit_pos;
+		_end_pos = hit_pos;
 	grappleable.connect_hook(self);
 	_original_pos = og_pos;
-	_move_vector = end_pos - _original_pos;
+	_move_vector = _end_pos - _original_pos;
 	_speed = speed;
 	thrown = true;
 	#apply_central_impulse(direction * speed);

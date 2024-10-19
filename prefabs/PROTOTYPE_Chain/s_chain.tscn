@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://0r3lgwgjqnmk"]
+
+[ext_resource type="PackedScene" uid="uid://byogdyn3mlaqc" path="res://prefabs/PROTOTYPE_Chain/m_chain.glb" id="1_lwy7r"]
+
+[node name="ChainModel" instance=ExtResource("1_lwy7r")]
+
+[node name="Torus_001" parent="." index="1"]
+transform = Transform3D(1.14861, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5, 0, 0)
+
+[node name="Torus_003" parent="." index="3"]
+transform = Transform3D(1.14861, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 15.5678, 0, 0)
+
+[node name="Torus_005" parent="." index="5"]
+transform = Transform3D(1.14861, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 26.2819, 0, 0)
+
+[node name="Torus_007" parent="." index="7"]
+transform = Transform3D(1.14861, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 36.8132, 0, 0)
+
+[node name="Torus_009" parent="." index="9"]
+transform = Transform3D(1.14861, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 47.6004, 0, 0)
+
+[node name="Torus_010" parent="." index="10"]
+transform = Transform3D(1.13435, 0.157122, 2.11108e-08, -0.180473, 0.987579, -1.66885e-09, -2.42481e-08, -1.66885e-09, 1, 52.9211, -0.789845, -1.06123e-07)
+
+[node name="Torus_011" parent="." index="11"]
+transform = Transform3D(1.09786, 3.39894e-07, -0.293975, -0.337663, -1.17984e-07, -0.955813, -4.12994e-07, 1, -1.28501e-08, 58.1317, -1.57969, -2.12245e-07)
+
+[node name="Torus_012" parent="." index="12"]
+transform = Transform3D(1.10663, 0.267885, 3.59927e-08, -0.307696, 0.963451, -4.91068e-09, -4.13416e-08, -4.91069e-09, 1, 63.189, -3.21204, -4.31565e-07)
+
+[node name="Torus_013" parent="." index="13"]
+transform = Transform3D(1.11341, -1.33969e-09, -0.245678, -0.282189, -1.07389e-08, -0.969351, -1.53879e-09, 1, -1.07389e-08, 68.0311, -4.63376, -6.22586e-07)
+
+[node name="Torus_014" parent="." index="14"]
+transform = Transform3D(1.10375, 0.276741, 3.71826e-08, -0.317868, 0.960945, -5.24745e-09, -4.27084e-08, -5.24744e-09, 1, 73.299, -6.10813, 0)
+
+[node name="Torus_015" parent="." index="15"]
+transform = Transform3D(1.12509, -8.95149e-10, -0.20134, -0.231262, -8.80086e-09, -0.979521, -1.02818e-09, 1, -8.80086e-09, 78.3524, -7.51932, 0)
+
+[node name="Torus_016" parent="." index="16"]
+transform = Transform3D(1.10624, 0.269121, 3.61587e-08, -0.309115, 0.963106, -4.95698e-09, -4.15324e-08, -4.95697e-09, 1, 83.5144, -8.97264, 0)

@@ -1,5 +1,7 @@
 extends Node3D;
 
+class_name AnimationTrigger;
+
 signal on_end;
 
 @export

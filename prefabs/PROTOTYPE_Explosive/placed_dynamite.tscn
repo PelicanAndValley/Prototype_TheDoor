@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci86tdkl102ec"]
+
+[ext_resource type="Script" path="res://prefabs/PROTOTYPE_Explosive/placed_dynamite.gd" id="1_gxky0"]
+[ext_resource type="PackedScene" uid="uid://pt34he3a1dv6" path="res://prefabs/PROTOTYPE_Explosive/model/s_dynamite.tscn" id="1_yrmap"]
+[ext_resource type="PackedScene" uid="uid://obg8owoecgxi" path="res://assets/effects/particles/STORY_Explosion/STORY_explosion.tscn" id="2_r0f40"]
+
+[node name="PlacedDynamite" type="Node3D" node_paths=PackedStringArray("explosion_effect")]
+script = ExtResource("1_gxky0")
+explosion_effect = NodePath("STORY_explosion_01")
+
+[node name="DynamiteModel" parent="." instance=ExtResource("1_yrmap")]
+
+[node name="STORY_explosion_01" parent="." instance=ExtResource("2_r0f40")]
