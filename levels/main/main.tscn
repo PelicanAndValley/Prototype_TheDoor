@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="19_qi4wh"]
 [ext_resource type="PackedScene" uid="uid://ctxvrp188j7of" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/env_balloon.tscn" id="20_svckx"]
 [ext_resource type="PackedScene" uid="uid://chevsilg4jfk3" path="res://assets/flora/flora_fern_01/fern_01.tscn" id="25_jfmap"]
-[ext_resource type="PackedScene" uid="uid://c0pbv1g813exf" path="res://prefabs/MAIN_Piton/env_piton.tscn" id="25_o3gbh"]
+[ext_resource type="PackedScene" path="res://prefabs/MAIN_Piton/env_piton.tscn" id="25_o3gbh"]
 [ext_resource type="Terrain3DStorage" uid="uid://dlyqcsdd3dr0p" path="res://levels/main/main_terrain.res" id="25_pb4sc"]
 [ext_resource type="Texture2D" uid="uid://byg4hgop8bn6k" path="res://prefabs/MAIN_Terrain/Terrain_Textures/JungleGrass01_d.png" id="25_wy6cb"]
 [ext_resource type="Texture2D" uid="uid://d1rcsk73gkkda" path="res://prefabs/MAIN_Terrain/Terrain_Textures/JungleGround01_d.png" id="26_6oov7"]

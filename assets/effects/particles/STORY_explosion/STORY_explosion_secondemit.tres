@@ -1,0 +1,51 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=9 format=3 uid="uid://uo2uqueetktg"]
+
+[sub_resource type="Curve" id="Curve_ucl27"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0432802, 0), 0.10973, 0.10973, 0, 0, Vector2(0.252847, 0.161651), -0.418902, -0.418902, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_hpaj5"]
+curve = SubResource("Curve_ucl27")
+
+[sub_resource type="Gradient" id="Gradient_b5ed8"]
+colors = PackedColorArray(0.298039, 0.258824, 0.223529, 1, 0.970872, 0.958196, 0.946378, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aarl3"]
+gradient = SubResource("Gradient_b5ed8")
+
+[sub_resource type="Curve" id="Curve_hptpa"]
+_data = [Vector2(0.0455581, 0), 0.0, 0.0, 0, 0, Vector2(0.047836, 1), 0.0557631, 0.0557631, 0, 0, Vector2(0.29385, 0.938521), -0.462267, -0.462267, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_d2xuq"]
+curve = SubResource("Curve_hptpa")
+
+[sub_resource type="Curve" id="Curve_mcba1"]
+max_value = 4.0
+_data = [Vector2(0.0022779, 0.311264), 0.0, 0.0, 0, 0, Vector2(0.0113895, 1.7644), 5.19579, 5.19579, 0, 0, Vector2(0.182232, 2.01032), 0.0, 0.0, 0, 0, Vector2(1, 3.59759), 5.38202, 0.482669, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_gahdd"]
+curve = SubResource("Curve_mcba1")
+
+[resource]
+angle_min = -45.0
+angle_max = 45.0
+inherit_velocity_ratio = 0.768
+direction = Vector3(0, 1, 0)
+spread = 18.416
+flatness = 0.365
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+radial_velocity_min = 3.99998
+radial_velocity_max = 5.99998
+radial_velocity_curve = SubResource("CurveTexture_d2xuq")
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_curve = SubResource("CurveTexture_gahdd")
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 1.0
+color = Color(0.650128, 0.650128, 0.650128, 1)
+color_ramp = SubResource("GradientTexture1D_aarl3")
+alpha_curve = SubResource("CurveTexture_hpaj5")
