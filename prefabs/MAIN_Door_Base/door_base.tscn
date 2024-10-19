@@ -257,7 +257,7 @@ anim = NodePath("../../RopeLength2/AnimationTree")
 
 [node name="VineClimb" parent="DoorR" index="4" instance=ExtResource("19_bqeg8")]
 transform = Transform3D(-1.87434e-07, 0, 4.288, 0, 4.288, 0, -4.288, 0, -1.87434e-07, -38.7822, 124.683, 2.09436)
-strafe_width = 3.0
+strafe_width = 10.0
 strafe_mode = 1
 
 [node name="PitonClimbable" parent="DoorR" index="5" instance=ExtResource("20_l0ttg")]

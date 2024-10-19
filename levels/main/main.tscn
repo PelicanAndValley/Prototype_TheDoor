@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ccdar8xfugjui" path="res://prefabs/PROTOTYPE_Puzzle_Pulley/env_pulley.tscn" id="19_qi4wh"]
 [ext_resource type="PackedScene" uid="uid://ctxvrp188j7of" path="res://prefabs/PROTOTYPE_Puzzle_Balloon/env_balloon.tscn" id="20_svckx"]
 [ext_resource type="PackedScene" uid="uid://chevsilg4jfk3" path="res://assets/flora/flora_fern_01/fern_01.tscn" id="25_jfmap"]
-[ext_resource type="PackedScene" path="res://prefabs/MAIN_Piton/env_piton.tscn" id="25_o3gbh"]
+[ext_resource type="PackedScene" uid="uid://c0pbv1g813exf" path="res://prefabs/MAIN_Piton/env_piton.tscn" id="25_o3gbh"]
 [ext_resource type="Terrain3DStorage" uid="uid://dlyqcsdd3dr0p" path="res://levels/main/main_terrain.res" id="25_pb4sc"]
 [ext_resource type="Texture2D" uid="uid://byg4hgop8bn6k" path="res://prefabs/MAIN_Terrain/Terrain_Textures/JungleGrass01_d.png" id="25_wy6cb"]
 [ext_resource type="Texture2D" uid="uid://d1rcsk73gkkda" path="res://prefabs/MAIN_Terrain/Terrain_Textures/JungleGround01_d.png" id="26_6oov7"]
@@ -167,9 +167,6 @@ speed = 100.0
 key = NodePath("../../../../../THE BIG KEY")
 key_key = NodePath("../../../../../THE BIG KEY/Key")
 key_top_level = NodePath("../../../../../KeyTopLevel")
-
-[node name="RopeLength2" parent="Door_Base/DoorR/Door_Handle" index="3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.8904, 237.039, 12.3811)
 
 [node name="VineClimb" parent="Door_Base/DoorR" index="4"]
 transform = Transform3D(-1.93991e-07, 0, 4.438, 0, 4.438, 0, -4.438, 0, -1.93991e-07, -38.7822, 124.683, 2.09436)

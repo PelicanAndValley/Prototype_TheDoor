@@ -1,11 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://dp0qfr12uuwr0"]
+[gd_scene load_steps=25 format=3 uid="uid://dp0qfr12uuwr0"]
 
-[ext_resource type="Material" uid="uid://dr3l7h8gwlnl6" path="res://assets/effects/particles/STORY_explosion/STORY_explosion_mainemit.tres" id="1_hv7qb"]
-[ext_resource type="Material" uid="uid://bdsya8cwi3sf0" path="res://assets/effects/particles/STORY_explosion/STORY_explosion_mat.tres" id="2_i4ti6"]
-[ext_resource type="Material" uid="uid://uo2uqueetktg" path="res://assets/effects/particles/STORY_explosion/STORY_explosion_secondemit.tres" id="3_6lq6x"]
-[ext_resource type="Material" uid="uid://bk161l83ytj8m" path="res://assets/effects/particles/STORY_explosion/STORY_explosion_fire_mat.tres" id="3_op1ya"]
-[ext_resource type="Material" uid="uid://mflonkky0ssy" path="res://assets/effects/particles/STORY_explosion/STORY_explosion__second_mat.tres" id="4_57g5f"]
-[ext_resource type="Material" uid="uid://df2sk41xsfqyl" path="res://assets/effects/particles/STORY_explosion/STORY_explosion_drift.tres" id="5_7ecto"]
+[ext_resource type="Material" uid="uid://dr3l7h8gwlnl6" path="res://assets/effects/particles/STORY_Explosion/STORY_explosion_mainemit.tres" id="1_hv7qb"]
+[ext_resource type="Material" uid="uid://bdsya8cwi3sf0" path="res://assets/effects/particles/STORY_Explosion/STORY_explosion_mat.tres" id="2_i4ti6"]
+[ext_resource type="Material" uid="uid://uo2uqueetktg" path="res://assets/effects/particles/STORY_Explosion/STORY_explosion_secondemit.tres" id="3_6lq6x"]
+[ext_resource type="Script" path="res://scripts/particle_start_on_place.gd" id="3_743of"]
+[ext_resource type="Material" uid="uid://bk161l83ytj8m" path="res://assets/effects/particles/STORY_Explosion/STORY_explosion_fire_mat.tres" id="3_op1ya"]
+[ext_resource type="Material" uid="uid://mflonkky0ssy" path="res://assets/effects/particles/STORY_Explosion/STORY_explosion__second_mat.tres" id="4_57g5f"]
+[ext_resource type="Material" uid="uid://df2sk41xsfqyl" path="res://assets/effects/particles/STORY_Explosion/STORY_explosion_drift.tres" id="5_7ecto"]
+[ext_resource type="AudioStream" uid="uid://ccfp76tcejbsl" path="res://sounds/story/explosion.mp3" id="8_uyf6f"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_j8l28"]
 material = ExtResource("2_i4ti6")
@@ -94,36 +96,52 @@ size = Vector2(6, 6)
 [node name="StoryExplosion" type="Node3D"]
 
 [node name="ExplosiveSmoke" type="GPUParticles3D" parent="."]
+emitting = false
 amount = 24
 lifetime = 7.0
+one_shot = true
 explosiveness = 1.0
 randomness = 0.09
 draw_order = 1
 process_material = ExtResource("1_hv7qb")
 draw_pass_1 = SubResource("QuadMesh_j8l28")
+script = ExtResource("3_743of")
 
 [node name="ExplosiveFire" type="GPUParticles3D" parent="ExplosiveSmoke"]
+emitting = false
 amount = 24
 lifetime = 7.0
+one_shot = true
 explosiveness = 1.0
 randomness = 0.09
 draw_order = 1
 process_material = SubResource("ParticleProcessMaterial_wveej")
 draw_pass_1 = SubResource("QuadMesh_swpw4")
+script = ExtResource("3_743of")
 
 [node name="SmokeDriftAway" type="GPUParticles3D" parent="ExplosiveSmoke"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09631, 0)
+emitting = false
 amount = 18
 lifetime = 7.0
+one_shot = true
 explosiveness = 1.0
 randomness = 0.15
 process_material = ExtResource("3_6lq6x")
 draw_pass_1 = SubResource("QuadMesh_m618x")
+script = ExtResource("3_743of")
 
 [node name="SmokeDriftStay" type="GPUParticles3D" parent="ExplosiveSmoke/SmokeDriftAway"]
+emitting = false
 amount = 4
 lifetime = 7.0
+one_shot = true
 explosiveness = 1.0
 randomness = 0.15
 process_material = ExtResource("5_7ecto")
 draw_pass_1 = SubResource("QuadMesh_m618x")
+script = ExtResource("3_743of")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_uyf6f")
+autoplay = true
