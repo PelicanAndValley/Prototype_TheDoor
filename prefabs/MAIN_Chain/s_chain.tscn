@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccdx2u26wgqm7"]
+
+[ext_resource type="PackedScene" uid="uid://dm70o4dv8rwqn" path="res://prefabs/MAIN_Chain/m_chain.glb" id="1_2kp70"]
+
+[node name="ChainModel" instance=ExtResource("1_2kp70")]
+
+[node name="Torus_003" parent="." index="0"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, 5.74028, 400.573, 2.45689)
+
+[node name="Torus_018" parent="." index="1"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, 6.64686, 402.802, 2.47698)
+
+[node name="Torus_075" parent="FirstChainControl" index="0"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, 0.999753, -2.52893, -0.0352161)
+
+[node name="Nub" parent="SplitBelow" index="0"]
+transform = Transform3D(-0.680606, 0.732547, 0.0122599, -0.732422, -0.679881, -0.0363389, -0.0182847, -0.0337119, 0.999264, -25.9332, 3.44675, -2.59356)
+
+[node name="Torus_001" parent="SplitBelow" index="1"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -25.7053, 2.70999, -1.03047)
+
+[node name="Torus_002" parent="SplitBelow" index="2"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -5.2072, -10.2694, 0.299923)
+
+[node name="Torus_004" parent="SplitBelow" index="3"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -25.1158, 0.380524, -0.950096)
+
+[node name="Torus_005" parent="SplitBelow" index="4"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -24.5673, -1.96362, -0.911372)
+
+[node name="Torus_006" parent="SplitBelow" index="5"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -23.8232, -4.24863, -0.841996)
+
+[node name="Torus_007" parent="SplitBelow" index="6"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -23.0362, -6.51981, -0.777326)
+
+[node name="Torus_008" parent="SplitBelow" index="7"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -22.1598, -8.7525, -0.668032)
+
+[node name="Torus_009" parent="SplitBelow" index="8"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -21.0635, -10.891, -0.644284)
+
+[node name="Torus_010" parent="SplitBelow" index="9"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -19.8311, -12.9535, -0.520013)
+
+[node name="Torus_011" parent="SplitBelow" index="10"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -18.2399, -14.7568, -0.507665)
+
+[node name="Torus_012" parent="SplitBelow" index="11"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -16.3589, -16.2288, -0.28007)
+
+[node name="Torus_013" parent="SplitBelow" index="12"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -14.1063, -16.9579, -0.2757)
+
+[node name="Torus_014" parent="SplitBelow" index="13"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -11.7429, -16.9349, -0.0349689)
+
+[node name="Torus_015" parent="SplitBelow" index="14"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -9.64089, -15.8228, 0.0152724)
+
+[node name="Torus_016" parent="SplitBelow" index="15"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -7.79107, -14.305, 0.158068)
+
+[node name="Torus_017" parent="SplitBelow" index="16"]
+transform = Transform3D(0.873247, -0.420558, 0.246112, 0.446675, 0.892723, -0.0593871, -0.194735, 0.161792, 0.96742, -6.41138, -12.3448, 0.146807)

@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkkoe30vh6nei"]
+
+[ext_resource type="Script" path="res://prefabs/PROTOTYPE_Chain/p_chain.gd" id="1_qjclk"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wfb40"]
+animation = &"ChainExplodeSequence"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_301yr"]
+animation = &"ChainFall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jbx1m"]
+animation = &"Default"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aelft"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_45xk6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oggwd"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_a82jo"]
+states/ChainExplodeSequence/node = SubResource("AnimationNodeAnimation_wfb40")
+states/ChainExplodeSequence/position = Vector2(586, 100)
+states/ChainFall/node = SubResource("AnimationNodeAnimation_301yr")
+states/ChainFall/position = Vector2(801, 100)
+states/Default/node = SubResource("AnimationNodeAnimation_jbx1m")
+states/Default/position = Vector2(379, 100)
+states/End/position = Vector2(954, 100)
+transitions = ["Start", "Default", SubResource("AnimationNodeStateMachineTransition_aelft"), "Default", "ChainExplodeSequence", SubResource("AnimationNodeStateMachineTransition_45xk6"), "ChainExplodeSequence", "ChainFall", SubResource("AnimationNodeStateMachineTransition_oggwd")]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ui1kh"]
+radius = 5.49824
+
+[node name="PChain" type="Area3D"]
+script = ExtResource("1_qjclk")
+link_to_item = true
+item_names = PackedStringArray("ItemDynamite")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_a82jo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.0613, -10.0028, 0)
+shape = SubResource("SphereShape3D_ui1kh")
+
+[connection signal="on_interact" from="." to="." method="_on_interact"]

@@ -145,9 +145,7 @@ func on_body_entered_climb(body: Node3D) -> void:
 		begin_climb(_player);
 
 func on_body_exited_climb(body: Node3D) -> void:
-	print("DETECTED EXIT...")
-	if body is Player and !_hopping and abs(body.global_position.y - _top_hop_pos.global_position.y) < top_mount_radius:
-		print("EXITING!")
+	if body is Player and _player and !_hopping and abs(body.global_position.y - _top_hop_pos.global_position.y) < top_mount_radius:
 		var dir = _top_hop_pos.basis.x;
 		var local_x_offset = body.to_local(_top_hop_pos.global_position).x * dir;
 		exit_to_pos(_top_hop_pos.global_position - local_x_offset);

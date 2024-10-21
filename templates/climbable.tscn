@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpjmn5r5p5hff"]
+[gd_scene load_steps=6 format=3 uid="uid://dpjmn5r5p5hff"]
 
 [ext_resource type="Script" path="res://scripts/climbable.gd" id="1_o0mmn"]
-[ext_resource type="Script" path="res://scripts/interactable.gd" id="2_f2ulx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vaoob"]
 
@@ -15,14 +14,6 @@ size = Vector3(15, 200, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3piiq"]
 resource_local_to_scene = true
 size = Vector3(15, 200, 1.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ibm5l"]
-resource_local_to_scene = true
-size = Vector3(15, 1, 1.325)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wtjb7"]
-resource_local_to_scene = true
-size = Vector3(1, 200, 1.815)
 
 [node name="PitonClimbable" type="AnimatableBody3D"]
 script = ExtResource("1_o0mmn")
@@ -47,27 +38,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7708, 1.18137)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ClimbArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
 shape = SubResource("BoxShape3D_3piiq")
-
-[node name="TopMountInteract" type="Area3D" parent="."]
-script = ExtResource("2_f2ulx")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TopMountInteract"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-shape = SubResource("BoxShape3D_ibm5l")
-
-[node name="Boundaries" type="Node3D" parent="."]
-process_mode = 4
-
-[node name="Left" type="AnimatableBody3D" parent="Boundaries"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Left"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -100, 1)
-shape = SubResource("BoxShape3D_wtjb7")
-
-[node name="Right" type="AnimatableBody3D" parent="Boundaries"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Right"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -100, 1)
-shape = SubResource("BoxShape3D_wtjb7")
-
-[connection signal="on_interact" from="TopMountInteract" to="." method="on_top_mount_interact"]
