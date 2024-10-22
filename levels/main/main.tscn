@@ -160,6 +160,9 @@ key = NodePath("../../../../../THE BIG KEY")
 key_key = NodePath("../../../../../THE BIG KEY/Key")
 key_top_level = NodePath("../../../../../KeyTopLevel")
 
+[node name="RopeLength2" parent="Door_Base/DoorR/Door_Handle" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.8904, 237.039, 12.3811)
+
 [node name="VineClimb" parent="Door_Base/DoorR" index="4"]
 transform = Transform3D(-1.93991e-07, 0, 4.438, 0, 4.438, 0, -4.438, 0, -1.93991e-07, -38.7822, 124.683, 2.09436)
 
@@ -221,9 +224,6 @@ transform = Transform3D(-0.410478, 0.0544381, -0.910245, 0.131778, 0.99128, -0.0
 
 [node name="THE BIG KEY" parent="." instance=ExtResource("19_q3klv")]
 transform = Transform3D(0.825488, 0, -0.56442, 0, 1, 0, 0.56442, 0, 0.825488, 3.57224, 3.71812, 14.4017)
-
-[node name="KeyTurn" parent="THE BIG KEY/KeyTurn2/KeyTurnRoot/KeyWorldPos" index="0"]
-transform = Transform3D(0.825386, -0.545493, 0.145521, 0.563375, 0.77905, -0.275118, 0.0367069, 0.309061, 0.950334, 14.8576, 9.87569, -7.6257)
 
 [node name="Key" parent="THE BIG KEY" index="1" node_paths=PackedStringArray("_player", "_door")]
 _player = NodePath("../../Player")

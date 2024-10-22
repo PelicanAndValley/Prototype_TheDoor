@@ -35,8 +35,8 @@ _subresources={
 "animations": {
 "Animation": {
 "save_to_file/enabled": false,
-"save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "",
+"save_to_file/keep_custom_tracks": true,
+"save_to_file/path": "res://prefabs/MAIN_Chain/chain_snap_anim.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
